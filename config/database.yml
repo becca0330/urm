@@ -23,10 +23,18 @@ test:
 production:
   pool: 5
   timeout: 5000
-  adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: urm
-  username: user_urm
+  # canberra:
+  #adapter: mysql2
+  #database: urm
+  #username: user_urm
+  #password: pwd_urm
+  #socket: /var/mysql/mysql.sock
+  
+  # feiner.at
+  adapter: mysql
+  database: db41647_6
+  username: 41647
   password: pwd_urm
-  socket: /var/mysql/mysql.sock
+  socket: /var/run/mysqld/mysqld.sock

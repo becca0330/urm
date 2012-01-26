@@ -7,3 +7,4 @@ ruby/
 Gemfile.lock
 .sass-cache/
 public/system/
+config/deploy.rb

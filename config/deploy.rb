@@ -4,22 +4,39 @@
 
 
 set :application, "urm"
-set :repository,  "http://canberra/git/urm"
-set :deploy_to,   "/RailsServer/#{application}"
+# set :repository,  "http://canberra/git/urm"
+# set :deploy_to,  "/Railsapp/#{application}"
+# public repository @ github
+set :repository, "git://github.com/internettechnik/urm.git"
+set :deploy_to,   "/kunden/feiner.at/john/#{application}"
+
 # variables for pathes on canberra server:
 # current_path = /RailsServer/urm/current
 # shared_path  = /RailsServer/urm/shared
 
 # mysql database settings on canberra server:
-set :dbname,  "urm"
-set :dbuser,  "user_urm"
+#set :dbname,  "urm"
+#set :dbuser,  "user_urm"
+#set :dbpass,  "pwd_urm"
+
+# mysql database settings on feiner.at server:
+set :dbhost,  "mysql5.feiner.at"
+set :dbname,  "db41647_6"
+set :dbuser,  "db41647_6"
 set :dbpass,  "pwd_urm"
+
 
 set :scm, :git
 
-role :web, "itmadmin@canberra"                   # Your HTTP server, Apache/etc
-role :app, "itmadmin@canberra"                   # This may be the same as your `Web` server
-role :db,  "itmadmin@canberra", :primary => true # This is where Rails migrations will run
+# for canberra:
+#role :web, "itmadmin@canberra"                   # Your HTTP server, Apache/etc
+#role :app, "itmadmin@canberra"                   # This may be the same as your `Web` server
+#role :db,  "itmadmin@canberra", :primary => true # This is where Rails migrations
+
+# for feiner.at
+role :web, "ssh-41647-ssh@www.feiner.at"                   # Your HTTP server, Apache/etc
+role :app, "ssh-41647-ssh@www.feiner.at"                   # This may be the same as your `Web` server
+role :db,  "ssh-41647-ssh@www.feiner.at", :primary => true # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
 
 set :rails_env, :production
@@ -71,7 +88,10 @@ namespace :sql do
 
   desc "URM: show sql-db-stats"
   task :status do
-    run "mysql --user=#{dbuser} --password=#{dbpass} #{dbname} -e 'status' "
+    # canberra
+    # run "mysql --user=#{dbuser} --password=#{dbpass} #{dbname} -e 'status' "
+    # feiner.at
+    run "mysql --user=#{dbuser} --password=#{dbpass} --host=#{dbhost} #{dbname} -e 'status' "
   end 
 
   desc "URM: show sql-db last migration number"
