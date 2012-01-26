@@ -5,7 +5,8 @@
 
 set :application, "urm"
 set :repository,  "http://canberra/git/urm"
-set :deploy_to,   "/RailsServer/#{application}"
+set :deploy_to,  "/Railsapp/#{application}"
+
 # variables for pathes on canberra server:
 # current_path = /RailsServer/urm/current
 # shared_path  = /RailsServer/urm/shared
@@ -17,9 +18,11 @@ set :dbpass,  "pwd_urm"
 
 set :scm, :git
 
+# for canberra:
 role :web, "itmadmin@canberra"                   # Your HTTP server, Apache/etc
 role :app, "itmadmin@canberra"                   # This may be the same as your `Web` server
-role :db,  "itmadmin@canberra", :primary => true # This is where Rails migrations will run
+role :db,  "itmadmin@canberra", :primary => true # This is where Rails migrations
+
 #role :db,  "your slave db-server here"
 
 set :rails_env, :production
@@ -71,7 +74,8 @@ namespace :sql do
 
   desc "URM: show sql-db-stats"
   task :status do
-    run "mysql --user=#{dbuser} --password=#{dbpass} #{dbname} -e 'status' "
+    # canberra
+     run "mysql --user=#{dbuser} --password=#{dbpass} #{dbname} -e 'status' "
   end 
 
   desc "URM: show sql-db last migration number"
