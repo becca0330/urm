@@ -1,0 +1,132 @@
+<!-- SECTION SINGLE DOCUMENT -->
+<div id="document_<%=document.id%>" class="border_document">
+	
+	<!-- SECTION SINGLE Document Summary (modifiable details) -->
+	<div class="toggle_document" >
+		<%= form_for(document, 
+				:remote => true, 
+				:html => {:class => "edit_document_#{document.id}"}
+				) do |frm_doc| %>
+				
+		
+			<%# where does this document belong to: report or finding? (store in hidden field) %>
+			<% if report_id  %><%=frm_doc.hidden_field(:report_id, :value => report_id) %><%end %>
+			<% if finding_id %><%=frm_doc.hidden_field(:finding_id, :value  => finding_id) %><%end %>	
+				
+			<%= link_to_function(t(:'documents.document.section_title'),
+				toggler("#toggle_",document) ) %>
+			<span id="summary_document_<%=document.id%>"><%= document.summary %></span>
+			<%= link_to( image_tag("delete.png"), 
+					(report_id) ? document_path(document, :report_id => report_id )
+								: document_path(document, :finding_id => finding_id ),
+					:method		=> :delete,
+					:remote		=> true,
+					:confirm 	=> t(:'.delete_confirm',	:summary => document.summary),
+					:title 		=> t(:'.delete_hint',		:summary => document.summary)
+					) %>
+			
+			<!-- SUB SECTION SINGLE Document Details (modifiable details) -->
+			<div id="toggle_document_<%=document.id%>">
+				<table id="table_document">
+					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+					<tr>
+						<td>
+						    <%= frm_doc.label( 	:listat,
+												t(:'documents.document.label_listat'),
+						 						:title => t(:'documents.document.prompt_listat')  )%> 
+						</td> 
+						<td>
+					 		<%= frm_doc.select(:listat, 
+							{	
+							t(:'documents.document.listat.bibliography')			=> "bibliography", 
+							t(:'documents.document.listat.transcripts')	 			=> "transscripts",
+							t(:'documents.document.listat.evaluationteammaterial')	=> "evaluationteammaterial",
+							t(:'documents.document.listat.testusermaterial')	 	=> "testusermaterial"
+							},
+							options = {:prompt =>  t(:'documents.document.prompt_listat') },
+							:class => 'submittable',
+							:title => t(:'documents.document.prompt_listat')
+							) %>
+						</td>
+					</tr>
+						
+					<tr>
+						<td>
+						    <%= frm_doc.label( :description,
+								t(:'documents.document.label_description'),
+						 		:title => t(:'documents.document.hint_description') )%> 
+						</td> 
+						<td>
+							<%= frm_doc.text_area( :description, 
+								:rows			=> 2,
+								:placeholder 	=> t(:'documents.document.hint_description'),
+								:title 			=> t(:'documents.document.hint_description'),
+								:class 			=> 'submittable') %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_doc.label( :doctype,
+								t(:'documents.document.label_type'),
+						 		:title => t(:'documents.document.hint_type') )%> 
+						</td> 
+						<td>
+							<%= frm_doc.select(:doctype, 
+								{	t(:'documents.document.doctype.link') 			=> "link", 
+									t(:'documents.document.doctype.doc') 			=> "doc",
+									t(:'documents.document.doctype.bibentry') 		=> "bibentry"
+								 },
+								options = {:prompt => t(:'documents.document.prompt_type') },
+								:class => 'submittable',
+								:title => t(:'documents.document.prompt_type')
+								) %>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+					    </td> 
+						<td>
+							<!-- TODO: show only ONE of the alternatives -->
+							
+							<div class="alternative_link" <%= (document.doctype=='link') ? "" : "style=display:None" %> >
+				  				<%= frm_doc.text_field :source, 
+									:rows => 4,
+									:placeholder => t(:'documents.document.hint_source'),
+									:title => t(:'documents.document.hint_source'),
+								:class => 'submittable' %>
+								<div class="attachmentsubtitle" id="document_link_<%= document.id %>">
+									<a href="<%=document.source %>">(follow link)</a>
+								</div>
+							</div><!-- end show source of remote url -->
+							
+							<div class="alternative_doc" <%= (document.doctype=='doc') ? "" : "style=display:None" %> >
+								<%= frm_doc.file_field :attachment, 
+									:rows => 4,
+									:placeholder => t(:'documents.document.hint_attach'),
+									:title => t(:'documents.document.hint_attach'),
+									:class => 'submittable' %>
+								<div id="document_preview_<%= document.id %>">
+									<%= render(:partial => '/documents/preview', 
+												:locals => {:document => document}
+												) %>
+								</div>
+								
+							</div> <!-- end show upload/preview for uploaded doc-->
+							
+							<div class="alternative_bibentry" <%= (document.doctype=='bibentry') ? "" : "style=display:None" %> >
+				  				<%# nothing to enter if bibentry (especially NO Source-info!) %>
+								
+							</div><!-- end show source of bib-entry -->
+						</td>
+					</tr>
+					
+					
+				</table>
+			</div> <!-- end of id toggle_document -->
+
+		<% end # of form document %>
+	</div> <!-- end of class toggle_document -->
+
+	<div id="document_message_<%=document.id%>" class="ajax_message"></div>
+</div> <!-- end of div document-->

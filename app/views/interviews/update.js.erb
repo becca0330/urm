@@ -1,0 +1,6 @@
+// we update the summary:
+$("#summary_interview_<%=interview.id%>" ).html("<%=interview.summary%>");
+$("#summary_interviews" ).html("<%=allinterviews_summary(interview.report) %>");
+
+showToast("<%= escape_javascript( t(:'.updated', :summary => @interview.summary) ) %>");
+resetHighlightingForElems('.edit_interview_<%=interview.id%>');

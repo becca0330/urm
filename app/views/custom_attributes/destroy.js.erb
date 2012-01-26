@@ -1,0 +1,5 @@
+/* Eliminate the eventcode by fading it out */
+$('#custom_attribute_<%= @custom_attribute.id %>').fadeOut();
+
+/* Replace the count of eventcodes */
+$(".custom_attributes_count").html("<%= pluralize(CustomAttribute.count, 'attributes') %>");

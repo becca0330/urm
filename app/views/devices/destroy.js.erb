@@ -1,0 +1,2 @@
+$('#device_<%=device.id%>').fadeOut();
+$("#summary_devices" ).html("<%= escape_javascript( alldevices_summary(device.report) )%>");

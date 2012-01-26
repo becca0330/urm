@@ -1,0 +1,572 @@
+<%#
+
+	TODO: allow the reports to be ordered with drag and drop
+		(change attribute order)
+	TODO: enable disable special fields depending on the testtype (he/ta)
+%>
+<!-- SECTION SINGLE REPORT -->
+<div id="report_<%=report.id%>" class="border_reports">
+
+		<!-- SECTION SINGLE REPORT Summary (modifiable details) -->
+		<div class="toggle_report">
+			<%= form_for(report, 
+						:remote => true, 
+						:html => {:class => "edit_report_#{report.id}"}
+						) do |frm_rep| %>
+				<%= link_to_function("Report",
+				 	toggler("#toggle_",report)
+					) %>
+				<span id="summary_report_<%=report.id%>"><%= report.summary %></span>
+			
+				<%= link_to( image_tag("delete.png"), 
+						ajax_remove_report_path(:id => report.id),
+						:remote		=> true,
+						:confirm 	=> t(:'.delete_confirm',:summary => report.summary),
+						:title 		=> t(:'.delete_hint',	:summary => report.summary)  )%>
+			<% end # of form report (part 1 summary) TODO: check no form needed? %>
+				
+			<!-- SUB SECTION SINGLE REPORT Details (modifiable details) -->
+			<div id="toggle_report_<%=report.id%>">
+				<small class="navigation"><%=t(:'.link_jumptosection')%>:  
+					<%=link_to t(:'authors.section_title'), 		:anchor=>"authors" 				%> |
+					<%=link_to t(:'.link_intro'),					:anchor=>"intro" 				%> |
+					<%=link_to t(:'.link_methodology'), 			:anchor=>"methodology" 			%> |
+					<%=link_to t(:'persons.section_title'), 		:anchor=>"persons" 				%> |
+					<%=link_to t(:'.link_environment'), 			:anchor=>"environment" 			%> |
+					<%=link_to t(:'.link_training'), 				:anchor=>"training" 			%> |
+					<%=link_to t(:'.link_tasks'), 					:anchor=>"tasks" 				%> |
+					<%=link_to t(:'.link_taskresults'),				:anchor=>"taskresults" 			%> |
+					<%=link_to t(:'.link_questionnaire'), 			:anchor=>"questionnaire" 		%> | 
+					<%=link_to t(:'.link_questionnaire_results'),	:anchor=>"questionnaireresults"%> |
+					<%=link_to t(:'interviews.section_title'), 		:anchor=>"interviews" 			%> | 
+					<%=link_to t(:'.link_analysis'),				:anchor=>"analysis" 			%> |
+					<%=link_to t(:'findings.section_title'), 		:anchor=>"findings" 			%> | 
+					<%=link_to t(:'.link_transcripts'), 			:anchor=>"transcripts" 			%> |
+					<%=link_to t(:'.link_appendix'),		 		:anchor=>"appendix" 			%> 
+				</small>
+
+
+				<%= form_for(report, 
+						:remote => true, 
+						:html => {:class => "edit_report_#{report.id}"}
+						) do |frm_rep| %>
+					<%= frm_rep.text_field :title, 
+									:id => "input_title",
+						 			:title 			=> t(:'.hint_title'),
+									:placeholder 	=> t(:'.hint_title'),
+									:class 			=> 'submittable' %> 
+					<small>created on <%= frm_rep.text_field :date, 
+									:type 			=> "date",
+									:title 		=> t(:'.hint_date'),
+									:placeholder=> t(:'.placeholder_date'),
+									:class 			=> 'submittable',
+									:size 			=> 14 %>
+							at <%= frm_rep.text_field :time, 
+									:type 			=> "time",
+									:title 		=> t(:'.hint_time'),
+									:placeholder=> t(:'.placeholder_time'),
+									:class			=> 'submittable',
+									:size 			=> 7 %>
+					</small>
+					<table id="table_report">
+						<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>			
+						<tr>
+							<td>
+							    <%= frm_rep.label( :testtype, 
+									t(:'.label_testtype'),
+							 		:title => t(:'.prompt_testtype')  )%> 
+							</td> 
+							<td>
+						 		<%= frm_rep.select(
+											:testtype, 
+											{	t(:'.testtype.ta')	=> "ta", 
+												t(:'.testtype.he') 	=> "he"}, # also called "Expert Review"
+											options = {:prompt => t(:'.prompt_testtype')},
+											:class => 'submittable',
+											:title => t(:'.prompt_testtype')
+											) %>
+							</td>
+						</tr>
+						<tr>
+							<td>
+							    <%= frm_rep.label :description,t(:'.label_description') ,
+							 		:title => t(:'.hint_description') %> 
+							</td> 
+							<td>
+						 		<%= frm_rep.text_area :description, :rows => 3,
+												:placeholder => t(:'.placeholder_description'),
+												:title => t(:'.hint_description'),
+												:class => 'submittable' %> 
+							</td>
+						</tr>
+						
+					</table>
+				<% end # of form report (part 2 type, description and summary ) %> 
+
+
+				<!-- SECTION ALL AUTHORS -->
+				<a name="authors" />
+				<div class="border_authors">
+					<div class="toggle_all_authors">
+					
+						<%= link_to_function( t(:'authors.section_title'),
+								toggler("#toggle_all_authors_of_",report)	
+							) %>:
+						<span id="summary_authors"><%= allauthors_summary(report) %></span>
+						<div id="toggle_all_authors_of_report_<%=report.id%>">
+							<%= render :partial =>'authors/author', 
+								:collection => report.authors	%>  
+
+							<!-- html for new author of this report will be inserted here -->
+							<div id="new_author_for_report_<%=report.id%>"></div>
+
+							<%= link_to( image_tag('add.png',
+										:tabindex => 0,
+										:class => "submit_button" 
+									)+t(:'authors.add_link'),
+									new_author_path(:report_id => report.id),
+									:remote		=> true,
+									:title => t(:'authors.add_hint')) %>
+						</div> <!-- end all authors-->
+					</div><!-- end toggle for all authors-->
+				</div><!-- end border all authors-->
+				
+				
+				<%= form_for(report, 
+						:remote => true, 
+						:html => {:class => "edit_report_#{report.id}"}
+						) do |frm_rep| %>
+					<table id="table_report">	
+						<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>		
+						<tr>
+							<td>
+							    <%= frm_rep.label :summary, t(:'.label_summary') ,
+							 		:title => t(:'.hint_summary') %>
+						    </td> 
+							<td>
+					  			<%= frm_rep.text_area :executive_summary, 
+										:rows => 12, 
+										:placeholder => t(:'.hint_summary'),
+										:title => t(:'.hint_summary'),
+										:class => 'submittable' %>
+							</td>
+						</tr>					
+						
+						<tr>
+							<td><a name="intro" />
+							    <%= frm_rep.label(:introduction,t(:'.label_introduction') ,
+							 		:title => t(:'.hint_introduction') 
+										)%> 
+							</td> 
+							<td>
+						 		<%= frm_rep.text_area(:introduction, 
+										:rows => 7, 
+										:placeholder => t(:'.hint_introduction'),
+										 :title => t(:'.hint_introduction'),
+										:class => 'submittable') %>
+							</td>
+						</tr>
+						<tr>
+							<td><a name="methodology" />
+							    <%= frm_rep.label :methodology,t(:'.label_methodology') ,
+							 		:title => t(:'.hint_methodology') , 
+										:title => t(:'.hint_methodology') %>
+						    </td> 
+							<td>
+					  			<%= frm_rep.text_area(:methodology, 
+										:rows => 7,
+					 					:placeholder => t(:'.hint_methodology') ,
+										:placeholder => t(:'.hint_methodology') ,
+										:class => 'submittable') %>
+							</td>
+						</tr>
+					</table>
+				<% end # of form report (part 3 intro and methodology ) %>
+				
+				
+				<!-- SECTION ALL Persons -->
+				<a name="persons" />
+				<div class = "border_persons">
+					<div class="toggle_all_persons">
+					
+						<%= link_to_function(t(:'persons.section_title'),
+								toggler("#toggle_all_persons_of_",report)
+								) %>
+						<span id="summary_persons">: <%= allpersons_summary(report) %></span>
+						<div id="toggle_all_persons_of_report_<%=report.id%>">
+							<%= render :partial =>'persons/person', 
+								:collection => report.persons	%>  
+
+							<!-- html for new author of this report will be inserted here -->
+							<div id="new_person_for_report_<%=report.id%>"></div>
+
+							<%= link_to( image_tag('add.png')+t(:'persons.add_link'),
+									new_person_path(:report_id => report.id),
+									:remote		=> true,
+									:title =>	t(:'persons.add_hint')) %>
+						</div> <!-- end all persons-->
+					</div><!-- end toggle for all persons-->
+				</div><!-- end border all persons-->
+				
+				
+				<%= form_for(report, 
+						:remote => true, 
+						:html => {:class => "edit_report_#{report.id}"}
+						) do |frm_rep| %>
+					<table id="table_report">
+						<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>			
+						<tr>
+							<td><a name="environment" />
+							    <%= frm_rep.label(:environment_description,
+									t(:'.label_environment_description') ,
+							 		:title => t(:'.hint_environment_description') 
+									)%> 
+							</td> 
+							<td>
+						 		<%= frm_rep.text_area(:environment_description, 
+										:rows => 5, 
+										:placeholder => t(:'.hint_environment_description'),
+										 :title => t(:'.hint_environment_description'),
+										:class => 'submittable') %>
+							</td>
+						</tr>
+					</table>
+				<% end # of form report (part 4 environment) %>		
+				
+				<!-- SECTION ALL DEVICES -->
+				<%# note: we call the 'devices': 'items' %>
+				<a name="devices" />
+				<div class = "border_devices">
+					<div class="toggle_all_devices">
+					
+						<%= link_to_function("Items",
+							toggler("#toggle_all_devices_of_",report)
+							) %>:
+						<span id="summary_devices">: <%= alldevices_summary(report) %></span>
+						<div id="toggle_all_devices_of_report_<%=report.id%>">
+							<%= render :partial =>'devices/device', 
+								:collection => report.devices	%>  
+
+							<!-- html for new device of this report will be inserted here -->
+							<div id="new_device_for_report_<%=report.id%>"></div>
+
+							<%= link_to( image_tag('add.png')+t(:'devices.add_link'),
+									new_device_path(:report_id => report.id),
+									:remote		=> true,
+									:title =>t(:'devices.add_hint')) %>
+						</div> <!-- end all devices-->
+					</div><!-- end toggle for all devices-->
+				</div><!-- end border all devices-->
+				
+				
+				
+				
+						
+				<%= form_for(report, 
+						:remote => true, 
+						:html => {:class => "edit_report_#{report.id}"}
+						) do |frm_rep| %>		
+					<table id="table_report">	
+						<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+						<tr>
+							<td><a name="training" />
+							    <%= frm_rep.label :training, t(:'.label_training') ,
+						 		:title => t(:'.hint_training') %>
+						    </td> 
+							<td>
+					  			<%= frm_rep.text_area(:training, 
+										:rows => 7,
+					 					:placeholder => t(:'.hint_training'),
+					 					:title => t(:'.hint_training') ,
+										:class => 'submittable') %>
+							</td>
+						</tr>
+					</table>
+				<% end # of form report (part 5 training) %>
+				
+				
+				
+				<!-- SECTION ALL TASKS -->
+				<a name="tasks" />
+				<div class = "border_tasks">
+					<div class="toggle_all_tasks">
+					
+						<%= link_to_function("Tasks",
+							toggler("#toggle_all_tasks_of_",report)
+							) %>:
+						<span id="summary_tasks"><%= alltasks_summary(report) %></span>
+						<div id="toggle_all_tasks_of_report_<%=report.id%>">
+							<%= render :partial =>'tasks/task', 
+								:collection => report.tasks	%>  
+
+							<!-- html for new task of this report will be inserted here -->
+							<div id="new_task_for_report_<%=report.id%>"></div>
+
+							<%= link_to( image_tag('add.png')+t(:'tasks.add_link'),
+									new_task_path(:report_id => report.id),
+									:remote		=> true,
+									:title =>t(:'tasks.add_hint')) %>
+						</div> <!-- end all tasks-->
+					</div><!-- end toggle for all tasks-->
+				</div><!-- end border all tasks-->
+				
+				<!-- SECTION ALL TASK RESULTS -->
+				<a name="taskresults" />
+				<div class = "border_task_results">
+					<div class="toggle_all_task_results">
+					
+						<%= link_to_function("Task Completions",
+							toggler("#toggle_all_task_results_of_",report)
+							) %>:
+							<span id="summary_task_results"><%= alltask_results_summary(report) %></span>
+						<div id="toggle_all_task_results_of_report_<%=report.id%>">
+							<%= render :partial =>'task_results/task_result', 
+								:collection => report.task_results	%>  
+
+							<!-- html for new task_result of this report will be inserted here -->
+							<div id="new_task_result_for_report_<%=report.id%>"></div>
+
+							<%= link_to( image_tag('add.png')+t(:'task_results.add_link'),
+									new_task_result_path(:report_id => report.id),
+									:remote		=> true,
+									:title =>t(:'task_results.add_hint')) %>
+						</div> <!-- end all task_results-->
+					</div><!-- end toggle for all task_results-->
+				</div><!-- end border all task_results-->
+				
+				
+				<!-- Note: for the questionnaire: questions and answers -->
+				<!-- SECTION ALL QUESTIONS  -->
+				<a name="questionnaire" />
+				<div class = "border_questions">
+					<div class="toggle_all_questions">
+					
+						<%= link_to_function("Questionnaire",
+							toggler("#toggle_all_questions_of_",report)
+							) %>:
+							<span id="summary_questions"><%= allquestions_summary(report) %></span>
+						<div id="toggle_all_questions_of_report_<%=report.id%>">
+							<%= render :partial =>'questions/question', 
+								:collection => report.questions.sort %>  
+
+							<!-- html for new question of this report will be inserted here -->
+							<div id="new_question_for_report_<%=report.id%>"></div>
+
+							<%= link_to( image_tag('add.png')+t(:'questions.add_link'),
+									new_question_path(:report_id => report.id),
+									:remote		=> true,
+									:title =>t(:'questions.add_hint')) %>
+						</div> <!-- end all questions-->
+					</div><!-- end toggle for all questions-->
+				</div><!-- end border all questions-->
+				
+				<!-- SECTION ALL ANSWERS -->
+				<a name="questionnaireresults" />
+				<div class = "border_answers">
+					<div class="toggle_all_answers">
+						<%= link_to_function("Questionnaire Results",
+							toggler("#toggle_all_answers_of_",report)) %>: 
+						<span id="summary_answers"><%= allanswers_summary(report) %></span>
+						<div id="toggle_all_answers_of_report_<%=report.id%>">
+							<%= render :partial =>'answers/answer', 
+								:collection => report.answers.sort	%>  
+
+							<!-- html for new answer of this report will be inserted here -->
+							<div id="new_answer_for_report_<%=report.id%>"></div>
+
+							<%= link_to( image_tag('add.png')+t(:'answers.add_link'),
+									new_answer_path(:report_id => report.id),
+									:remote		=> true,
+									:title =>t(:'answers.add_hint')) %>
+						</div> <!-- end all answer-->
+					</div><!-- end toggle for all answers-->
+				</div><!-- end border all answers-->
+
+
+				<!-- SECTION ALL INTERVIEWS -->
+				<a name="interviews" />
+				<div class = "border_interviews">
+					<div class="toggle_all_interviews">
+					
+						<%= link_to_function(t(:'interviews.section_title'),
+							toggler("#toggle_all_interviews_of_",report)
+							) %>:
+						<span id="summary_interviews"><%= allinterviews_summary(report) %></span>
+						<div id="toggle_all_interviews_of_report_<%=report.id%>">
+							<%= render :partial =>'interviews/interview', 
+								:collection => report.interviews.sort	%>  
+
+							<!-- html for new interview of this report will be inserted here -->
+							<div id="new_interview_for_report_<%=report.id%>"></div>
+
+							<%= link_to( image_tag('add.png')+t(:'interviews.add_link'),
+									new_interview_path(:report_id => report.id),
+									:remote		=> true,
+									:title =>t(:'interviews.add_hint')) %>
+						</div> <!-- end all interview-->
+					</div><!-- end toggle for all interview-->
+				</div><!-- end border all interview-->
+
+
+
+				
+				<%= form_for(report, 
+						:remote => true, 
+						:html => {:class => "edit_report_#{report.id}"}
+						) do |frm_rep| %>
+					<table id="table_report">		
+						<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>	
+						<tr>
+							<td><a name="analysis" />
+							    <%= frm_rep.label(:analysis, 
+										t(:'.label_analysis'),
+										:title 			=> t(:'.hint_analysis') )%> 
+							</td> 
+							<td>
+						 		<%= frm_rep.text_area(:analysis_description, 
+										:rows => 12, 
+										:placeholder 	=> t(:'.hint_analysis'),
+										:title 			=> t(:'.hint_analysis'),
+										:class 			=> 'submittable') %>
+							</td>
+						</tr>
+					</table>
+				<% end # of form report (part 6 analysis) %>
+				
+				<!-- SECTION ALL FINDINGS -->
+				<a name="findings" />
+				<div class = "border_findings">
+					<div class="toggle_all_findings">
+					
+						<%= link_to_function(t(:'findings.section_title'),
+							toggler("#toggle_all_findings_of_",report)
+							) %>:
+						<span id="summary_findings"><%= allfindings_summary(report) %></span>
+						<div id="toggle_all_findings_of_report_<%=report.id%>">
+							<%= render :partial =>'findings/finding', 
+								:collection => report.findings	%>  
+
+							<!-- html for new finding of this report will be inserted here -->
+							<div id="new_finding_for_report_<%=report.id%>"></div>
+
+							<%= link_to( image_tag('add.png')+t(:'findings.add_link'),
+									new_finding_path(:report_id => report.id),
+									:remote		=> true,
+									:title =>t(:'findings.add_hint')) %>
+						</div> <!-- end all findings-->
+					</div><!-- end toggle for all findings-->
+				</div><!-- end border all findings-->
+				
+				<%= form_for(report, 
+						:remote => true, 
+						:html => {:class => "edit_report_#{report.id}"}
+						) do |frm_rep| %>
+					<table id="table_report">
+						<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>			
+						<tr>
+							<td><a name="transcripts" />
+							    <%= frm_rep.label(:transcripts_description, 
+									t(:'.label_transcripts') ,
+						 			:title => t(:'.hint_transcripts')
+									)%> <br />
+									<small>
+										<%= link_to "manage coding schema",
+										 		eventcodes_path %> 
+									</small>
+							</td> 
+							<td>
+						 		<%= frm_rep.text_area(:transcripts_description, 
+										:rows => 5, 
+										:placeholder => t(:'.hint_transcripts'),
+										 :title => t(:'.hint_transcripts'),
+										:class => 'submittable') %>
+							</td>
+						</tr>
+					</table>
+				<% end # of form report (part 7 transcript description) %>
+				
+				<!-- SECTION ALL TRANSCRIPT_EVENTS -->
+				<div class = "border_transcript_events">
+					<div class="toggle_all_transcript_events">
+					
+						<%= link_to_function(t(:'transcript_events.section_title'),
+							toggler("#toggle_all_transcript_events_of_",report)
+							) %>:
+						<span id="summary_transcript_events"><%= alltranscript_events_summary(report) %></span>
+						<div id="toggle_all_transcript_events_of_report_<%=report.id%>">
+							<%= render :partial =>'transcript_events/transcript_event', 
+								:collection => report.transcript_events	%>  
+
+							<!-- html for new transcript_event of this report will be inserted here -->
+							<div id="new_transcript_event_for_report_<%=report.id%>"></div>
+
+							<%= link_to( image_tag('add.png')+t(:'transcript_events.add_link'),
+									new_transcript_event_path(:report_id => report.id),
+									:remote		=> true,
+									:title =>t(:'transcript_events.add_hint')) %>
+						</div> <!-- end all transcript_event-->
+					</div><!-- end toggle for all transcript_event-->
+				</div><!-- end border all transcript_event-->
+				
+				
+				
+				
+				<%= form_for(report, 
+						:remote => true, 
+						:html => {:class => "edit_report_#{report.id}"}
+						) do |frm_rep| %>
+					<table id="table_report">			
+						<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+						<tr>
+							<td><a name="appendix" />
+							    <%= frm_rep.label(:appendix_description, 
+										"Appendix",
+										:title => t(:'.hint_appendix_description')
+										)%>
+							</td> 
+							<td>
+						 		<%= frm_rep.text_area(:appendix_description, 
+										:rows => 5, 
+										:placeholder => t(:'.placeholder_appendix_description'),
+										 :title => t(:'.hint_appendix_description'),
+										:class => 'submittable') %>
+							</td>
+						</tr>
+					</table>
+				<% end # of form report (part 8 appendix description) %>
+				
+				<!-- SECTION ALL DOCUMENTS for this report -->
+				<div class="border_documents">
+					<div class="toggle_documents">
+					
+						<%= link_to_function(t(:'documents.section_title'),
+							toggler("#toggle_all_documents_of_",report)
+							) %>:
+						<span id="summary_documents"><%= alldocuments_summary(report) %></span>	
+						<div id="toggle_all_documents_of_report_<%=report.id%>">
+							<%= render :partial =>'documents/document', 
+								:collection => report.documents,
+								:locals => {:report_id => report.id,
+									 		:finding_id => nil
+											}	%>  
+
+							<!-- html for new document of this report will be inserted here -->
+							<div id="new_document_for_report_<%=report.id%>"></div>
+
+
+							<%= link_to( image_tag('add.png')+t(:'documents.add_to_report_link'),
+									new_document_path(:report_id => report.id),
+									:remote		=> true,
+									:title =>t(:'documents.add_to_report_hint')) %>
+						</div> <!-- end all documents-->
+					</div><!-- end toggle for all documents-->
+				</div><!-- end border all documents-->
+
+
+
+				<div id="report_message_<%=report.id%>" class="ajax_message"></div>				
+
+			</div> <!-- end id toggle report (details) -->
+		</div>	<!-- end class toggle (report with summary) -->		
+</div> <!--end of single report -->
+

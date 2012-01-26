@@ -1,0 +1,22 @@
+<% if document.attachment_file_size %>
+     <%# FIND out TYPE IMAGE/VIDEO/HTML/DOC... for preview %>
+	<%#= video_tag(document.attachment.url, :width=>150) # why does this hide the next div??%>
+	<%#= audio_tag video.attachment.url %>
+	<% if 	document.attachment_file_name.ends_with?("mov") ||
+		 	document.attachment_file_name.ends_with?("m4v")
+		 %>
+		<video src="<%=document.attachment.url%>" width="150"></video>
+	<% end %>
+	<% if 	document.attachment_file_name.ends_with?("jpg") ||
+		 	document.attachment_file_name.ends_with?("jpeg")||
+			document.attachment_file_name.ends_with?("png")	||
+			document.attachment_file_name.ends_with?("pdf") 	%>
+		<%= image_tag document.attachment.url, :width => "150" %>
+	<% end %>
+	<div class="attachmentsubtitle">
+		<%= link_to(document.attachment_file_name+"(#{document.attachment_file_size/1024} Kb)",
+					document.attachment.url,
+					:title => t(:'documents.document.hint_link')
+					) %>
+	</div>
+<% end%>

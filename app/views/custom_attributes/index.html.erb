@@ -1,0 +1,27 @@
+<hr />
+Manage fields for the persons taking part in usability testing.<br /> (<span class="custom_attributes_count"><%= pluralize(@custom_attributes.count, " Attributes") %></span> available):
+
+
+<div id="custom_attributes">
+  <%= render :partial => @custom_attributes, :locals => { :list => true } %>
+</div>
+
+<div class="ajax-notice" id="custom_attribute_notice"></div>
+
+Add a new attribute with description:
+<%= form_for CustomAttribute.new, 
+		:remote => true, 
+		:dataType => :script do |f| %>
+	<%= f.text_field(:title, 
+			:placeholder => "new attribute",
+			:size=>'12',
+			:autofocus => true) %>
+	<%= f.text_field(:description,  	
+			:placeholder => "description for the new attribute",
+			:class => 'submittable') %>
+<% end %>
+
+<hr />
+<br />
+<a href="javascript:history.back()">Back</a><!-- TODO better reload ?! -->
+<%= link_to "Project Overview", root_path %>

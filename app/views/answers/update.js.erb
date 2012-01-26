@@ -1,0 +1,6 @@
+// we update the summary:
+$("#summary_answer_<%=answer.id%>" ).html("<%= escape_javascript( answer.summary )%>");
+$("#summary_answers" ).html("<%= escape_javascript(allanswers_summary(answer.report) ) %>");
+
+showToast("<%= escape_javascript( t(:'.updated', :summary => @answer.summary) ) %>");
+resetHighlightingForElems('.edit_answer_<%=answer.id%>');

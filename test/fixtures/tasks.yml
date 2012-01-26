@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  order: 1
+  title: MyString
+  description: MyText
+  prerequisite: MyText
+  possiblesolutionpath: MyText
+  endingcriteria: MyText
+  durationscheduled: 1
+
+two:
+  order: 1
+  title: MyString
+  description: MyText
+  prerequisite: MyText
+  possiblesolutionpath: MyText
+  endingcriteria: MyText
+  durationscheduled: 1

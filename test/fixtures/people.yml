@@ -1,0 +1,37 @@
+# == Schema Information
+#
+# Table name: people
+#
+#  id           :integer         not null, primary key
+#  name         :string(255)
+#  alias        :string(255)
+#  gender       :string(255)
+#  age          :integer
+#  occupation   :string(255)
+#  itexperience :text
+#  created_at   :datetime
+#  updated_at   :datetime
+#  education    :string(255)
+#  report_id    :integer
+#  persontype   :string(255)
+#  pid          :string(255)
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  alias: MyString
+  gender: MyString
+  age: 1
+  occupation: MyString
+  itexperience: MyText
+
+two:
+  name: MyString
+  alias: MyString
+  gender: MyString
+  age: 1
+  occupation: MyString
+  itexperience: MyText
+

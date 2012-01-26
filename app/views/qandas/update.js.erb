@@ -1,0 +1,5 @@
+$("#summary_qanda_<%=qanda.id%>" ).html("<%=qanda.summary%>");
+$("#summary_qandas_of_interview_<%=qanda.interview.id%>" ).html("<%= escape_javascript( allqandas_summary(qanda.interview) )%>");
+
+showToast("<%= escape_javascript( t(:'.updated', :summary => qanda.summary) ) %>");
+resetHighlightingForElems('.edit_qanda_<%=qanda.id%>');

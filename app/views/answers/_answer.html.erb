@@ -1,0 +1,73 @@
+<!-- SECTION SINGLE ANSWER -->
+<div id="answer_<%=answer.id%>" class="border_answers">
+
+	<!-- SECTION SINGLE Answer Summary (modifiable details) -->
+	<div class="toggle_answer" >
+		<%= form_for(answer, 
+				:remote => true, 
+				:html => {:class => "edit_answer_#{answer.id}"}
+				) do |frm_asw| %>
+
+			<%= link_to_function(t(:'.section_title'),toggler("#toggle_",answer) ) %>
+			<span id="summary_answer_<%=answer.id%>"><%= answer.summary %></span>
+			<%= link_to( image_tag("delete.png"), 
+					answer_path(answer),
+					:method		=> :delete,
+					:remote		=> true,
+					:confirm 	=> t(:'.delete_confirm',  :summary => answer.summary) ,
+					:title 		=> t(:'.delete_hint',		:summary => answer.summary)
+					)%>
+			
+			<!-- SUB SECTION SINGLE Answer Details (modifiable details) -->
+			<div id="toggle_answer_<%=answer.id%>">
+				<table id="table_answer">
+					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+					<tr>
+						<td>
+						    <%= frm_asw.label :person_id, t(:'.label_person'),
+						 			:title => t(:'.prompt_person') %> 
+						</td> 
+						<td>
+							<%= frm_asw.collection_select(:person_id, 
+									answer.report.persons, :id, :summary, 
+									options={:prompt => t(:'.prompt_person')},
+									:class => 'submittable',
+									:title => t(:'.prompt_person')
+									 ) %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_asw.label :question_id, t(:'.label_answer'),
+						  			:title => t(:'.prompt_question')%> 
+						</td> 
+						<td>
+							<%= frm_asw.collection_select(:question_id, 
+									answer.report.questions, :id, :summary, 
+									options={:prompt => t(:'.prompt_question')},
+									:class => 'submittable',
+									:title => t(:'.prompt_question') ) %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_asw.label :value, t(:'.label_answervalue') ,
+						 			:title => t(:'.hint_value') %> 
+						</td> 
+						<td>
+					 		<%= frm_asw.text_field :value, 
+									:placeholder => "3",
+									:title => t(:'.hint_value'),
+									:class => 'submittable' %> 
+						</td>
+					</tr>
+					
+	
+				</table>
+			</div> <!-- end of id answer -->
+		<% end # of form answer %>
+	</div> <!-- end of class toggle_answer -->
+
+	<div id="answer_message_<%=answer.id%>" class="ajax_message"></div>
+	
+</div> <!-- end of div answer-->

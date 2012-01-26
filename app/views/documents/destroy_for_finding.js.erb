@@ -1,0 +1,5 @@
+<%# n holds a the name of the object e.g. 'person' and o the object itself %>
+$('#<%=n %>_<%=o.id%>').fadeOut();
+
+$("#summary_<%=n%>s_of_finding_<%=finding.id%>").html(
+	"<%=escape_javascript( alldocuments_summary_for_finding(finding) ) %>");

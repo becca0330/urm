@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="qualified">
+    <xs:element name="project">
+        <xs:annotation>
+            <xs:documentation>Provide a unique id for the project.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="title">
+                    <xs:annotation>
+                        <xs:documentation>The project title should consist of just a few words. For example just the name of the company.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="description">
+                    <xs:annotation>
+                        <xs:documentation>The project description gives an overview of content, authors, date etc. in one or two sentences.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:sequence id="reports" maxOccurs="unbounded">
+                    <xs:element ref="report"/>
+                </xs:sequence>
+            </xs:sequence>
+            <xs:attribute name="id">
+                <xs:annotation>
+                    <xs:documentation>Unique project id. E.g. an internal sequence-number for the database.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="report">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="title"/>
+                <xs:element name="timestamp" type="xs:dateTime">
+                    <xs:annotation>
+                        <xs:documentation>Date of the test e.g. 2010-12-23T12:03:05Z.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" ref="author"/>
+                </xs:sequence>
+                <xs:element name="description"/>
+                <xs:element name="summary">
+                    <xs:annotation>
+                        <xs:documentation>Executive summary of about half an page.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="introduction">
+                    <xs:annotation>
+                        <xs:documentation>General introduction to the tests (based on, aims and targets). Could be some few paragraphs long.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="methodology">
+                    <xs:annotation>
+                        <xs:documentation>Give a short description of the HE procedure.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element minOccurs="0" name="extentofevaluation">
+                    <xs:annotation>
+                        <xs:documentation>Extent of the HE evaluation. E.g. "The researchers analysed..."</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element ref="heuristic" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element name="evaluators">
+                    <xs:annotation>
+                        <xs:documentation>HE: Evaluators (cmp. ta test users)</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="description"/>
+                            <xs:element minOccurs="0" name="personattributes">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" name="personattribute">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="attribute"/>
+                                                </xs:sequence>
+                                                <xs:attribute name="id" type="xs:ID"/>
+                                                <xs:attribute name="order" type="xs:integer"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element ref="person" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="environment">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="description"/>
+                            <xs:element ref="setting" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element minOccurs="0" name="userprofiles">
+                    <xs:annotation>
+                        <xs:documentation>A user profile describes a "class of users" (to be used by evaluators with HE; optional). For example a "Online Customer" or a "Potential Employee".</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="description"/>
+                            <xs:element maxOccurs="unbounded" name="userprofile">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="title"/>
+                                        <xs:element name="description"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="id"/>
+                                    <xs:attribute name="order" type="xs:integer"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="tasks" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="description"/>
+                            <xs:element ref="task" maxOccurs="unbounded">
+                                <xs:annotation>
+                                    <xs:documentation>Tasks can be strictly defined results to archive by thinking aloud test users, or more general tasks (personas/user-profiles) for heuristic evaluation evaluators.</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" ref="taskresult" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Task results are important for ta tests. It is not required for heuristic evaluation.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element minOccurs="0" name="heuristicissues">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="description"/>
+                            <xs:element ref="heuristicissue" maxOccurs="unbounded" minOccurs="0">
+                                <xs:annotation>
+                                    <xs:documentation>An issue is a problem or a positive finding.</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element minOccurs="0" name="interviews">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="description"/>
+                            <xs:element maxOccurs="unbounded" name="interview">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" name="qanda">
+                                            <xs:annotation>
+                                                <xs:documentation>question and answer</xs:documentation>
+                                            </xs:annotation>
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="quest"/>
+                                                  <xs:element name="answ"/>
+                                                </xs:sequence>
+                                                <xs:attribute name="id"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="personid" type="xs:IDREF" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="transcripts" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="description"/>
+                            <xs:element ref="eventcodes"/>
+                            <xs:element maxOccurs="unbounded" name="transcript">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" name="logentry">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="timestamp"/>
+                                                  <xs:element name="description"/>
+                                                  <xs:element name="finding" minOccurs="0"/>
+                                                </xs:sequence>
+                                                <xs:attribute name="eventcodeid" type="xs:IDREF"
+                                                  use="optional"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="personid" type="xs:IDREF" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element ref="analysis"/>
+                <xs:element minOccurs="0" name="appendix">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="description"/>
+                            <xs:element ref="document" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" use="optional">
+                <xs:annotation>
+                    <xs:documentation>Unique id of the report.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute ref="testtype" use="required">
+                <xs:annotation>
+                    <xs:documentation>The type of a test can be FE formal experiment, HE heuristic evaluation, or TA thinking aloud.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="order" type="xs:integer"/>
+            <xs:attribute name="generated" type="xs:dateTime"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:attribute name="testtype">
+        <xs:simpleType>
+            <xs:restriction base="xs:NMTOKEN">
+                <xs:enumeration value="ta"/>
+                <xs:enumeration value="he"/>
+                <xs:enumeration value="fe"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:attribute>
+    <xs:element name="setting">
+        <xs:annotation>
+            <xs:documentation>Description of the test environment (location, devices).</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="device" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="person">
+        <xs:annotation id="doc-person">
+            <xs:documentation>A heuristic evaluation expert.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence id="stafforheexpert">
+                <xs:element name="name"/>
+                <xs:element name="alias"/>
+                <xs:element name="gender">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:NMTOKEN">
+                            <xs:enumeration value="male"/>
+                            <xs:enumeration value="female"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+
+                </xs:element>
+                <xs:element name="age" minOccurs="0"/>
+                <xs:element name="timestamp"/>
+                <xs:element name="annotations" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Further annotations about a person. Eg. anything special about the evaluator.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="video"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="document"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:ID" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="task">
+        <xs:annotation>
+            <xs:documentation>A list of tasks (including scheduled duration time) given to the users. After finishing with all the tasks the results are stored in Task-Results (including actual duration).</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="title"/>
+                <xs:element name="description" minOccurs="0"/>
+                <xs:element minOccurs="0" name="prerequisite"/>
+                <xs:element minOccurs="0" name="possiblesolutionpath"/>
+                <xs:element name="endingcriteria" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>This task has been successfully accomplished, if following is achieved.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="durationscheduled" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Duration for the task in seconds.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:ID" use="required"/>
+            <xs:attribute name="order" type="xs:integer"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="taskresult">
+        <xs:annotation>
+            <xs:documentation>After performing tasks the numbers (for each metric) are stored in this taskresult! It shows how well the users performed with each task.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="start" type="xs:dateTime" minOccurs="0"/>
+                <xs:element name="end" type="xs:dateTime" minOccurs="0"/>
+                <xs:element name="durationactual" minOccurs="0"/>
+                <xs:element name="completion">
+                    <xs:annotation>
+                        <xs:documentation>Specify completion in 0-100%.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element minOccurs="0" name="withassistance">
+                    <xs:annotation>
+                        <xs:documentation>TA: true if test user got some assistance (from test moderator)</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element minOccurs="0" name="notice"/>
+            </xs:sequence>
+            <xs:attribute name="taskid" type="xs:IDREF" use="required"/>
+            <xs:attribute name="personid" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="heuristic">
+        <xs:annotation>
+            <xs:documentation>A predefined set of heuristics (e.g. ten heuristics from Keith Andrews or by Nielsen ;) Later the Heuristic-Issues refer to this entries (by number).</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="title"/>
+                <xs:element name="description"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:ID" use="required">
+                <xs:annotation>
+                    <xs:documentation>Unique ID of this heuristic. Usally H1, H2, H3,..</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="order" type="xs:integer"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="heuristicissue">
+        <xs:annotation>
+            <xs:documentation>For the list of (all) positive and negative issues (findings). Selected findings will later be extracted in the summary/analysis for the list of recommendations!.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="description"/>
+                <xs:element name="notice"/>
+                <xs:element name="direction">
+                    <xs:annotation>
+                        <xs:documentation>direction "up": a positive finding. direction "down" a negative finding (=an issue, bug)</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="up"/>
+                            <xs:enumeration value="down"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="reproduce">
+                    <xs:annotation>
+                        <xs:documentation>Describe, how the issue can be reproduced.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="severity" maxOccurs="unbounded" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>For issues (negative findings, direction="DOWN") only:
+4	Catastrophic problem
+3	Serious problem
+2	Minor problem
+1	Cosmetic problem
+0	Not a problem</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="value"/>
+                        </xs:sequence>
+                        <xs:attribute name="personid" type="xs:IDREF"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" name="found">
+                    <xs:annotation>
+                        <xs:documentation>True for each person, who found this positive or negative finding.</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="value" type="xs:boolean">
+                                <xs:annotation>
+                                    <xs:documentation>True, if the issue was found by the heuristic expert.</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="personid" type="xs:IDREF"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="document"/>
+                <xs:element minOccurs="0" ref="codereference" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="heuristicid" type="xs:IDREF" use="required"/>
+            <xs:attribute name="id"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="questionnaire">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="description"/>
+                <xs:element maxOccurs="unbounded" name="question">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="description"/>
+                            <xs:sequence minOccurs="0">
+                                <xs:annotation>
+                                    <xs:documentation>The range for the answer. E.g. "from": very satisfied (6) "to": very unsatisfied (0) with range "scale": 6 5 4 3 2 1 0</xs:documentation>
+                                </xs:annotation>
+                                <xs:element name="rangefrom">
+                                    <xs:annotation>
+                                        <xs:documentation/>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="rangeto"/>
+                                <xs:element name="rangescale"/>
+                            </xs:sequence>
+                            <xs:element name="notice" minOccurs="0"/>
+                        </xs:sequence>
+                        <xs:attribute name="id" type="xs:ID" use="required"/>
+                        <xs:attribute name="order" type="xs:integer"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="questionnaireresults">
+        <xs:annotation>
+            <xs:documentation>Results of the questions per user. The scale might differ for each question (e.g. 4 with very-satisfied=6...very-unsatisfied=0).</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="description"/>
+                <xs:element maxOccurs="unbounded" name="answerforquestion">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" name="answer">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="value"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="personid" type="xs:IDREF" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="questionid" type="xs:IDREF" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="summary"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="device">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="title"/>
+                <xs:element name="description"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="document"/>
+            </xs:sequence>
+            <xs:attribute ref="devicetype" use="required"/>
+            <xs:attribute name="personid" type="xs:IDREF"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:attribute name="devicetype">
+        <xs:simpleType>
+            <xs:restriction base="xs:NMTOKEN">
+                <xs:enumeration value="cam"/>
+                <xs:enumeration value="location"/>
+                <xs:enumeration value="pc"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:attribute>
+    <xs:element name="document">
+        <xs:annotation>
+            <xs:documentation>Specify documents with a description the type (image/link/doc/bibentry) and an URL or a filename (with path relative to the xml-document).</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element default="" name="description" type="xs:string"/>
+                <xs:choice maxOccurs="unbounded">
+                    <xs:element name="filename" type="xs:string"/>
+                    <xs:element name="uri" type="xs:anyURI"/>
+                    <xs:element name="reference" type="xs:string"/>
+                </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="type" use="required">
+                <xs:annotation>
+                    <xs:documentation>Specify how the documents are rendered: "link" for external links, "doc" for any local document, "bibentry" for bibliography entries, and "image" vor previews.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="image"/>
+                        <xs:enumeration value="link"/>
+                        <xs:enumeration value="doc"/>
+                        <xs:enumeration value="bibentry"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+
+            <xs:attribute name="listat" use="optional">
+                <xs:annotation>
+                    <xs:documentation>List this document in appendix-section "bibliography", "transcript", "evaluationteammaterial", "testusermaterial", "others", or "video".</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="bibliography"/>
+                        <xs:enumeration value="transcripts"/>
+                        <xs:enumeration value="testusermaterial"/>
+                        <xs:enumeration value="evaluationteammaterial"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="video">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element default="" name="description" type="xs:string"/>
+                <xs:choice maxOccurs="unbounded">
+                    <xs:element name="filename" type="xs:string"/>
+                    <xs:element name="uri" type="xs:anyURI"/>
+                </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:ID"/>
+            <xs:attribute name="type" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="link"/>
+                        <xs:enumeration value="doc"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="videoclip">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="description"/>
+                <xs:element name="starttime"/>
+                <xs:element name="endtime"/>
+            </xs:sequence>
+            <xs:attribute name="videoid" type="xs:IDREF"/>
+            <xs:attribute name="personid" type="xs:IDREF"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="analysis">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="description"/>
+                <xs:element maxOccurs="unbounded" name="finding">
+                    <xs:annotation>
+                        <xs:documentation>Selected issues are extracted into a "List of Recommendations".</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="title"/>
+                            <xs:element name="description"/>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" ref="videoclip"/>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" ref="document"/>
+                            <xs:element minOccurs="0" ref="codereference" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                        <xs:attribute name="findingtype" use="required">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:NMTOKEN">
+                                    <xs:enumeration value="positive"/>
+                                    <xs:enumeration value="recommendation"/>
+                                    <xs:enumeration value="discussion"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="priority" type="xs:integer">
+                            <xs:annotation>
+                                <xs:documentation>Sort order is ascending, according the priority given. Higest priority = 1, then 2 and so on.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="codereference">
+        <xs:annotation>
+            <xs:documentation>The 'codereference' tag allows connecting usability isssues with parts
+                of the code of the project under test. Software developers and/or usability testing
+                experts are expected to provide references from 'usability issues' to locations
+                (version/package/class/lineno) within the code, where the problem is
+                located.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:all>
+                <xs:element minOccurs="0" name="notice">
+                    <xs:annotation>
+                        <xs:documentation>Textual description of the relation (the matching) of the usability finding with the source code. (E.g.: number of chars are too short for a password).</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:all>
+            <xs:attribute name="projectid" use="required"/>
+            <xs:attribute name="versionid" use="required"/>
+            <xs:attribute name="packageid"/>
+            <xs:attribute name="classid" use="required"/>
+            <xs:attribute name="methodid"/>
+            <xs:attribute name="lineno"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="author">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="eventcodes">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="eventcode">
+                    <xs:annotation>
+                        <xs:documentation>TA: Coding scheme for test protocol. E.g. code "S" for event "Start of task."</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="code"/>
+                            <xs:element name="description"/>
+                        </xs:sequence>
+                        <xs:attribute name="id" type="xs:ID"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="customattributes">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="customattribute">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="value"/>
+                        </xs:sequence>
+                        <xs:attribute name="personattributeid" type="xs:IDREF"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

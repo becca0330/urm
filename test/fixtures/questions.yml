@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  order: 1
+  report_id: 1
+  description: MyText
+  notice: MyText
+  rangefrom: MyString
+  rangeto: MyString
+  rangescale: MyString
+
+two:
+  order: 1
+  report_id: 1
+  description: MyText
+  notice: MyText
+  rangefrom: MyString
+  rangeto: MyString
+  rangescale: MyString

@@ -1,0 +1,29 @@
+<hr />Manage <span class="eventcodes_count"><%= pluralize(@eventcodes.count, "Eventcode") %></span>:
+
+
+<div id="eventcodes">
+  <%= render :partial => @eventcodes, :locals => { :list => true } %>
+</div>
+
+
+<div id="eventcode-notice"></div>
+
+Add a new code:
+<%= form_for Eventcode.new, 
+	:remote => true, 
+	:dataType => :script do |f| %>
+	
+	<%= f.text_field :code,
+	 	:placeholder => "description for the new code",
+		:title => "description for the new code",
+		:size=>3 %>
+	<%= f.text_field :description, 
+		:placeholder => "description for the new event code",
+		:title => "description for the new event code",
+		:class => 'submittable' %>
+<% end %>
+
+<hr />
+<br />
+<a href="javascript:history.back()">Back</a><!-- TODO better reload ?! -->
+<%= link_to "Project Overview", root_path %>

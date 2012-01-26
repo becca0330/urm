@@ -1,0 +1,16 @@
+== URM changelog 
+
+URM Usability Reporting Manager
+Copyright (C) 2012 internettechnik 
+Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
+
+== 2012-01-24 v0.1.1
+
+* put under GPL
+* published on github
+
+== 2012-01-01 v0.1.0
+
+* single AJAX webinterface to enter usability reports (limited to Thinking Aloud TA)
+* project has several reports assigned
+* export to UsabML (see: http://itm.fh-joanneum.at/usabml) optional with XSL

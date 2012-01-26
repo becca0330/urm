@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  	<title>URM - Usability Reporting Manager</title>
+		<%= stylesheet_link_tag    "application" %>
+		<%= javascript_include_tag "application" %>
+	  	<%= csrf_meta_tag %>
+	</head>
+
+	<body>
+		
+			<div id='header'>
+				<a href="/">
+				<h1>URM - The Usability Reporting Manager</h1>
+				</a>
+			</div>
+		
+		<div id="navigation">
+			<%= link_to_function t(:'about'), 
+				"showAboutDialog();" %>
+				<div id="aboutdialog" class="ui_dialog" title="About URM">
+					<p>This code for the Usability Reporting Manager URM is based on the work of Wei-Ju Lin, 2011</p>
+					<hr/>
+					<small><a href="http://itm.fh-joanneum.at/usabml/urm">http://itm.fh-joanneum.at/usabml/urm</a>
+						Copyright (C) 2012 internettechnik<br /> 
+					       Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
+					</small>
+				</div>&nbsp;|&nbsp;
+			<%= link_to "Admin", 
+				todos_path %>	
+		</div>
+
+		<%= yield %>
+
+	</body>
+</html>

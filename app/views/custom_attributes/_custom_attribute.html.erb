@@ -1,0 +1,26 @@
+<%# TODO: specify typ (of question), dopdown, many of many fields... %>
+<%= form_for(custom_attribute, 
+		:remote => true,
+ 		:html => {:class => "edit_custom_attribute_#{custom_attribute.id}"}
+		) do |f| %>
+	<%= div_for custom_attribute do %>
+		<table id="custom_attributes_table">
+			<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+			<tr><td>
+				<%= f.text_field :title, :size=>12,
+				  	:class => 'submittable' %>
+			</td><td>
+				<%= f.text_field :description, 		
+					:class => 'submittable'  %>
+			</td><td>
+				<%= link_to( image_tag("delete.png"), 
+						custom_attribute_path(custom_attribute), 
+						:method => :delete, 
+						:class => "delete",
+						:title => "remove this custom attribute for this person", 
+						:remote => true)  %>
+			</td></tr>
+		</table>
+	<% end %>
+<% end %>
+<div id="custom_attribute_message_<%=custom_attribute.id%>" class="ajax_message"></div>

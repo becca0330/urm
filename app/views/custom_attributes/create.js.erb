@@ -1,0 +1,8 @@
+/* Replace the count of eventcodes */
+$(".custom_attributes_count").html("<%= pluralize(CustomAttribute.count, 'attributes') %>");
+
+/* Add the new comment to the bottom of the eventcode list */
+$("#custom_attributes").append("<%= escape_javascript(render(@custom_attribute)) %>");
+
+/* Reset the eventcode form */
+$("#new_custom_attribute")[0].reset();

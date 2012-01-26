@@ -1,0 +1,7 @@
+// we update the summary:
+$("#summary_transcript_event_<%=transcript_event.id%>" ).html("<%=transcript_event.summary%>");
+$("#summary_transcript_events" ).html("<%= escape_javascript( alltranscript_events_summary(transcript_event.report) ) %>");
+
+
+showToast("<%= escape_javascript( t(:'.updated', :summary => transcript_event.summary) ) %>");
+resetHighlightingForElems('.edit_transcript_event_<%=transcript_event.id%>');

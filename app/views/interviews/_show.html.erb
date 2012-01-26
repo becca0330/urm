@@ -1,0 +1,37 @@
+<div class="toggle_interview" >
+	<%= link_to_function(t(:'interviews.interview.section_title'), "$(this).up().down('div#toggle').toggle()") %>
+	<%= h interview.person_id %>
+	<div id="toggle">
+		<% for qanda in interview.qandas %>  
+			<div class="toggle_qanda" >
+				<div class="qanda_id_field">
+					<%= link_to_function(t(:'interviews.interview.qanda.section_title'), "$(this).up().up().down('div#toggle').toggle()") %>
+					<%= h qanda.qid %>
+				</div>
+				<div id="toggle">
+					<table id="table_qanda">
+						<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+						<tr>
+							<td class="table_label">
+							    <%= label :quest, t(:'interviews.interview.qanda.label_question') ,
+							 		:title => t(:'interviews.interview.qanda.hint_question')  %> 
+							</td> 
+							<td>
+						 		<%= h qanda.quest %> 
+							</td>
+						</tr>
+						<tr>
+							<td class="table_label">
+							    <%= label :answ, t(:'interviews.interview.qanda.label_answer') ,
+							 		:title => t(:'interviews.interview.qanda.hint_answer') %>
+						    </td> 
+							<td>
+					  			<%= h qanda.answ %>
+							</td>
+						</tr>
+					</table>							
+				</div>
+			</div>
+		<% end%>
+	</div>
+</div>

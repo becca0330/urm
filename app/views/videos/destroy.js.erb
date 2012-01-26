@@ -1,0 +1,4 @@
+<%# n holds a the name of the object e.g. 'person' and o the object itself %>
+$('#<%=n %>_<%=o.id%>').fadeOut();
+
+$("#summary_<%=n%>s_of_person_<%=o.person.id%>" ).html("<%=allvideos_of_person_summary(o.person) %>");

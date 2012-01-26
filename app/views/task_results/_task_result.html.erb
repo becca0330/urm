@@ -1,0 +1,135 @@
+<!-- SECTION SINGLE TASK RESULT -->
+<div id="task_result_<%=task_result.id%>" class="border_task_result">
+
+	<!-- SECTION SINGLE Task Result Summary (modifiable details) -->
+	<div class="toggle_task_result" >
+		<%= form_for(task_result, 
+				:remote => true, 
+				:html => {:class => "edit_task_result_#{task_result.id}"}
+				) do |f| %>
+
+			<%= link_to_function("Task Completion", 
+				toggler("#toggle_",task_result)
+				) %>
+			<span id="summary_task_result_<%=task_result.id%>"><%= task_result.summary %></span>
+			<%= link_to( image_tag("delete.png"), 
+					task_result_path(task_result),
+					:method		=> :delete,
+					:remote		=> true,
+					:confirm 	=> t(:'tasks.delete_task_hint', :summary=>task_result.summary),
+					:title 		=> t(:'tasks.delete_task_hint', :summary=>task_result.summary)
+					) %>
+			
+			<!-- SUB SECTION SINGLE Task Result Details (modifiable details) -->
+			<div id="toggle_task_result_<%=task_result.id%>">
+				<table id="table_task_result">
+					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+					<tr>
+						<td>
+						    <%= f.label :person_id, "Person" %> 
+						</td> 
+						<td>
+							<%= f.collection_select(:person_id, 
+									task_result.report.persons, :id, :summary, 
+									options={:prompt => "Select the person"},
+									:class => 'submittable'
+									 ) %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= f.label :task_id, "Task" %> 
+						</td> 
+						<td>
+							<%= f.collection_select(:task_id, 
+									task_result.report.tasks, :id, :title, 
+									options={:prompt => "Select the task"}, 
+									:class => 'submittable' ) %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= f.label :start, "Start" %> 
+						</td> 
+						<td>
+					 		<%= f.text_field :start, 
+									:placeholder => "Start time",
+									:title => "start time",
+									:class => 'submittable',
+									:size => '8',
+									:type	=> 'time' %> 
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= f.label :end, "End" %> 
+						</td> 
+						<td>
+					 		<%= f.text_field :end, 
+									:placeholder => "end time",
+									:title => "end time",
+									:type	=> 'time',
+									:size => '8',
+									:class => 'submittable'%> 
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= f.label :durationactual, "Duration" %> 
+						</td> 
+						<td>
+					 		<%= f.text_field :durationactual, 
+									:placeholder => "actual time needed to complete the task",
+									:title => "time needed to complete the task",
+									:type => 'number',
+									:size => '5',
+									:class => 'submittable'%> seconds
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+						    <%= f.label :completion, "Completed" %> 
+						</td> 
+						<td>
+					 		<%= f.text_field :completion, 
+									:placeholder => "completion in percent",
+									:title => "completion in percent",
+									:type => 'number',
+									:size => '5',
+									:class => 'submittable'%> %
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+						    <%= f.label :withassistance, "With assistance" %> 
+						</td> 
+						<td>
+					 		<%= f.select(:withassistance, {	"YES"=>"YES", 
+															"NO" =>"NO"	},
+									option={:prompt => "-"},
+									:class => 'submittable') %>
+						</td>
+					</tr>
+
+
+					<tr>
+						<td>
+						    <%= f.label :title, "Notice" %> 
+						</td> 
+						<td>
+					 		<%= f.text_field :notice, 
+									:placeholder => "further notice",
+									:title => "further notice",
+									:class => 'submittable'%> 
+						</td>
+					</tr>
+				</table>
+			</div> <!-- end of id toggle_task_result -->
+		<% end # of form task_result %>
+	</div> <!-- end of class toggle_task_result -->
+
+	<div id="task_result_message_<%=task_result.id%>" class="ajax_message"></div>
+	
+</div> <!-- end of div task_result -->

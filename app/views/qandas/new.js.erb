@@ -1,0 +1,4 @@
+$( "<%= escape_javascript( \
+	render( :partial => "qanda", :locals => { :qanda => @qanda} )\
+	) %>" ).insertBefore("#new_qanda_for_interview_<%=qanda.interview_id%>")
+$("#summary_qandas_of_interview_<%=qanda.interview.id%>" ).html("<%=allqandas_summary(qanda.interview) %>");

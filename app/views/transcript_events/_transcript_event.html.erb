@@ -1,0 +1,123 @@
+<!-- SECTION SINGLE TTRANSSCRIPT EVENT -->
+<div id="transcript_event_<%=transcript_event.id%>" class="border_transcript_event">
+
+	<!-- SECTION SINGLE TRANSSCRIPT EVENT Summary (modifiable details) -->
+	<div class="toggle_transcript_event" >
+		<%= form_for(transcript_event, 
+				:remote => true, 
+				:html => {:class => "edit_transcript_event_#{transcript_event.id}"}
+				) do |frm_te| %>
+
+			<%= link_to_function(t(:'.section_title'), 
+					toggler("#toggle_",transcript_event)
+					) %>
+			<span id="summary_transcript_event_<%=transcript_event.id%>"><%= transcript_event.summary %></span>
+			<%= link_to( image_tag("delete.png"), 
+					transcript_event_path(transcript_event),
+					:method		=> :delete,
+					:remote		=> true,
+					:confirm 	=> t(:'.delete_confirm',:summary => transcript_event.summary),
+					:title 		=> t(:'.delete_hint',:summary => transcript_event.summary)   ) %>
+			<!-- SUB SECTION SINGLE transcript_event Details (modifiable details) -->
+			<div id="toggle_transcript_event_<%=transcript_event.id%>">
+				<table id="table_transcript_event">
+					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+					<tr>
+						<td>
+						    <%= frm_te.label :person, "Person" %> 
+						</td>
+						<td>
+						    <%= frm_te.collection_select(
+									:person_id, 
+									transcript_event.report.persons, 
+									:id, 
+									:name, 
+									option={:prompt =>"Select the person of this event"} ,
+									:class => 'submittable' 
+									) %>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+						    <%= frm_te.label :timestamp, "Time" %> 
+						</td>
+						<td>
+						    <%#= frm_te.text_field :timestamp,
+								:placeholder 	=> 	"time",
+								:title			=> 	"time", 
+								:type			=> 'time',
+								:class => 'submittable' %> 
+							<%#= frm_te.text_field :date, 
+									:title => "Day and time of event (YYYY-MM-DD)",
+									:placeholder => "YYYY-MM-DD",
+									:type=> "date",
+									:class => 'submittable',
+									:size => 14 %>
+							<%= frm_te.text_field :time, 
+									:title => "Day and time of event (HH:MM)",
+									:placeholder => "HH:MM",
+									:type=> "time",
+									:class => 'submittable',
+									:size => 7 %>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+						    <%= frm_te.label( :code, 
+								t(:'event.event_code')
+								) %> 
+							<small><%#= link_to "manage coding schema",
+								 		eventcodes_path %></small>
+						</td>
+						<td>
+						    <%= frm_te.collection_select(
+								:eventcode_id, 
+								Eventcode.all, 
+								:id, 
+								:code_and_description, 
+								option={:prompt =>"Select the code of this event"} ,
+								:class => 'submittable' ) %>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+						    <%= frm_te.label(:event, 
+								t(:'event.event_description'),
+						 		:title => t(:'event.event_description_hint') 
+								)%> 
+						</td>
+						<td>
+						    <%= frm_te.text_field( :event,
+								:placeholder 	=> 	t(:'event.event_description_hint'),
+								:title			=> 	t(:'event.event_description_hint'), 
+								:class => 'submittable') %> 
+						</td>
+					</tr>
+						<tr>
+							<td>
+							    <%= frm_te.label :finding_id, "Refers to Finding (optional)" %> 
+							</td>
+							<td>
+								<%= frm_te.collection_select(
+									:finding_id, 
+									transcript_event.report.findings, 
+									:id, 
+									:summary, 
+									option={:prompt =>"Select the finding of this event"} ,
+									:class => 'submittable' 
+									) %>
+							</td>
+						</tr>
+						
+				</table>
+				
+			</div> <!-- end of id toggle_transcript_event -->
+		<% end # of form transcript_event %>			
+	</div> <!-- end of class toggle_transcript_event -->
+
+	<div id="transcript_event_message_<%=transcript_event.id%>" class="ajax_message"></div>
+	
+</div> <!-- end of div transcript_event-->

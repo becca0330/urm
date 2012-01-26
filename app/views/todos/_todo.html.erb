@@ -1,0 +1,53 @@
+<%= form_for( todo, 
+	:html => {:class => "edit_todo_#{todo.id}"},
+	:remote => true
+	) do |f| %>
+	<div id="todos" class="container">
+		<div id="todo_<%=todo.id%>" class="row">
+
+			<div class="left tbl_data_date">
+				<%= todo.pretty_date %>
+			</div>
+			<div class="middle tbl_data_number">
+				<%= f.text_field(:priority, 
+					:placeholder 	=> '1',
+					:title 			=> "priority",
+					:type 			=> :number,
+					:class		 	=> 'submittable',
+					:size 			=> 2)
+					 %>
+			</div>
+			<div class="middle tbl_data_short">
+				<%= f.text_field( :title, :size=>3, 
+					:placeholder 	=> "title",
+					:title 			=> "title",
+					:class  		=> 'submittable') %>
+			</div>
+			<div class="middle tbl_data_long">
+				<%= f.text_area( :description,
+					:placeholder 	=> "description",
+					:title 			=> "description",	
+					:class 			=> 'submittable' ,
+					:rows			=> 3 ) %>
+			</div>
+			<div class="middle table_data_bool">		
+				<%= f.check_box( :solved, { 	
+					:class 			=> 'submittable', 
+					:placeholder 	=> "solved",
+					:title 			=> "solved" })%>
+			</div>
+			<div class="right table_data_button">
+				<%= link_to( 
+					image_tag("delete.png",:tabindex => 0,:class=>'submit_button'), 
+					todo_path(todo),
+					:method		=> :delete,
+					:remote		=> true,
+					:confirm 	=> "Are you sure to delete this todo '#{todo.summary}'?",
+					:title 		=> "Remove todo '#{todo.summary}'"
+					) %>
+				<div id="todo_message_<%=todo.id %>"></div>
+			</div>
+			
+		</div>	<!-- end row -->	
+	</div> <!-- end container -->
+<% end # end of form %>

@@ -1,0 +1,5 @@
+$("#summary_person_<%=person.id%>" ).html("<%=person.summary%>");
+$("#summary_persons" ).html("<%=allpersons_summary(person.report) %>");
+
+showToast("<%= escape_javascript( t(:'.updated', :summary => @person.summary) ) %>");
+resetHighlightingForElems('.edit_person_<%=person.id%>');

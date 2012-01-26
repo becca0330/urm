@@ -1,0 +1,4 @@
+$("#summary_person_<%=person.id%>" ).html("<%=escape_javascript( person.summary) %>");
+$("#summary_persons" ).html("<%=escape_javascript( allpersons_summary(person.report) ) %>");
+	
+$('#person_<%=person.id%>').fadeOut();

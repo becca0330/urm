@@ -1,0 +1,29 @@
+<%#
+Note the structure for nesting the html-div elements
+
+e.g.:
+...
+ <!-- SECTION ALL REPORTS -->
+ render collection
+	<!-- SECTION SINGLE REPORT -->
+	<div id="report_777" class="border_reports">
+		<!-- SECTION SINGLE REPORT Summary (modifiable details) -->
+		<div class="toggle"> (OPTIONAL - if identation needed)
+			form for report (header)
+			<!-- SUB SECTION SINGLE REPORT Details (modifiable details) -->
+			<div id="toggle_report_77">
+				form for report (details)
+					<table id="table_report">
+				<div id="report_message_77" class="ajax_message"></div>
+				<!-- SECTION ALL AUTHORS -->
+					render collection
+						...
+				<!-- html for new author of this report will be inserted here -->
+				<div id="new_author_for_report_7"></div>
+				<%= link_to( image_tag('add.png'),...
+				
+ div 'new_report_for_project' and link for: "add/new"
+...
+
+%>
+<%= render('projects/project') %>

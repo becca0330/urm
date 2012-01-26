@@ -1,0 +1,19 @@
+<%# reload video preview %>
+<% pre= render(:partial => '/documents/preview', 
+			:locals => {:document => o}
+			) %>
+$( "#<%=n %>_preview_<%=o.id%>" ).html("<%= escape_javascript( pre) %>");
+// update the link (=source) entry:
+$( "#<%=n %>_link_<%=o.id%>" ).html('<a href=\\\"<%= escape_javascript(o.source) %>\\\">(follow link)</a>');
+
+
+<%# and clear ALL the upload file %>
+$('input[type=file]').val("")
+
+// we update the summary:
+$("#summary_<%=n%>_<%=o.id%>" ).html("<%=escape_javascript(o.summary) %>");
+$("#summary_<%=n%>s_of_finding_<%=finding.id%>").html(
+	"<%=escape_javascript( alldocuments_summary_for_finding(finding) ) %>");
+
+showToast("<%= escape_javascript( t(:'.updated', :summary => o.summary) ) %>");
+resetHighlightingForElems('.edit_<%=n%>_<%=o.id%>');

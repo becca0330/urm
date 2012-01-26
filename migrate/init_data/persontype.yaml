@@ -1,0 +1,5 @@
+#TODO (better use seed.rb):
+#staff:
+#    type: staff
+#    description: Usability test staff
+# see: http://stackoverflow.com/questions/415287/add-rows-on-migrations

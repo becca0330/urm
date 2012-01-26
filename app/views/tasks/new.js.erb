@@ -1,0 +1,8 @@
+$( "<%= escape_javascript( \
+	render( :partial => "task", :locals => { :task => @task} )\
+	) %>" ).insertBefore("#new_task_for_report_<%=task.report_id%>")
+$("#summary_tasks" ).html("<%=alltasks_summary(task.report) %>");
+
+/* Highlight the new element and focus on first input field */
+$("#toggle_task_<%= @task.id %>").effect("highlight", {}, 3000);
+$("#toggle_task_<%= @task.id %>").find("#task_title").focus();

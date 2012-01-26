@@ -1,0 +1,5 @@
+/* Eliminate the eventcode by fading it out */
+$('#eventcode_<%= @eventcode.id %>').fadeOut();
+
+/* Replace the count of eventcodes */
+$(".eventcodes_count").html("<%= pluralize(Eventcode.count, 'Code') %>");

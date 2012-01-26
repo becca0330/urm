@@ -1,0 +1,15 @@
+<%= form_for( eventcode, 
+		:html => {:class => "edit_eventcode_#{eventcode.id}"},
+		:remote => true
+		) do |f| %>
+	<%= div_for eventcode do %>
+		<%= f.text_field :code, :size=>3, 	:class => 'submittable' %>
+		<%= f.text_field :description, 		:class => 'submittable'  %>
+		<%#= link_to 'Update', eventcode_path(eventcode), :method => :put, 
+					:class => "update", :remote => true  %>
+		<%= link_to 'Delete', eventcode_path(eventcode), :method => :delete, 
+					:class => "delete", :remote => true  %>
+		
+		<%# todo save-on-edit %>
+	<% end %>
+<% end %>

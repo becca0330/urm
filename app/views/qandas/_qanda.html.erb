@@ -1,0 +1,58 @@
+<!-- SECTION SINGLE Question/Answer (QandA) -->
+<div id="qanda_<%=qanda.id%>" class="border_qanda">
+
+	<!-- SECTION SINGLE qanda Summary (modifiable details) -->
+	<div class="toggle_qanda" >
+		<%= form_for(qanda, 
+				:remote => true, 
+				:html => {:class => "edit_qanda_#{qanda.id}"}
+				) do |frm_qa| %>
+
+			<%= link_to_function(t(:'.section_title'), toggler("#toggle_",qanda) ) %>
+			<span id="summary_qanda_<%=qanda.id%>"><%= qanda.summary %></span>
+			<%= link_to( image_tag("delete.png"), 
+					qanda_path(qanda),
+					:method		=> :delete,
+					:remote		=> true,
+					:confirm 	=> t(:'.delete_confirm',:summary => qanda.summary),
+					:title 		=> t(:'.delete_hint',:summary => qanda.summary) )%>
+			
+			<!-- SUB SECTION SINGLE qanda Details (modifiable details) -->
+			<div id="toggle_qanda_<%=qanda.id%>">
+				<table id="table_qanda">
+					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+					<tr>
+						<td>
+						    <%= frm_qa.label :quest, t(:'.label_quest') ,
+						 		:title => t(:'.hint_quest') %> 
+						</td> 
+						<td>
+					 		<%= frm_qa.text_area :quest, 
+								:rows => 2, 
+								:placeholder => t(:'.hint_quest'),
+								:title => t(:'.hint_quest'),
+								:class => 'submittable' %> 
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_qa.label :answ,t(:'.label_answ') ,
+						 		:title => t(:'.hint_answ') %>
+					    </td> 
+						<td>
+				  			<%= frm_qa.text_area :answ, 
+									:rows => 4, 
+									:placeholder => "task title",
+									:title => "task title",
+									:class => 'submittable' %>
+						</td>
+					</tr>
+									
+				</table>
+			</div> <!-- end of id toggle_qanda -->
+		<% end # of form qanda %>
+	</div> <!-- end of class toggle_qanda -->
+
+	<div id="qanda_message_<%=qanda.id%>" class="ajax_message"></div>
+	
+</div> <!-- end of div qanda-->

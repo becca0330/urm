@@ -1,0 +1,9 @@
+$( "<%= escape_javascript( \
+	render( :partial => "finding", :locals => { :finding => @finding} )\
+	) %>" ).insertBefore("#new_finding_for_report_<%=finding.report_id%>")
+
+$("#summary_findings" ).html("<%=allfindings_summary(finding.report) %>");
+
+/* Highlight the new element and focus on first input field */
+$("#toggle_finding_<%= @finding.id %>").effect("highlight", {}, 3000);
+$("#toggle_finding_<%= @finding.id %>").find("#finding_title").focus();

@@ -1,0 +1,87 @@
+<!-- SECTION SINGLE INTERVIEW -->
+<div id="interview_<%=interview.id%>" class="border_interview">
+
+	<!-- SECTION SINGLE INTERVIEW Summary (modifiable details) -->
+	<div class="toggle_interview" >
+		<%= form_for(interview, 
+				:remote => true, 
+				:html => {:class => "edit_interview_#{interview.id}"}
+				) do |frm_int| %>
+
+			<%= link_to_function(t(:'.section_title'), toggler("#toggle_",interview) ) %>
+			<span id="summary_interview_<%=interview.id%>"><%= interview.summary %></span>
+			<%= link_to( image_tag("delete.png"), 
+					interview_path(interview),
+					:method		=> :delete,
+					:remote		=> true,
+					:confirm 	=> t(:'.delete_confirm',:summary => interview.summary),
+					:title 		=> t(:'.delete_hint',	:summary => interview.summary) )%>
+		<% end # of form interview (part I)%>	
+
+			<!-- SUB SECTION SINGLE Interview Details (modifiable details) -->
+			<div id="toggle_interview_<%=interview.id%>">
+				<%= form_for(interview, 
+						:remote => true, 
+						:html => {:class => "edit_interview_#{interview.id}"}
+						) do |frm_int| %>
+				<table id="table_interview">
+					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+					<tr>
+						<td>
+						    <%= frm_int.label :person_id, t(:'.label_person') ,
+						 		:title => t(:'.hint_person')  %> 
+						</td> 
+						<td>
+							<%= frm_int.collection_select(
+											:person_id, 
+											interview.report.persons,
+											:id,
+											:summary, 
+											options={:prompt =>t(:'.prompt_person')},
+											:class => 'submittable',
+											:title => t(:'.prompt_person') ) %>
+							<div id="toggle_interview_with_person_<%=interview.person_id%>">
+						</td>
+					</tr>
+				
+				</table>
+				<% end # of form interview (part II)%>
+				
+				<!-- SECTION ALL Q-and-A for an INTERVIEW -->
+				<div class="toggle_all_qandas">
+					<div class = "border_interviews">
+						<%= link_to_function(t(:'.qandas.section_title'),
+							toggler("#toggle_all_qandas_of_",interview) ) %>:
+						<span id="summary_qandas_of_interview_<%=interview.id%>"><%= allqandas_summary(interview) %></span>
+						<div id="toggle_all_qandas_of_interview_<%=interview.id%>">
+							<%= render :partial =>'qandas/qanda', 
+								:collection => interview.qandas	%>  
+
+							<!-- html for new interview of this report will be inserted here -->
+							<div id="new_qanda_for_interview_<%=interview.id%>"></div>
+
+							<%= link_to( image_tag('add.png')+t(:'.qandas.add_link'),
+									new_qanda_path(:interview_id => interview.id),
+									:remote		=> true,
+									:title =>t(:'.qandas.add_hint')
+									)%>
+						</div> <!-- end all qandas-->
+					</div><!-- end border for all qandas-->
+				</div><!-- end toggle all qandas-->
+				
+				
+				
+			</div> <!-- end of id toggle_interview -->
+	
+	</div> <!-- end of class toggle_interview -->
+
+	<div id="interview_message_<%=interview.id%>" class="ajax_message"></div>
+	
+</div> <!-- end of div interview-->
+
+
+
+
+
+
+

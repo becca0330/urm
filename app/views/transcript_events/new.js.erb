@@ -1,0 +1,10 @@
+$( "<%= escape_javascript( \
+	render( :partial => "transcript_event", :locals => { :transcript_event => @transcript_event} )\
+	) %>" ).insertBefore("#new_transcript_event_for_report_<%=transcript_event.report_id%>")
+
+/* update summary */
+$("#summary_transcript_events" ).html("<%= escape_javascript(alltranscript_events_summary(transcript_event.report) ) %>");
+
+/* Highlight the new video */
+$("#toggle_transcript_event_<%= @transcript_event.id %>").effect("highlight", {}, 3000);
+$("#toggle_transcript_event_<%= @transcript_event.id %>").find("#transcript_event_time").focus();

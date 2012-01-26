@@ -1,0 +1,10 @@
+// we reset the colors (in ONE forms of) the current custom_attribute
+$('.edit_todo_<%=todo.id%>').find('.submittable').css('background-color','#F0F0F0');
+// remove highlighting of all 'submittable' (maybe changed) fields
+$('.edit_todo_<%=todo.id%>').find('.submittable').css('color','black');
+
+
+/* Fade out the message after some time*/
+$('#todo_message_<%=todo.id%>').delay(1000).fadeOut();
+//$(".new_todo").find("#todo_title").focus();
+$().toastmessage('showNoticeToast', "<%=render(:partial => "update", :locals => {:todo => todo})%>" );

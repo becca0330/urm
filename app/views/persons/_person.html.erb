@@ -1,0 +1,335 @@
+<!-- SECTION SINGLE PERSON -->
+<div id="person_<%=person.id%>" class="border_person">
+
+	<!-- SECTION SINGLE Person Summary (modifiable details) -->
+	<div class="toggle_person" >
+		<%= form_for(person, 
+				:remote => true, 
+				:html => {:class => "edit_person_#{person.id}"}
+				) do |frm_pers| %>
+
+			<%= link_to_function(t(:'.section_title'),toggler("#toggle_",person) ) %>
+			<span id="summary_person_<%=person.id%>"><%= person.summary %></span>
+			<%= link_to( image_tag("delete.png"), 
+					person_path(person),
+					:method		=> :delete,
+					:remote		=> true,
+					:confirm 	=> t(:'.delete_confirm',:summary => person.summary),
+					:title 		=> t(:'.delete_hint',	:summary => person.summary) ) %>
+		<% end # of form person (part 1) %>	
+			<!-- SUB SECTION SINGLE Person Details (modifiable details) -->
+			<div id="toggle_person_<%=person.id%>">
+				<%= form_for(person, 
+							:remote => true, 
+							:html => {:class => "edit_person_#{person.id}"}
+							) do |frm_pers| %>
+				<table id="table_person">
+					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+					<tr>
+						<td>
+						    <%= frm_pers.label :persontype, t(:'.label_persontype'),
+						 			:title => t(:'.prompt_persontype')
+									%> 
+						</td> 
+						<td>
+							<%= frm_pers.collection_select(
+								:persontype_id, 		# 
+								Persontype.all, 		# all the types: user, heexpert, staff...
+														# TODO if report=TA do NOT show heexpert!!
+								:id, 					# the selected id: 1
+								:name_with_description, # display "user (...)"
+								options ={:prompt => t(:'.prompt_persontype')}, 
+								:class =>"submittable") # css style
+							%>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_pers.label :name, t(:'.label_name') ,
+						 		:title => t(:'.hint_name') %> 
+						</td> 
+						<td>
+					 		<%= frm_pers.text_field(:name, 
+									:placeholder 	=> t(:'.hint_name'),
+									:title 			=> t(:'.hint_name'),
+									:class 			=> 'submittable'
+									) %> 
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_pers.label :alias,  t(:'.label_alias') ,
+						 		:title => t(:'.hint_alias') %> 
+						</td> 
+						<td>
+					 		<%= frm_pers.text_field :alias,
+					 			:placeholder	=> t(:'.hint_alias'),
+								:title 			=> t(:'.hint_alias'),
+								:class 			=> 'submittable' %> 
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_pers.label :timestamp, t(:'.label_timestamp') ,
+						 		:title => t(:'.hint_timestamp') %> 
+						</td> 
+						<td>
+					 		<%#= frm_pers.text_field :timestamp,
+					 			:placeholder => Time.new,
+								:title => "Date and time of the session.",
+								:type => 'datetime',
+								:class => 'submittable' %> 
+								
+								
+							<%= frm_pers.text_field :date, 
+								:title 		=> t(:'.hint_date'),
+								:placeholder=> t(:'.placeholder_date') ,
+								:type		=> "date",
+								:class		=> 'submittable',
+								:size 		=> 14 %>
+							at <%= frm_pers.text_field :time, 
+								:title 		=> t(:'.hint_time'),
+								:placeholder=> t(:'.placeholder_time'),
+								:type		=> "time",
+								:class	 	=> 'submittable',
+								:size 		=> 7 %>	
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_pers.label :gender, t(:'.label_gender') ,
+						 		:title => t(:'.hint_gender') %>
+					    </td> 
+						<td>
+							<%= frm_pers.select(:gender, 
+								{"male" =>"male", "female" => "female"},
+								options = {:prompt => t(:'.prompt_gender')},
+								:class => 'submittable') %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_pers.label :age,t(:'.label_age') ,
+						 		:title => t(:'.hint_age')%> 
+					    </td> 
+						<td>
+				  			<%= frm_pers.text_field :age,
+							:type 		=> 'number',
+							:size 		=> 3,
+							:title 		=> t(:'.hint_age'),
+							:placeholder=>0,
+							:class 		=> 'submittable' %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_pers.label :education, t(:'.label_education') ,
+						 		:title => t(:'.hint_education') %>
+					    </td> 
+						<td>
+				  			<%= frm_pers.text_field :education,
+					 			:placeholder 	=> t(:'.hint_education'),
+								:title 			=> t(:'.hint_education'),
+								:class 			=> 'submittable' %> 
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_pers.label :occupation,t(:'.label_occupation') ,
+						 		:title => t(:'.hint_occupation') %> 
+					    </td> 
+						<td>
+				  			<%= frm_pers.text_field :occupation,
+					 			:placeholder 	=> t(:'.hint_occupation'),
+								:title 			=> t(:'.hint_occupation'),
+								:class 			=> 'submittable' %>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+						    <%= frm_pers.label :itexperience_description, t(:'.label_itexperience') ,
+						 		:title => t(:'.hint_itexperience') %> 
+					    </td> 
+						<td>
+				  			<%= frm_pers.text_area :itexperience_description, :rows => 4,
+				 				:placeholder 	=> t(:'.hint_itexperience'),
+								:title 			=> t(:'.hint_itexperience'),
+								:class 			=> 'submittable' %> 
+							<table id="person_it_attributes">
+						    	<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+								<tr><td>
+								<%= frm_pers.label :itexperience_level, "Level" %> 
+				  				</td><td>
+								<%= frm_pers.select(:itexperience_level, {	
+										"Beginner" 		=>"beginner", 
+										"Intermediate" 	=> "intermediate", 
+										"Developer" 	=> "developer"},
+									options = {:prompt => "Set the IT-Experience for this person"},
+									:class => 'submittable') %> 
+						    	</td></tr><tr><td>
+								<%= frm_pers.label :itexperience_pcusageinyears, 
+									"PC-Usage (in yrs)" %> 
+				  				</td><td>
+								<%= frm_pers.text_field :itexperience_pcusageinyears, 
+									:size => 3,
+									:type => 'number',
+									:class => 'submittable' %> 
+						    	</td></tr><tr><td>
+								<%= frm_pers.label :itexperience_pcusageperweek, 
+									"PC-Usage (h per week)" %> 
+				  				</td><td>
+								<%= frm_pers.text_field :itexperience_pcusageperweek, 
+									:size => 3,
+									:type => 'number',
+									:class => 'submittable'%> 
+						    	</td></tr><tr><td>
+								<%= frm_pers.label :itexperience_mainoperatingsystem, 
+									"Main operating system" %> 
+								</td><td>
+								<%= frm_pers.text_field :itexperience_mainoperatingsystem, 
+									:size => 3 ,
+									:class => 'submittable'	%> 
+								</td></tr><tr><td>
+								<%= frm_pers.label :itexperience_webusageperweek, 
+									"Web usage per week",
+									:title => "E.g. 2.5 hours per week." %> 
+								</td><td>
+								<%= frm_pers.text_field :itexperience_webusageperweek, 
+									:placeholder => "5",
+									:title => "E.g. 2.5 hours per week.",
+									:size => 3 ,
+									:type => 'number',
+									:class => 'submittable' %> 
+								</td></tr><tr><td>
+								<%= frm_pers.label :itexperience_internetconnection,
+							 		t(:'.label_internetconnection') %> 
+								</td><td>
+								<%= frm_pers.text_field :itexperience_internetconnection, 
+									:size => 8 ,
+									:class => 'submittable' %> 
+								</td></tr><tr><td>
+								<%= frm_pers.label :itexperience_mainwebbrowser, 
+									"Main web browser" %> 
+								</td><td>
+								<%= frm_pers.text_field :itexperience_mainwebbrowser, 
+									:size => 8 ,
+									:class => 'submittable' %> 
+								</td></tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+				<% end # of form person (part II) %>
+				<table id="table_person">
+					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+					<tr>
+						<td>
+						   Fields<br />
+							<small>
+								<%= link_to t(:'.manage_attributes_link'),
+							 		custom_attributes_path %> 
+							</small>
+						</td>
+						<td>
+							<%# TODO: show (or create) ALL attributes (@CustomAttribs) for this person, 
+								not only the already assigned ones...%>
+							<%# TODO: ADD (display ALLL possible person attributes e.g. dropdown)
+							  	TODO: instead of optional link to manage attributes %>
+
+					
+							<!-- SECTION ALL possible custom ATTRIBUTES of PERSON -->
+							<div class="toggle_attributes_of_person">
+									<%= render :partial =>'attributes_of_people/attributes_of_person', 
+										:collection => person.attributes_of_persons	%>  
+									<!--  new attribute_of_person to this person will be inserted here -->
+									<div id="new_attribute_of_person_<%=person.id%>"></div>
+
+									<%# TODO: create a form and select which attribute to add: %>
+									<%#= form_for(attributes_of_person, 
+											:remote => true
+											) do |frm_attrib_for_p| %>
+										<%#= link_to( image_tag('add.png'),
+											new_attributes_of_person_path(:person_id => person.id),
+											:remote		=> true,
+											:title =>"Assign another attribute to this person.") % >
+											TODO: Add attribute %>
+									<%# end %>
+								<div id="attributes_of_people_message_<%=person.id%>" class="ajax_message"></div>
+							</div><!-- end attribute_of_person for this person-->
+						
+						</td>	
+					</tr>
+				</table>
+				<%= form_for(person, 
+						:remote => true, 
+						:html => {:class => "edit_person_#{person.id}"}
+						) do |frm_pers| %>
+				<table id="table_person">	
+					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+					<tr>
+						<td>
+						    <%= frm_pers.label :hasusabtestexperience, 
+								t(:'.label_hasusabilitytestexperience') %> 
+							<%# TODO: if yes: HE, TA or FE %>
+						</td>
+						<td>
+				  			<%= frm_pers.select(:hasusabtestexperience, 
+								{
+									t(:'.hasusabtestexperience.y')		=>	"YES", 
+									t(:'.hasusabtestexperience.n') 		=> 	"NO", 
+									t(:'.hasusabtestexperience.unknown')=> 	"UNKNOWN"},	
+								options = {:prompt => t(:'.prompt_hasusabilitytestexperience') },
+								:class => 'submittable') %>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+						    <%= frm_pers.label :annotation, t(:'.label_annotation'),
+						 			:title => t(:'.hint_annotation')
+								 %> 
+						</td>
+						<td>
+				  			<%= frm_pers.text_area 	:annotation,
+				 				:placeholder 	=> t(:'.hint_annotation') ,
+								:title 			=> t(:'.hint_annotation'),
+								:rows 			=> 3,
+								:class 			=> 'submittable' %>
+						</td>
+					</tr>
+				</table>
+				<% end # of form person (part III) %>
+				
+				<!-- TODO: SECTION upload documents for this persons -->
+				<!-- TODO: SECTION upload consent form for this persons -->
+				
+				<!-- SECTION ALL VIDEOS for this persons -->
+				<div class="border_videos">
+					<div class="toggle_videos">
+					
+						<%= link_to_function(t(:'videos.section_title'),
+							"$('#all_videos_for_person_#{person.id}').toggle()") %>:
+						<span id="summary_videos_of_person_<%=person.id%>"><%= allvideos_of_person_summary(person) %></span>	
+						<div id="all_videos_for_person_<%=person.id%>">
+							<%= render :partial =>'videos/video', 
+								:collection => person.videos	%>  
+
+							<!-- html for new video of this person will be inserted here -->
+							<div id="new_video_for_person_<%=person.id%>"></div>
+
+							<%= link_to( image_tag('add.png')+t(:'videos.add_link'),
+									new_video_path(:person_id => person.id),
+									:remote		=> true,
+									:title =>t(:'videos.add_hint')   ) %>
+						</div> <!-- end all videos-->
+					</div><!-- end toggle for all videos-->
+				</div><!-- end  border alll videos-->
+				
+			</div> <!-- end of id toggle_person -->
+	
+	</div> <!-- end of class toggle_person -->
+
+	<div id="person_message_<%=person.id%>" class="ajax_message"></div>
+	
+</div> <!-- end of div person-->

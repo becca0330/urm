@@ -1,0 +1,1 @@
+Note: find assets in app/assets

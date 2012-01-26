@@ -1,0 +1,9 @@
+$( "<%= escape_javascript( \
+	render( :partial => "answer", :locals => { :answer => @answer} )\
+	) %>" ).insertBefore("#new_answer_for_report_<%=answer.report_id%>")
+	
+$("#summary_answers" ).html("<%= escape_javascript(allanswers_summary(answer.report) ) %>");
+
+/* Highlight the new element and focus on first input field */
+$("#toggle_answer_<%= @answer.id %>").effect("highlight", {}, 3000);
+$("#toggle_answer_<%= @answer.id %>").find("#answer_question_id").focus();

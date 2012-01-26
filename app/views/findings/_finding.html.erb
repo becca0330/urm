@@ -1,0 +1,159 @@
+<!-- SECTION SINGLE FINDING -->
+<div id="finding_<%=finding.id%>" class="border_finding">
+
+	<!-- SECTION SINGLE Task Summary (modifiable details) -->
+	<div class="toggle_task" >
+		<%= form_for(finding, 
+				:remote => true, 
+				:html => {:class => "edit_finding_#{finding.id}"}
+				) do |frm_fdg| %>
+
+			<%= link_to_function(t(:'.section_title'), toggler("#toggle_",finding) ) %>
+			<span id="summary_finding_<%=finding.id%>"><%= finding.summary %></span>
+			<%= link_to( image_tag("delete.png"), 
+					finding_path(finding),
+					:method		=> :delete,
+					:remote		=> true,
+					:confirm 	=> t(:'.delete_confirm',:summary => finding.summary),
+					:title 		=> t(:'.delete_hint',	:summary => finding.summary)  ) %>
+		<% end # of form finding (part I) %>	
+			<!-- SUB SECTION SINGLE Finding Details (modifiable details) -->
+			<div id="toggle_finding_<%=finding.id%>">
+				<%= form_for(finding, 
+						:remote => true, 
+						:html => {:class => "edit_finding_#{finding.id}"}
+						) do |frm_fdg| %>
+				<table id="table_finding">
+					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+					<tr>
+						<td>
+						    <%= frm_fdg.label :title,t(:'.label_title') ,
+						 		:title => t(:'.hint_title') %> 
+						</td> 
+						<td>
+					 		<%= frm_fdg.text_field :title,
+								:placeholder 	=> 	t(:'.hint_title') ,
+								:title			=> 	t(:'.hint_title') , 
+								:class => 'submittable'
+								 %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_fdg.label( :findingtype, t(:'.label_findingtype'),
+						 			:title => t(:'.prompt_findingtype')
+						 			)%> 
+						</td> 
+						<td>
+					 		<%= frm_fdg.select(
+									:findingtype, 
+									{	t(:'.findingtype.positive')			=>"positive", 
+										t(:'.findingtype.recommendation')	=> "recommendation",
+										t(:'.findingtype.discussion')		=> "discussion"},
+									{}, # no options
+									:class 					=> 'submittable'
+							) %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_fdg.label :priority, t(:'.label_priority') ,
+						 		:title => t(:'.hint_priority') %> 
+						</td> 
+						<td>
+				 			<%= frm_fdg.text_field :priority,
+								:placeholder 	=> 	t(:'.hint_priority'),
+								:title			=> 	t(:'.hint_priority'),									
+								:class 			=> 'submittable'
+							 %>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+						    <%= frm_fdg.label :description, 
+						 		t(:'.label_description') ,
+							 	:title => t(:'.hint_description') %> 
+						</td> 
+						<td>
+				 			<%= frm_fdg.text_area :description,
+								:placeholder 	=> 	t(:'.hint_description'),
+								:title			=> 	t(:'.hint_description'),
+								:rows			=> 5,
+								:class 			=> 'submittable'
+							 %>
+						</td>
+					</tr>
+				</table>
+			<% end # of form finding (part II) %>
+			
+			
+			<!-- SECTION ALL VIDEO CLIPS for this finding -->
+			<!--TODO -->
+			<table id="table_finding">
+				<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+				<tr>
+					<td>
+					    <%#= frm_fdg.label .... %> 
+						TODO: Videoclips with timestamps from-to for each test person
+					</td> 
+					<td>
+				 		<!--TODO--><small>(not available yet: assign multiple video-clips (per user)!)</small>
+					</td>
+				</tr>
+				
+			</table>
+			
+			
+			
+			<!-- SECTION ALL DOCUMENTS for this finding -->
+			<div class="toggle_documents">
+				<div class="border_documents">
+					<%= link_to_function(t(:'documents.section_title'),
+						"$('#all_documents_for_finding_#{finding.id}').toggle()") %>:
+					<span id="summary_documents_of_finding_<%=finding.id%>"><%= alldocuments_summary_for_finding(finding) %></span>
+					<div id="all_documents_for_finding_<%=finding.id%>">
+						<%= render :partial =>'documents/document', 
+							:collection => finding.documents,
+							:locals => {:report_id => nil,
+								 		:finding_id => finding.id}	%>  
+
+						<!-- html for new document of this finding will be inserted here -->
+						<div id="new_document_for_finding_<%=finding.id%>"></div>
+
+
+						<%# TODO: ADD (display ALL possible documents for this finding e.g. dropdown)
+						  	TODO: instead of optional link to manage documents %>
+
+						<%= link_to( image_tag('add.png')+t(:'documents.add_link'),
+								new_document_path(:finding_id => finding.id),
+								:remote		=> true,
+								:title =>t(:'documents.add_hint') ) %>
+					</div> <!-- end all documents-->
+				</div><!-- end border for all documents-->
+			</div><!-- end toggle all documents-->
+		
+			
+			
+			
+				<table id="table_finding">
+					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+					<tr>
+						<td>
+						    <%#= frm_fdg.label :codereferences, "Codereferences" %> 
+							TODO: Codereferences
+						</td> 
+						<td>
+					 		<!--TODO--><small>(not available yet: assign multiple code-references!)</small>
+						</td>
+					</tr>
+					
+				</table>
+				
+			</div> <!-- end of id toggle_finding -->
+		
+	</div> <!-- end of class toggle_finding -->
+
+	<div id="finding_message_<%=finding.id%>" class="ajax_message"></div>
+	
+</div> <!-- end of div finding-->

@@ -1,0 +1,7 @@
+<%= count %> <%= t(:'transcript_events.events') %>: 
+<% for p in persons do 	%>
+	<%=p.name %>: 
+	<% for ev in p.transcript_events do %>
+		<%=ev.time %>:<%= ev.event %>,&nbsp;
+	<% end %>
+<%end %>

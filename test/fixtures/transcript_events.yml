@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  report_id: 1
+  person_id: 1
+  timestamp: 2011-12-17 14:59:59
+  eventcode_id: 1
+  event: MyText
+  finding_id: 1
+
+two:
+  report_id: 1
+  person_id: 1
+  timestamp: 2011-12-17 14:59:59
+  eventcode_id: 1
+  event: MyText
+  finding_id: 1

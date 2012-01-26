@@ -1,0 +1,8 @@
+$( "<%= escape_javascript( \
+	render( :partial => "document", :locals => { :document => @document, :report_id=>nil, :finding_id=>finding.id} )\
+	) %>" ).insertBefore("#new_document_for_finding_<%=finding.id%>")
+/* Highlight the new video */
+$("#toggle_document_<%= @document.id %>").effect("highlight", {}, 3000);
+
+$("#summary_documents_of_finding_<%=finding.id%>" ).html("<%=alldocuments_summary_for_finding(finding) %>");
+$("#toggle_document_<%= @document.id %>").find("#document_listat").focus();

@@ -1,0 +1,94 @@
+<!-- SECTION SINGLE QUESTION -->
+<div id="question_<%=question.id%>" class="border_question">
+
+	<!-- SECTION SINGLE Question Summary (modifiable details) -->
+	<div class="toggle_question" >
+		<%= form_for(question, 
+				:remote => true, 
+				:html => {:class => "edit_question_#{question.id}"}
+				) do |frm_q| %>
+
+			<%= link_to_function(t(:'.section_title'), toggler("#toggle_",question) ) %>
+			<span id="summary_question_<%=question.id%>"><%= question.summary %></span>
+			<%= link_to( image_tag("delete.png"), 
+					question_path(question),
+					:method		=> :delete,
+					:remote		=> true,
+					:confirm 	=> t(:'.delete_confirm',:summary => question.summary),
+					:title 		=> t(:'.delete_hint',:summary => question.summary) )%>
+			
+			<!-- SUB SECTION SINGLE Question Details (modifiable details) -->
+			<div id="toggle_question_<%=question.id%>">
+				<table id="table_question">
+					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+					<tr>
+						<td>
+						    <%= frm_q.label :description, t(:'.label_description'),
+						 			:title => t(:'.hint_description')  %> 
+						</td> 
+						<td>
+					 		<%= frm_q.text_field :description, 
+									:placeholder => t(:'.hint_description'),
+									:title => t(:'.hint_description'),
+									:class => 'submittable' %> 
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+						    <%= frm_q.label :rangefrom, t(:'.label_rangefromscaleto'),
+						 			:title => t(:'.hint_rangefromscaleto')
+						 %> 
+						</td> 
+						<td>
+					 		<%= frm_q.text_field :rangefrom, 	
+									:size => 12, 
+									:placeholder => t(:'.placeholder_rangefrom'),
+									:title => t(:'.hint_rangefrom'),
+									:class => 'submittable'  %> 
+							<%= frm_q.text_field :rangescale, 	
+									:size => 18		, 
+									:placeholder => t(:'.placeholder_rangescale'),
+									:title => t(:'.hint_rangescale'),
+									:class => 'submittable'  %> 
+							<%= frm_q.text_field :rangeto,	 	
+									:size => 12				, 
+									:placeholder => t(:'.placeholder_rangeto'),
+									:title => t(:'.hint_rangeto'),
+									:class => 'submittable'	 %> 	
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_q.label :notice, t(:'.label_notice'),
+						 			:title => t(:'.hint_notice') %> 
+						</td> 
+						<td>
+					 		<%= frm_q.text_area :notice, 
+									:rows => 2,
+									:placeholder => "any further notice or explanations",
+									:title => "further notices or explanations",
+									:class => 'submittable' %> 
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_q.label :order,  t(:'.label_order'),
+						 			:title => t(:'.hint_order')%> 
+						</td> 
+						<td>
+					 		<%= frm_q.text_field :order, 
+									:type => 'number',
+									:size => 3,
+									:placeholder => t(:'.placeholder_order'),
+									:title => t(:'.hint_order'),
+									:class => 'submittable' %> 
+						</td>
+					</tr>
+				</table>
+			</div> <!-- end of id toggle_question -->
+		<% end # of form question %>
+	</div> <!-- end of class toggle_question -->
+
+	<div id="question_message_<%=question.id%>" class="ajax_message"></div>
+</div> <!-- end of div question-->

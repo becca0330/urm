@@ -1,0 +1,8 @@
+/* Replace the count of eventcodes */
+$(".eventcode_count").html("<%= pluralize(Eventcode.count, 'event codes') %>");
+
+/* Add the new event code to the bottom of the eventcode list */
+$("#eventcodes").append("<%= escape_javascript(render(@eventcode)) %>");
+
+/* Reset the eventcode form */
+$("#new_eventcode")[0].reset();

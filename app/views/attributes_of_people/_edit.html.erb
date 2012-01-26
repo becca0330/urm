@@ -1,0 +1,12 @@
+<% attribOfPerson = f.object %>
+
+<%# TODO: show all POSSIBLE attributes for a person (not only those with values) %>
+
+<% if ! attribOfPerson.nil? and ! attribOfPerson.custom_attribute.nil? %>
+<li><%=f.label attribOfPerson.custom_attribute.title %> <%=f.text_field :value, 
+	:title =>  attribOfPerson.custom_attribute.description,
+	:placeholder =>  attribOfPerson.custom_attribute.description
+	
+ %> <%= f.link_to_remove content_tag(:span,"Delete this attribute", :class => "delete" ), :class => "sexybutton sexysimple sexyperson" %></li>
+
+<% end %>

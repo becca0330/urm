@@ -1,0 +1,6 @@
+// we update the summary:
+$("#summary_task_<%=task.id%>" ).html("<%=task.summary%>");
+$("#summary_tasks" ).html("<%=alltasks_summary(task.report) %>");
+
+showToast("<%= escape_javascript( t(:'.updated', :summary => @task.summary) ) %>");
+resetHighlightingForElems('.edit_task_<%=task.id%>');

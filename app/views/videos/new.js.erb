@@ -1,0 +1,8 @@
+$( "<%= escape_javascript( \
+	render( :partial => "video", :locals => { :video => @video} )\
+	) %>" ).insertBefore("#new_video_for_person_<%=video.person_id%>")
+/* Highlight the new video */
+$("#toggle_video_<%= @video.id %>").effect("highlight", {}, 3000);
+$("#toggle_video_<%= @video.id %>").find("#video_description").focus();
+
+$("#summary_videos_of_person_<%=@person.id%>" ).html("<%=allvideos_of_person_summary(@person) %>");

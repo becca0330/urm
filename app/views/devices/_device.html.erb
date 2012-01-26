@@ -1,0 +1,88 @@
+<!-- SECTION SINGLE DEVICE (we call devices: 'items') -->
+<div id="device_<%=device.id%>" class="border_device">
+
+	<!-- SECTION SINGLE device Summary (modifiable details) -->
+	<div class="toggle_device" >
+		<%= form_for(device, 
+				:remote => true, 
+				:html => {:class => "edit_device_#{device.id}"}
+				) do |frm_dev| %>
+
+			<%= link_to_function(t(:'.section_title'),toggler("#toggle_",device) ) %>
+			<span id="summary_device_<%=device.id%>"><%= device.summary %></span>
+			<%= link_to( image_tag("delete.png"), 
+					device_path(device),
+					:method		=> :delete,
+					:remote		=> true,
+					:confirm 	=> t(:'.delete_confirm',:summary => device.summary),
+					:title 		=> t(:'.delete_hint',	:summary => device.summary) 
+					)%>
+			
+			<!-- SUB SECTION SINGLE device Details (modifiable details) -->
+			<div id="toggle_device_<%=device.id%>">
+				<table id="table_device">
+					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+					<%# for HE add Person ID 
+					Person ID 
+					<%= f.collection_select(
+									:person_id, 
+									Person.all, :id, :name, :prompt =>"Select the person interviewed" ) %>
+					
+					<tr>
+						<td>
+						    <%= frm_dev.label(:devicetype, t(:'.label_devicetype'),
+						 			:title => t(:'.prompt_devicetype') 
+									)%> 
+						</td> 
+						<td><%# TODO: read from database (english and german?! ) %>
+							<%= frm_dev.select(:devicetype, 
+								{	t(:'.devicetype.location')		=> "location",
+									t(:'.devicetype.cam')			=> "cam",
+									t(:'.devicetype.hardware')		=> "hardware",
+									t(:'.devicetype.software')		=> "software"
+								},
+								option = {:prompt => t(:'.prompt_devicetype')},
+								:class => 'submittable',
+								:title => t(:'.prompt_devicetype')
+								)%>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+						    <%= frm_dev.label :title,t(:'.label_title') ,
+						 		:title => t(:'.hint_title') %> 
+						</td> 
+						<td>
+					 		<%= frm_dev.text_field :title,
+								:placeholder => t(:'.hint_title'),
+								:title => t(:'.hint_title'),
+								:class => 'submittable' %> 
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_dev.label :description,t(:'.label_description') ,
+						 		:title => t(:'.hint_description')  %> 
+						</td> 
+						<td>
+					 		<%= frm_dev.text_area :description, 
+								:rows => 2,
+								:placeholder => t(:'.hint_description'),
+								:title => t(:'.hint_description'),
+								:class => 'submittable' %> 
+						</td>
+					</tr>
+				
+					
+				</table>
+				
+				<!-- SUB SECTION document (screenshot) of device (item) -->
+				
+			</div> <!-- end of id device -->
+		<% end # of form device %>
+	</div> <!-- end of class toggle_device -->
+
+	<div id="device_message_<%=device.id%>" class="ajax_message"></div>
+	
+</div> <!-- end of div device-->

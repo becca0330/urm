@@ -1,0 +1,9 @@
+$( "<%= escape_javascript( \
+	render( :partial => "interview", :locals => { :interview => @interview} )\
+	) %>" ).insertBefore("#new_interview_for_report_<%=interview.report_id%>")
+	
+$("#summary_interviews" ).html("<%=allinterviews_summary(interview.report) %>");
+
+/* Highlight the new element and focus on first input field */
+$("#toggle_interview_<%= @interview.id %>").effect("highlight", {}, 3000);
+$("#toggle_interview_<%= @interview.id %>").find("#interview_person_id").focus();

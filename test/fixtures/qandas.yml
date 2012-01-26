@@ -1,0 +1,14 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  quest: MyText
+  answ: MyText
+  interview_id: 1
+  qid: 1
+
+two:
+  quest: MyText
+  answ: MyText
+  interview_id: 1
+  qid: 1
+

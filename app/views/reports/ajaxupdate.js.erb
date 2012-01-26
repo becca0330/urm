@@ -1,0 +1,13 @@
+/* we do NOT show the message direct in the page anymore:
+	$( "#report_message_<%=report.id%>" ).html( 
+		"<%= escape_javascript( render( :partial => "ajaxupdate", :locals => { :report => @report} ) ) %>" );	
+
+	$('#report_message_<%=report.id%>').show();
+	$('#report_message_<%=report.id%>').delay(1000).fadeOut();
+*/
+
+// we update the summary:
+$("#summary_report_<%=report.id%>" ).html("<%=report.summary%>");
+showToast("<%=render(:partial => "ajaxupdate", :locals => {:report => @report})%>");
+resetHighlightingForElems('.edit_report_<%=report.id%>');
+

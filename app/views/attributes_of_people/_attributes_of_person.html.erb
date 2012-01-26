@@ -1,0 +1,29 @@
+<!-- SECTION SINGLE custom ATTRIBUTE for a PERSON -->
+<%= div_for attributes_of_person do %>
+	<%= form_for(attributes_of_person, 
+			:remote => true,
+	 		:html => {:class => "edit_attributes_of_person_#{attributes_of_person.id}"}
+			) do |f| %>
+		
+			<table id="table_attributes_of_person">
+				<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+				<tr><td>
+					<% if attributes_of_person.custom_attribute %>
+						<%= f.label :title, "#{attributes_of_person.custom_attribute.title}", :size => 12 %>
+					<% end %>
+				</td><td>
+					<%#= f.label :description, "#{attributes_of_person.custom_attribute.description}"  %>
+					<%= f.text_field :value,
+						:placeholder => (attributes_of_person.custom_attribute)?(attributes_of_person.custom_attribute.description):'?',
+						:class => 'submittable' %>
+				</td><td>
+					<%= link_to( image_tag("delete.png"), 
+							attributes_of_person_path(attributes_of_person), 
+							:method => :delete, 
+							:class => "delete",
+							:title => "remove this custom attribute for this person", 
+							:remote => true)  %>
+				</td></tr>
+			</table>
+	<% end # of form attributes_of_person %> 
+<% end # of div attributes_of_person%>

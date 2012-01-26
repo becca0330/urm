@@ -1,0 +1,363 @@
+# This file is part of URM Usability Reporting Manager
+# Copyright (C) 2012 internettechnik 
+# Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
+
+# localization file for English. 
+# for details see: http://guides.rubyonrails.org/i18n.html
+
+# switch localisation by setting your browser "acceppted languages"
+# switch localisation via url parameter 'locale': "http://localhost:3000/?locale=de"
+
+en:
+  # General (navigation/header) section
+  about: "About"
+  
+  
+ 
+  # the answers for the questions in the questionnaire
+  answers:
+    results: results # statistic for summary of all answer-values
+    add_link:               "Add answer"
+    add_hint:               "Add a new answer to this report."
+    answer:
+        section_title:      "Answer"
+        delete_hint:        "Remove answer '%{summary}'..."
+        delete_confirm:     "Are you sure to delete this answer '%{summary}'?"
+        label_person:       "Test user"
+        label_answer:       "Answer to question"
+        label_answervalue:  "Answer value"
+        hint_value:         "The value of the given answer. E. g. 3"
+        prompt_question:    "Answer to question"
+        prompt_person:      "Select the test user"
+    update:
+        updated:            "Successfully updated answer '%{summary}'."
+            
+            
+  # authors of the report
+  authors:
+    section_title:          "Authors"
+    add_link:               "Add author"
+    add_hint:               "Add another author to the report..."
+    author:
+        author: author
+        section_title:      "Author"
+        delete_hint:        "Remove author '%{author_name}'..."
+        delete_confirm:     "Are you sure to delete this author '%{author_name}'?"
+        label_name:         "Name"
+        hint_name:          "Name of the author"
+    update:
+        updated:            "Successfully updated author '%{summary}'."
+
+  # devices = items (location, hardware, software,...) of the environment    
+  devices:
+     add_link:              "Add item"
+     add_hint:              "Add a new item to this report."
+     device:
+         device:            "item"
+         section_title:     "Item"
+         delete_hint:       "Remove item '%{summary}'..."
+         delete_confirm:    "Are you sure to delete item '%{summary}'?"
+         label_devicetype:  "Type"
+         label_title:       "Title"
+         label_description: "Description"
+         hint_title:        "Short title for hardware/software/locaton item"
+         hint_description:  "Long description for the hardware/software/locaton item"
+         prompt_devicetype: "Select type of the device"
+         devicetype:
+             location:      "Room/Location"
+             cam:           "Video-Equipment"
+             hardware:      "Hardware"
+             software:      "Software"
+     update:
+          updated:          "Successfully updated device '%{summary}'."
+  
+  # documents (belong to findings or belong to the report directly)      
+  documents:
+   section_title:           "Documents"
+   add_link:                "Add document"
+   add_hint:                "Add a new document to this finding."
+   add_to_report_link:      "Add document"
+   add_to_report_hint:      "Add a new document to this report."
+   document: 
+       document:            "document"
+       section_title:       "Document"
+       delete_confirm:      "Are you sure to delete document '%{summary}'?"
+       delete_hint:         "Remove document '%{summary}'..."
+       label_listat:        "Appears in Section"
+       label_description:   "Description"
+       label_type:          "Type"
+       hint_description:    "Description of the document, the remote link, or about this bibliography entry."
+       hint_type:           "Type of the document (local document, remote link, or biblio entry)."
+       hint_source:         "Specify a URL, a link"
+       hint_attach:         "Drop document for upload"
+       hint_link:           "Click to open the URL or to preview document."
+       prompt_listat:       "Select the section where the document will be listed."
+       prompt_type:         "Select the type of the document."
+       listat:
+           bibliography:            "Bibliography"
+           transcripts:             "Transcripts"
+           evaluationteammaterial:  "Materials for the Evaluating Team"
+           testusermaterial:        "Materials for the Test Users"
+       doctype:
+           link:            "Remote Link"
+           doc:             "Local Document"
+           bibentry:        "Bibliography Entry"
+   update_for_report:
+       updated:             "Successfully updated document '%{summary}' for the report."        
+   update_for_finding:
+       updated:             "Successfully updated document '%{summary}' for current finding." 
+       
+              
+  # transcription events (e.g.: start with tast at 00:13....)
+  event:
+       event_code:              "Event"
+       event_code_hint:         "Event"
+       event_description:       "Description"
+       event_description_hint:  "Event description"
+
+  # a positive finding (=recommendation) or a negative one
+  findings:
+        section_title:          "Findings"
+        add_link:               "Add finding"
+        add_hint:               "Add a new finding to this report."
+        finding: 
+            finding:            "finding"
+            section_title:      "Finding"
+            delete_confirm:     "Are you sure to delete finding '%{summary}'?"
+            delete_hint:        "Remove finding '%{summary}'..."
+            label_title:        "Title"
+            label_findingtype:  "Type"
+            label_priority:     "Priority"
+            label_description:  "Description"
+            hint_title:         "A short title for the finding"
+            hint_findingtype:   "Select the type of the finding..."
+            hint_priority:      "Sort order is ascending, according the priority given. Higest priority = 1, then 2 and so on."
+            hint_description:   "Extensive description for this finding"
+            prompt_findingtype: "Select findingtype..."
+            findingtype:
+                    positive:       "Positive"
+                    recommendation: "Recommendation"
+                    discussion:     "Discussion"
+        update:
+            updated:        "Successfully updated finding '%{summary}'."        
+            
+             
+  # a interview with a person (contains many qanda)         
+  interviews:
+        section_title:              "Interviews"
+        add_link:                   "Add interview"
+        add_hint:                   "Add a new interview to this report."
+        interview:   
+            interview:              "interview"
+            section_title:          "Interview"
+            delete_confirm:         "Are you sure to delete interview '%{summary}'?"
+            delete_hint:            "Remove interview '%{summary}'..."
+            label_person:           "With test user"
+            hint_person:            "Interview with test user"
+            prompt_person:          "Select the test user interviewed..."
+            qandas:
+                section_title:          "Question and Answers"
+                add_link:               "Add question with answer"
+                add_hint:               "Add a new Question/Answer to this interview."
+                qanda:
+                    qanda:              "question"
+                    section_title:      "Q&A"
+                    label_question:     "Question"
+                    label_answer:       "Answer"
+                    hint_question:      "Question"
+                    hint_answer:        "Answer"
+          
+  # person such as test user..., but note: could also be a HE-expert 
+  persons:
+        section_title:          "Test users" # we call the analysis: "discussion" 
+        add_link:               "Add test user"
+        add_hint:               "Add another test user to the report..."
+        person:
+            person:             "test user"
+            section_title:      "Test user"
+            with:               "with"          # interview 'with' test user 
+            delete_confirm:     "Are you sure to delete test user '%{summary}'?"
+            delete_hint:        "Remove test user '%{summary}'..."
+            label_persontype:   "Type"
+            label_name:         "Name"
+            label_alias:        "Alias"
+            label_timestamp:    "Session at"
+            label_gender:       "Gender"
+            label_age:          "Age"
+            label_education:    "Education"
+            label_occupation:   "Occupation"
+            label_itexperience: "IT experience"
+            label_hasusabilitytestexperience: "Has usability test experience?"
+            label_annotation:   "Annotation"
+            label_internetconnection: "Internet connection"
+            hint_name:          "Name"
+            hint_alias:         "A short nick name. E.g. TP1, TP2,..."
+            hint_timestamp:     "Day and time of session (YYYY-MM-DD)"
+            hint_date:          "Date of session (YYYY-MM-DD)"
+            hint_time:          "Time of session (HH:MM)"
+            hint_gender:        "Male or female..."
+            hint_age:           "Age of the test user in years."
+            hint_education:     "Education level attained. E.g. 'University Degree' and current subject of study. E.g. 'Biology'."
+            hint_occupation:    "E.g. a test user could be a student or a manager."
+            hint_itexperience:  "A person might be beginner/intermediate/expert level and some detailed description of his/her IT experience might be added."
+            hint_annotation:    "Annotations e.g.: wears glasses, is color blind and so on..."
+            placeholder_date:   "YYYY-MM-DD"
+            placeholder_time:   "HH:MM"
+            prompt_persontype:  "Select the role (type) of the test user..."
+            prompt_gender:      "Select the gender of this test user..."
+            prompt_hasusabilitytestexperience: "Any usability test experiences?"
+            hasusabtestexperience:  
+                    y:          "Yes, has usability test experience"
+                    n:          "No usabilty test experience"
+                    unknown:    "Unknown"    
+            manage_attributes_link:  "Manage fields"
+        update:
+           updated:        "Successfully updated test user '%{summary}'."
+         
+  projects:
+      index:
+        project_tab_title:              "Projects"
+        project_descripion_tab_title:   "Description and list of reports"
+        project_manage_tab_title:       "View"
+        manage_projects:                "Manage Projects"
+        add_link:                       "Add project"
+        add_hint:                       "Add a new project"
+        
+  # qanda questions and answers
+  qandas:
+      qanda:
+          section_title:        "Question/Answer"
+          delete_hint:          "Remove question/answer '%{summary}'..."
+          delete_confirm:       "Are you sure to delete this question/answer '%{summary}'?"
+          label_quest:          "Question"
+          label_answ:           "Answer"
+          hint_quest:           "Exact text of the question to the test user"
+          hint_answ:            "Answer given by the test user"
+  # questions
+  questions:
+      add_link:     "Add question"
+      add_hint:     "Add a new question to this report."
+      question:
+          section_title:            "Question"
+          delete_hint:              "Remove question '%{summary}'..."
+          delete_confirm:           "Are you sure to delete this question '%{summary}'?"
+          question:                 "question"
+          label_description:        "Description"
+          label_rangefromscaleto:   "Scale: from-scale-to"
+          label_notice:             "Notice"
+          label_order:              "Order" 
+          hint_description:         "The description of the questionnaire question"
+          hint_rangefromscaleto:    "Scale: from-scale-to"
+          hint_rangefrom:           "Scale for the answers: from..."
+          hint_rangescale:          "Scale to display for the answers: possible anwers"
+          hint_rangeto:             "Scale for the answers: ...to"
+          hint_notice:              "Further notices..."
+          hint_order:               "Order the questions will be asked..." 
+          placeholder_rangefrom:    "FROM (e.g. 1)"   
+          placeholder_rangescale:   "SCALE (e.g. 1-2-3-4-5-6)"
+          placeholder_rangeto:      "TO (e.g. 6)"
+          placeholder_order:        "0"
+  # everything that belongs directly to a report
+  reports:
+    section_title:                  "Reports"
+    report:
+        report:                     "report"
+        delete_hint:                "Remove report '%{summary}'..."
+        delete_confirm:             "Are you sure to delete this report '%{summary}'?"
+        link_jumptosection_:        "Jump to section"
+        link_intro:                 "Intro"
+        link_analysis:              "Discussion"
+        link_methodology:           "Methodology"
+        link_environment:           "Environment"
+        link_training:              "Training"
+        link_tasks:                 "Tasks"
+        link_taskresults:           "Task Completion"
+        link_questionnaire:         "Questionnaire"
+        link_questionnaire_results: "Questionnaire Results"
+        link_analysis:              "Discussion"
+        link_transcripts:           "Transcripts"
+        link_appendix:              "Appendix"
+        label_testtype:             "Testtype"
+        label_description:          "Description"
+        label_summary:              "Executive Summary"
+        label_introduction:         "Introduction to the usability study"
+        label_methodology:          "Methodology"
+        label_environment_description: "Environment/Location"
+        label_training:             "Training"
+        label_analysis:             "Analysis"
+        label_transcripts:          "Transcripts"
+        hint_title:                 "The project title should consist of just a few words. For example just the name of the company."
+        hint_date:                  "Date of report (YYYY-MM-DD)"
+        hint_time:                  "Time of the report HH:MM"
+        hint_testtype:              "Select the testtype (he/ta)..."
+        hint_analysis:              "Introductionary text (discussion) about the findings."
+        hint_description:           "Short report description"
+        hint_summary:               "The executive summary (about half a page)..."
+        hint_introduction:          "General introduction to the tests (based on, aims and targets). Could be some few paragraphs long."
+        hint_methodology:           "Give a short description of the TA methodology and/or procedure."
+        hint_environment_description: Infos about location and equipment"
+        hint_training:              "Description of the training of test users before TA tests"
+        hint_transcripts:           "Introduction about the content of the transcripts"
+        hint_appendix_description:  "Introduction about the content of the Appendix. E.g. the test team's orientation script, and per user the uploaded signed consent forms, log data, completed feedback questionnaires,..."
+        placeholder_date:           "YYYY-MM-DD"
+        placeholder_time:           "HH:MM"
+        placeholder_description:    "Wrap up in two or three lines."
+        placeholder_appendix_description: "Introduction about the content of section appendix"
+        prompt_testtype:            "Specify type of test (he/ta)..."
+        add_answer_link:            "Add answer"
+        testtype:
+            ta:                     "Thinking Aloud (TA)"
+            he:                     "Expert Review (Heuristic Evaluation, HE)"
+  # task for test-users (persons)    
+  tasks:
+      delete_task_hint: "Are you sure to delete this task completion for task '%{summary}'?"
+      add_link:                     "Add task"
+      add_hint:                     "Add a new task to this project."
+      task:
+        task:                       "task"
+        section_title:              "Task"
+        delete_hint:                "Remove task '%{summary}'..."
+        delete_confirm:             "Are you sure to delete this task '%{summary}'?"
+        label_title:                "Title"
+        label_description:          "Description"
+        label_prerequisite:         "Prerequisite"
+        label_endingcriteria:       "Success Criteria"
+        label_durationscheduled:    "Duration scheduled"
+        label_possiblesolutionpath: "Possible solution path"
+        hint_title:                 "Short description of the task..."
+        hint_description:           "Extensive task description..."
+        hint_prerequisite:          "State the start condition(s): e.g. browser opened with URL"
+        hint_endingcriteria:        "Success on e.g. Found opening hours of the shop..."
+        hint_durationscheduled:     "Seconds scheduled for successful task completion"
+        hint_possiblesolutionpath:  "Visit start page then enter search field and..."
+        placeholder_durationscheduled:  "120"
+  
+  task_results:
+      add_link:    "Add task result"
+      add_hint:    "Add a new task completion (result) to this project."
+      update:
+           updated:        "Successfully updated task completion (result) '%{summary}'."
+           
+  transcript_events:
+      section_title:    "Transcripts"
+      add_link:         "Add transcript entry"
+      add_hint:         "Add a new entry to this report."
+      events:           "Events"
+      transcript_event:
+            section_title:              "Event"
+            delete_hint:                "Remove event '%{summary}'..."
+            delete_confirm:             "Are you sure to delete this event '%{summary}'?"
+            
+  # a person (test-user) has assigned one or may videos   
+  # a finding might refer to an existing (person=test-user) video   
+  videos:
+      section_title:            "Videos"
+      video:
+          video:                "video"
+          delete_hint:          "Remove video '%{summary}'..."
+          delete_confirm:       "Are you sure to delete this video '%{summary}'?"
+      add_link:                 "Add a new video"
+      add_hint:                 "Add a new video to this test user."
+      update:
+           updated:             "Successfully updated video '%{summary}'."
+      

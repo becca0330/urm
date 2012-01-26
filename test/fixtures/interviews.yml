@@ -1,0 +1,19 @@
+# == Schema Information
+#
+# Table name: interviews
+#
+#  id         :integer         not null, primary key
+#  personid   :integer
+#  created_at :datetime
+#  updated_at :datetime
+#  report_id  :integer
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  person_id: 1
+
+two:
+  person_id: 1
+

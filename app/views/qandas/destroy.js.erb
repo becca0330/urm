@@ -1,0 +1,5 @@
+$( "#qanda_message_<%=qanda.id%>" ).html( 
+	"<%= escape_javascript( render( :partial => "destroy", :locals => { :qanda => @qanda} ) ) %>" );
+$('#qanda_<%=qanda.id%>').fadeOut();
+$('#qanda_message_<%=qanda.id%>').delay(3000).fadeOut();
+$("#summary_qandas_of_interview_<%=qanda.interview.id%>" ).html("<%=allqandas_summary(qanda.interview) %>");

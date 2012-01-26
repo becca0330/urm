@@ -1,0 +1,6 @@
+/* Add the new todo to the bottom of the todo list */
+$("#todos").append("<%= escape_javascript(render(@todo)) %>");
+
+/* Reset the todo form */
+$("#new_todo")[0].reset();
+$("#new_todo #todo_title").focus();

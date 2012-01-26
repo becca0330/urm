@@ -1,0 +1,6 @@
+// we update the summary:
+$("#summary_device_<%=device.id%>" ).html("<%=device.summary%>");
+$("#summary_devices" ).html("<%= alldevices_summary(device.report) %>");
+
+showToast("<%= escape_javascript( t(:'.updated', :summary => @device.summary) ) %>");
+resetHighlightingForElems('.edit_device_<%=device.id%>');

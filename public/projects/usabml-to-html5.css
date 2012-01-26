@@ -1,0 +1,427 @@
+/* URM Usability Reporting Manager
+ * Copyright (C) 2012 internettechnik 
+ * Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
+ *
+*/
+
+
+/* CSS 2 Standard Style Sheet */
+/* from Keith Andrews */ 
+
+/* general */
+address, blockquote, body, caption, center, dd,
+dir, div, dl, dt, form, h1, h2, h3, h4, h5, h6,
+menu, ol, p, td, th, ul {
+  font-size: 1em;
+  font-family: Verdana, Arial, sans-serif;
+}
+
+
+a {
+}
+
+a:link {
+  cursor: pointer;
+  text-decoration: underline;
+  color: blue;
+}
+
+a:visited {
+  cursor: pointer;
+  text-decoration: underline;
+  color: purple;
+}
+
+
+address {
+  margin: 0em 0% 0em 0%;
+  font: italic 1em sans-serif;
+}
+
+big {font-size: 1em}
+
+blockquote {margin: 2em 5% 2em 5%}
+
+body {
+  margin: 1em 5% 1em 5%;
+  background: white;
+  color: black;
+  line-height: 1.3;
+  cursor: default;
+}
+
+button {cursor: auto}
+
+caption {margin: 1em 0% 0em 0%;}
+
+caption .label {font-weight: bold}
+
+
+code {font-family: monospace}  /* dont override bold or italic */
+
+div {margin: 0em 0% 0em 0%;}
+
+
+dd {margin: 0em 0% 0em 0%;}
+
+dl {margin: 0em 0% 0em 0%}
+
+dt {margin: 0em 0% 0em 0%;}
+
+
+h1 {
+  margin: 1.5em 0% 0.5em 0%;
+  font-weight: bold;
+  font-size: 180%;
+}
+
+h1.title {
+  margin: 1.5em 0% 0.5em 0%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 180%;
+}
+
+h2 {
+  margin: 1.5em 0% 0.5em 0%;
+  font-weight: bold;
+  font-size: 160%;
+}
+
+h2.title {
+  margin: 1.5em 0% 0.5em 0%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 160%;
+}
+
+h3 {
+  margin: 1.5em 0% 0.5em 0%;
+  font-weight: bold;
+  font-size: 140%;
+}
+
+h3.title {
+  margin: 1.5em 0% 0.5em 0%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 140%;
+}
+
+h4 {
+  margin: 1.5em 0% 0.5em 0%;
+  font-weight: bold;
+  font-size: 120%;
+}
+
+h5 {
+  margin: 1.5em 0% 0.5em 0%;
+  font-weight: bold;
+  font-size: 110%;
+}
+
+h6 {
+  margin: 1.5em 0% 0.5em 0%;
+  font-weight: bold;
+}
+
+
+hr {margin: 0em 0% 0em 0%}
+
+html {
+  margin: 0;
+  background: white;
+}
+
+img {border: none;}
+
+input {cursor: auto}
+
+kbd {font: 1em monospace}
+
+li {margin: 0.5em 0% 1em 0%;}
+
+ol {
+  margin: 1em 0% 1em 2%;
+  list-style: decimal;
+}
+
+ul ul ol ol, ul ol ul ol, ol ul ol ol, ol ol ul ol, ol ul ol, ol ol {
+  list-style: lower-alpha;
+}
+
+ol ul ol ol, ol ol ul ol, ul ol ol ol, ol ol ol {
+  list-style: lower-roman;
+}
+
+ol ol ol ol {
+  list-style: decimal;
+}
+
+p {margin: 0.7em 0% 0.2em 0%;}
+
+p.quote {
+  background-color: #315b7f;
+  color: #d2e2e2;
+  padding: 2%;
+  font-style: italic;
+  font-size: 1.5em;
+  border: none;
+  margin: 3em 0% 3em 0%;
+}
+
+p.footer {
+  font-size: 60%;
+  margin: 3em 0% 1em 0%;
+}
+
+p.title {text-align: center}
+
+p.question {margin: 2em 0% 1em 0%;}
+p.answer {font-style: italic}
+
+
+pre {
+  margin: 0em 0% 0em 0%;
+  font: 1em monospace;
+}
+
+samp {font: 1em monospace}
+
+small {font-size: 70%}
+
+sub {font-size: 60%}
+
+sup {font-size: 60%}
+
+
+
+
+
+textarea {cursor: text}
+
+
+tr {}
+
+tt {font: 1em monospace}
+
+ul {
+  margin: 1em 0% 1em 2%;
+  list-style: disc;
+}
+
+ul ul, ol ol ul ul, ol ul ol ul, ul ol ol ul, ol ul ul, ul ol ul {
+  list-style: circle;
+}
+
+ol ul ul ul, ul ol ul ul, ul ul ol ul, ul ul ul {
+  list-style: square;
+}
+
+ul ul ul ul {
+  list-style: disc;
+}
+
+
+.important {
+  color: red;
+  font-weight: bold;
+}
+
+table.author{
+    border-style:none;
+    border-width: thin;
+    text-align:center;
+} 
+td.author{
+    border:none;
+}
+table.finding{
+    border-style:none;
+    border-width: thin;
+    text-align:center;
+} 
+td.finding{
+    border:none;
+}
+
+table.likert {
+  margin: 1em 0% 0em 0%;
+  border: none;
+  border-collapse: collapse;
+}
+
+table.likert td {
+  border: none;
+  padding: 1ex 0.5ex;
+}
+
+table.likert th {
+  border: none;
+}
+
+
+tr.oddrow {
+  background: #e8e8e8;
+}
+
+tr.evenrow {
+  background: #f2f2f2;
+}
+
+
+.likertnumber {
+  text-align: right;
+}
+
+.likertassert {}
+
+.likertleft {
+  text-align: right;
+  font-size: 70%
+}
+
+.likertright {
+  text-align: left;
+  font-size: 70%
+}
+
+.likertscale {
+  text-align: center;
+}
+
+.likertscore {
+  text-align: center;
+}
+
+.likertav {
+text-align: right;
+}
+
+.likertstd {
+  text-align: right;
+}
+
+td .likertresult {
+  font-weight: bold
+}
+
+
+
+p.facilitator {
+  font-style: italic;
+  font-size: 80%;
+}
+
+p .faclabel {font-weight: bold}
+
+
+p.testuser {font-style: normal}
+p .tplabel {font-weight: bold}
+
+
+
+
+/* details */
+h1 {
+  margin: 1.5em 0% 0.5em 0%;
+  font-weight: bold;
+  font-size: 180%;
+}
+
+h1.title {
+  margin: 1.5em 0% 0.5em 0%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 180%;
+}
+
+h2 {
+  margin: 1.5em 0% 0.5em 0%;
+  font-weight: bold;
+  font-size: 160%;
+}
+
+h2.title {
+  margin: 1.5em 0% 0.5em 0%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 160%;
+}
+
+h3 {
+  margin: 1.5em 0% 0.5em 0%;
+  font-weight: bold;
+  font-size: 140%;
+}
+
+h3.title {
+  margin: 1.5em 0% 0.5em 0%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 140%;
+}
+
+
+
+
+table {
+  margin: 1.5em auto 0.5em auto;
+  caption-side: bottom;
+  border-style: solid;
+  border-width: thin;
+  border-collapse: collapse;
+}
+
+table.figure {
+  border-style: none;
+}
+
+table.ques {
+  margin: 1.5em 0 0.5em 0;
+  border-style: none;
+}
+
+
+td {
+  padding: 0.5ex;
+  border-style: solid;
+  border-width: thin;
+}
+
+table.figure td {
+  padding: 0;
+  border-style: none;
+}
+
+table.ques td {
+  padding: 1ex 1ex 1ex 0;
+  border-style: none;
+}
+
+td.tablabel {
+  font-weight: bold;
+  text-align: right;
+}
+
+
+th {
+  font-weight: bold;
+  background-color: #dddddd;
+  padding: 0.5ex;
+  border-style: solid;
+  border-width: thin;
+}
+
+table.figure th {
+  padding: 0;
+  border-style: none;
+}
+
+table.ques th {
+  padding: 1ex 1ex 1ex 0;
+  border-style: none;
+}
+
+
+

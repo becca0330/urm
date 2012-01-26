@@ -1,0 +1,54 @@
+<!-- SECTION SINGLE AUTHOR -->
+<div id="author_<%=author.id%>" class="border_author">
+
+	<!-- SECTION SINGLE Author Summary (modifiable details) -->
+	<div class="toggle_author" >
+
+		<%= link_to_function( t(:'.section_title'), toggler("#toggle_",author) ) %>
+		<span id="summary_author_<%=author.id%>"><%= author.summary %></span>
+		<%= link_to( image_tag("delete.png"), 
+				author_path(author),
+				:method		=> :delete,
+				:remote		=> true,
+				:confirm 	=> t(:'.delete_confirm', 	:author_name => author.name),
+				:title 		=> t(:'.delete_hint', 		:author_name => author.name),
+				:tabindex => 0
+				) %>
+				
+		<%= form_for(author, 
+			:remote => true, 
+			:html => {:class => "edit_author_#{author.id}"}
+			) do |frm_auth| %>
+	
+			<!-- SUB SECTION SINGLE Author Details (modifiable details) -->
+			<div id="toggle_author_<%=author.id%>">
+				<table id="table_author">
+					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+					<tr>
+						<td>
+						    <%= frm_auth.label :name, t(:'.label_name'),
+						 			:title => t(:'.hint_name') %> 
+						</td> 
+						<td>
+					 		<%= frm_auth.text_field( :name, :class => 'submittable', 
+									:placeholder => t(:'.hint_name'),
+						 			:title => t(:'.hint_name') 
+									)%> 
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%#= frm_auth.label "Consent Form", :title => "Upload signed consent form." %> 
+						</td> 
+						<td>
+					 		<small><!--(TODO: upload signed consent form.) --></small>
+						</td>
+					</tr>
+				</table>
+			</div> <!-- end of id toggle_author -->
+		<% end # of form author %>
+	</div> <!-- end of class toggle_author -->
+
+	<div id="author_message_<%=author.id%>" class="ajax_message"></div>
+	
+</div> <!-- end of div author-->

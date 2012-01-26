@@ -1,0 +1,12 @@
+$( "#eventcode_message_<%=eventcode.id%>" ).html( 
+	"<%= escape_javascript( render( :partial => "update", :locals => { :eventcode => @eventcode} ) ) %>" );	
+$('#eventcode_message_<%=eventcode.id%>').show();
+
+// we reset the colors (in ONE forms of) the current eventcode
+$('.edit_eventcode_<%=eventcode.id%>').find('.submittable').css('background-color','#F0F0F0');
+// remove highlighting of all 'submittable' (maybe changed) fields
+$('.edit_eventcode_<%=eventcode.id%>').find('.submittable').css('color','black');
+
+
+/* Fade out the message after some time*/
+$('#eventcode_message_<%=eventcode.id%>').delay(1000).fadeOut();

@@ -1,0 +1,9 @@
+$( "<%= escape_javascript( \
+	render( :partial => "author", :locals => { :author => @author} )\
+	) %>" ).insertBefore("#new_author_for_report_<%=author.report_id%>")
+
+$("#summary_authors" ).html("<%=allauthors_summary(author.report) %>");
+
+/* Highlight the new author */
+$("#toggle_author_<%= @author.id %>").effect("highlight", {}, 3000);
+$("#toggle_author_<%= @author.id %>").find("#author_name").focus();

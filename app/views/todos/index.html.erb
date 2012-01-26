@@ -1,0 +1,68 @@
+
+<h1> Manage ToDos </h1>
+
+
+
+	<div class="container">
+		<div class="row">
+			<div class="left   tbl_data_date"  	><%= link_to "Date", 		
+														todos_path(:sort => "updated_at") %>:</div>
+			<div class="middle tbl_data_number"	><%= link_to "Priority", 	
+														todos_path(:sort => "priority"	) %>:</div>
+			<div class="middle table_data_short"><%= link_to "Title", 		
+														todos_path(:sort => "title"		) %>:</div>
+			<div class="middle table_data_long"	><%= link_to "Description",	
+														todos_path(:sort => "description") %>:</div>
+			<div class="middle tbl_data_bool"  	><%= link_to "Solved",	
+														todos_path(:sort => "solved") %>:</div>
+			<div class="right table_data_button">&nbsp;</div>
+		</div>
+	</div>
+	<div id="todos" class="container">
+ 		<%= render :partial => @todos %>
+	</div>
+	
+
+<hr>
+<%# ... title:string description:text user_id:integer solved:boolean priority:integer %>
+
+<%= form_for Todo.new, 
+	:remote => true, 
+	:dataType => :script do |f| %>
+	<table width="100%">
+		<tr>
+			<td>Add new ToDo-Entry: Title and Description
+				<%= f.text_field( :title,
+				 	:placeholder	=> "short title for the new todo",
+					:title 			=> "short title for the new todo",
+					:size			=> 20 ) %>
+			</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>
+					<%= f.text_area :description, 
+						:placeholder => "description for the new todo",
+						:title 		=> "description for the new todo",
+						:cols 		=> 30, 
+						:rows 		=> 3					
+						%>
+			</td>
+			<td>Priority:
+				<%= f.text_field :priority, 
+					:placeholder	=> 1,
+					:title 			=> "priority",
+					:type 			=> 'number',
+					:size 			=> 3
+					 %>
+			</td>
+		</tr>
+	</table>
+
+	<%= link_to_function( image_tag('add.png',
+				:tabindex => 0,
+				:class => 'submit_button'
+				)+t(:add_todo),
+			"$(this).closest('form').trigger('submit');",
+			:title =>"Add a new todo for URM.") %>
+<% end %>
+<hr />
+<br />
+<a href="javascript:history.back()">Back</a><!-- TODO better reload ?! -->
+<%= link_to "Project Overview", root_path %>

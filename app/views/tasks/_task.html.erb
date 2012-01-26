@@ -1,0 +1,111 @@
+<!-- SECTION SINGLE TASK -->
+<div id="task_<%=task.id%>" class="border_task">
+
+	<!-- SECTION SINGLE Task Summary (modifiable details) -->
+	<div class="toggle_task" >
+		<%= form_for(task, 
+				:remote => true, 
+				:html => {:class => "edit_task_#{task.id}"}
+				) do |frm_task| %>
+
+			<%= link_to_function(t(:'.section_title'),toggler("#toggle_",task)  ) %>
+			<span id="summary_task_<%=task.id%>"><%= task.summary %></span>
+			<%= link_to( image_tag("delete.png"), 
+					task_path(task),
+					:method		=> :delete,
+					:remote		=> true,
+					:confirm 	=> t(:'.delete_confirm',:summary => task.summary),
+					:title 		=> t(:'.delete_hint',:summary => task.summary)		) %>
+			
+			<!-- SUB SECTION SINGLE Task Details (modifiable details) -->
+			<div id="toggle_task_<%=task.id%>">
+				<table id="table_task">
+					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+					<tr>
+						<td>
+						    <%= frm_task.label :title, t(:'.label_title') ,
+						 		:title => t(:'.hint_title') %> 
+						</td> 
+						<td>
+					 		<%= frm_task.text_field :title, 
+									:placeholder => t(:'.hint_title'),
+									:title => t(:'.hint_title'),
+									:class => 'submittable' %> 
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_task.label :description, t(:'.label_description') ,
+						 		:title => t(:'.hint_description') %> 
+						</td> 
+						<td>
+					 		<%= frm_task.text_area :description, 
+									:rows => 5,
+									:placeholder => t(:'.hint_description'),
+									:title => t(:'.hint_description'),
+									:class => 'submittable' %> 
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_task.label :prerequisite,t(:'.label_prerequisite') ,
+						 		:title => t(:'.hint_prerequisite')  %> 
+						</td> 
+						<td>
+					 		<%= frm_task.text_area :prerequisite, 
+								:rows => 2,
+								:placeholder => t(:'.hint_prerequisite'),
+								:title => t(:'.hint_prerequisite'),
+								:class => 'submittable' %> 
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_task.label :endingcriteria,t(:'.label_endingcriteria') ,
+						 		:title => t(:'.hint_endingcriteria') %> 
+						</td> 
+						<td>
+					 		<%= frm_task.text_area :endingcriteria, 
+								:rows => 2,
+								:placeholder => t(:'.hint_endingcriteria'),
+						 		:title => t(:'.hint_endingcriteria'),
+								:class => 'submittable' %> 
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+						    <%= frm_task.label :durationscheduled,t(:'.label_durationscheduled') ,
+						 		:title => t(:'.hint_durationscheduled') %> 
+						</td> 
+						<td>
+					 		<%= frm_task.text_field :durationscheduled, 
+								:type => :number,
+								:size => 5,
+								:placeholder => t(:'.placeholder_durationscheduled'),
+						 		:title => t(:'.hint_durationscheduled') ,
+								:class => 'submittable' %> secs
+						</td>
+					</tr>					
+					<tr>
+						<td>
+						    <%= frm_task.label :possiblesolutionpath,t(:'.label_possiblesolutionpath') ,
+						 		:title => t(:'.hint_possiblesolutionpath') %> 
+						</td> 
+						<td>
+					 		<%= frm_task.text_area :possiblesolutionpath, 
+								:rows => 3,
+								:placeholder => t(:'.hint_possiblesolutionpath'),
+								:title => t(:'.hint_possiblesolutionpath'),
+								:class => 'submittable' %> 
+						</td>
+					</tr>
+					
+				</table>
+			</div> <!-- end of id toggle_task -->
+		<% end # of form task %>
+	</div> <!-- end of class toggle_task -->
+
+	<div id="task_message_<%=task.id%>" class="ajax_message"></div>
+	
+</div> <!-- end of div task-->

@@ -1,0 +1,5 @@
+$("#summary_author_<%=author.id%>" ).html("<%= escape_javascript(author.summary) %>");
+$("#summary_authors" ).html("<%= escape_javascript(allauthors_summary(author.report)) %>");
+
+showToast("<%= escape_javascript(   t(:'.updated', :summary => @author.summary) ) %>");
+resetHighlightingForElems('.edit_author_<%=author.id%>');

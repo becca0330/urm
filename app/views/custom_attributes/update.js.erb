@@ -1,0 +1,15 @@
+//$("#custom_attribute_notice").html('<div class="flash notice">< % = 	escape_javascript(flash.delete(:notice)) % ></div>');
+
+$( "#custom_attribute_message_<%=custom_attribute.id%>" ).html( 
+	"<%= escape_javascript( render( :partial => "update", :locals => { :custom_attribute => @custom_attribute} ) ) %>" );	
+$('#custom_attribute_message_<%=custom_attribute.id%>').show();
+
+// we reset the colors (in ONE forms of) the current custom_attribute
+$('.edit_custom_attribute_<%=custom_attribute.id%>').find('.submittable').css('background-color','#F0F0F0');
+// remove highlighting of all 'submittable' (maybe changed) fields
+$('.edit_custom_attribute_<%=custom_attribute.id%>').find('.submittable').css('color','black');
+
+
+/* Fade out the message after some time*/
+$('#custom_attribute_message_<%=custom_attribute.id%>').delay(1000).fadeOut();
+$(".new_eventcode").find("#eventcode_code").focus();

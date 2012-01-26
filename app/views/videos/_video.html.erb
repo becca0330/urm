@@ -1,0 +1,86 @@
+<!-- SECTION SINGLE VIDEO -->
+<div id="video_<%=video.id%>" class="border_video">
+	
+	<!-- SECTION SINGLE Video Summary (modifiable details) -->
+	<div class="toggle_video" >
+		<%= form_for(video, 
+				:remote => true, 
+				:html => {:class => "edit_video_#{video.id}"}
+				) do |frm_vid| %>
+
+			<%= link_to_function("Video", toggler("#toggle_",video) ) %>
+			<span id="summary_video_<%=video.id%>"><%= video.summary %></span>
+			<%= link_to( image_tag("delete.png"), 
+					video_path(video),
+					:method		=> :delete,
+					:remote		=> true,
+					:confirm 	=> t(:'.delete_confirm',:summary => video.summary),
+					:title 		=> t(:'.delete_hint',:summary => video.summary)	) %>
+			
+			<!-- SUB SECTION SINGLE Video Details (modifiable details) -->
+			<div id="toggle_video_<%=video.id%>">
+				<table id="table_video">
+					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+					<tr>
+						<td>
+						    <%= frm_vid.label :description %> 
+						</td> 
+						<td>
+							<%= frm_vid.text_field :description, 
+								:placeholder 	=> "Name of the video",
+								:title 			=> "Name of the video",
+								:class 			=> 'submittable' %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_vid.label :doctype, "Type" %> 
+						</td> 
+						<td>
+							<%= frm_vid.select(:doctype, 
+								{	"Remote Link" 			=> "link", 
+									"Local Document" 		=> "doc"},
+								{}, # no options
+								:class => 'submittable'
+								) %>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+					    </td> 
+						<td><!-- show only ONE of the alternatives -->
+							<div class="alternative_link" 
+								<%=video.doctype=='link'?"":"style=display:None" %> >
+				  				<%= frm_vid.text_field :source, 
+									:rows => 4,
+									:placeholder => "Specify url for video",
+									:title => "Select link (url) for video",
+								:class => 'submittable' %>
+							</div><!-- end show source of remote url -->
+							<div class="alternative_doc" <%=video.doctype=='doc'?"":"style=display:None"%> >
+								<%= frm_vid.file_field :attachment, 
+									:rows => 4,
+									:placeholder => "Drop video for upload",
+									:title => "Select path to video for upload",
+									:class => 'submittable' %>
+								<div id="video_preview_<%= video.id %>">
+								<% if video.attachment_file_size %>
+									<%#= image_tag video.attachment.url %>
+									<%= video_tag video.attachment.url, :width=>150 %>
+									<%#= audio_tag video.attachment.url %>
+								<% end%>
+								</div>
+							</div> <!-- end show upload/preview for uploaded doc-->
+						</td>
+					</tr>
+					
+					
+				</table>
+			</div> <!-- end of id toggle_video -->
+
+		<% end # of form video %>
+	</div> <!-- end of class toggle_video -->
+
+	<div id="video_message_<%=video.id%>" class="ajax_message"></div>
+</div> <!-- end of div video-->

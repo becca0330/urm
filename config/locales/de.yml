@@ -1,0 +1,21 @@
+# This file is part of URM Usability Reporting Manager
+# Copyright (C) 2012 internettechnik 
+# Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
+
+# TODO: localization file for German.
+de:
+  about: Über
+  
+  project:
+          manage_projects: Projekte verwalten
+  
+  add_answer: "Neue Antwort"
+
+  # for Todos
+  del_todo: "Antwort löschen"
+  
+  # everything that belongs directly to a report
+  report:
+   # we call the analysis: "discussion"
+   analysis: Diskussion
+   analysis_hint: Einleitungstext zum Abschnitt 'Diskussion der Ergebnisse'

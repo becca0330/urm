@@ -1,0 +1,13 @@
+$( "#attributes_of_people_message_<%=person.id%>" ).html( 
+	"<%= escape_javascript( render( :partial => "update", :locals => { :attribute_of_people => @attribute_of_people} ) ) %>" );
+$( "#attributes_of_people_message_<%=person.id%>" ).show();
+
+
+// we reset the colors (in ONE forms of) the current person
+$('.edit_attributes_of_person_<%=attribute_of_people.id%>').find('.submittable').css('background-color','#F0F0F0');
+// remove highlighting of all 'submittable' (maybe changed) fields
+$('.edit_attributes_of_person_#<%=attribute_of_people.id%>').find('.submittable').css('color','black');
+
+
+/* Fade out the message after some time*/
+$( "#attributes_of_people_message_<%=person.id%>" ).delay(1000).fadeOut();

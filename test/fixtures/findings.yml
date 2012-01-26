@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  report_id: 1
+  findingtype: MyString
+  priority: 1
+  title: MyString
+  description: MyText
+
+two:
+  report_id: 1
+  findingtype: MyString
+  priority: 1
+  title: MyString
+  description: MyText

@@ -1,0 +1,57 @@
+<div class="toggle_person" >
+	<%= link_to_function("Person", "$(this).up().down('div#toggle').toggle()") %>
+	<%= h person.name %>
+	<div id="toggle">
+		<table id="table_person">
+			<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+			<tr>
+				<td class="table_label">
+				    <%= label :alias, "Alias:" %> 
+				</td> 
+				<td>
+			 		<%= h person.alias %> 
+				</td>
+			</tr>
+			<tr>
+				<td class="table_label">
+				    <%= label :gender, "Gender:" %>
+			    </td> 
+				<td>
+		  			<%= h person.gender %>
+				</td>
+			</tr>
+			<tr>
+				<td class="table_label">
+				    <%= label :age, "Age:" %> 
+			    </td> 
+				<td>
+		  			<%= h person.age %>
+				</td>
+			</tr>
+			<tr>
+				<td class="table_label">
+				    <%= label :education, "Education:" %>
+			    </td> 
+				<td>
+		  			<%= h person.education %> 
+				</td>
+			</tr>
+			<tr>
+				<td class="table_label">
+				    <%= label :occupation, "Occupation:" %> 
+			    </td> 
+				<td>
+		  			<%= h person.occupation %>
+				</td>
+			</tr>
+			<tr>
+				<td class="table_label">
+				    <%= label :itexperience, "IT Experience:" %> 
+			    </td> 
+				<td>
+		  			<%= h person.itexperience %> 
+				</td>
+			</tr>
+		</table>		
+	</div>
+</div>

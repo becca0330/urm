@@ -1,0 +1,13 @@
+<%# reload video preview %>
+<% if o.attachment_file_size %>
+$( "#<%=n %>_preview_<%=o.id%>" ).html("<video src='<%=o.attachment.url %>' width=150 />");
+<% end %>
+<%# and clear ALL the upload file %>
+$('input[type=file]').val("")
+
+// we update the summary:
+$("#summary_<%=n%>_<%=o.id%>" ).html("<%=o.summary%>");
+$("#summary_<%=n%>s_of_person_<%=o.person.id%>" ).html("<%=allvideos_of_person_summary(o.person) %>");
+
+showToast("<%= escape_javascript( t(:'.updated', :summary => o.summary) ) %>");
+resetHighlightingForElems('.edit_<%=n %>_<%=o.id%>');

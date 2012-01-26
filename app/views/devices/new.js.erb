@@ -1,0 +1,5 @@
+$( "<%= escape_javascript( \
+	render( :partial => "device", :locals => { :device => @device} )\
+	) %>" ).insertBefore("#new_device_for_report_<%=device.report_id%>")
+$("#summary_devices" ).html("<%=escape_javascript( alldevices_summary(device.report) ) %>");
+$("#toggle_device_<%= @device.id %>").find("#device_devicetype").focus();
