@@ -4,7 +4,8 @@ log/*.log
 tmp/
 .DS_Store
 ruby/
-Gemfile.lock
+# we bundle the gems for server deployment
+#Gemfile.lock
 .sass-cache/
 public/system/
 config/deploy.rb
