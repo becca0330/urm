@@ -9,3 +9,4 @@ ruby/
 .sass-cache/
 public/system/
 config/deploy.rb
+vendor/bundle

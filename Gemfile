@@ -46,6 +46,6 @@ end
 group :production do
 	# for Canberra
 	# gem 'mysql2'
-	# for domain factory:
-	gem 'mysql'
+	# for domain factory: evtl. sogar gem 'mysql', '2.7'
+	gem 'mysql', "2.7"
 end
