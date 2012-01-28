@@ -1,8 +1,19 @@
+# for bundle instruction read also:
+# http://yehudakatz.com/2011/05/30/gem-versioning-and-bundler-doing-it-right/
+
+
 # jf: see also: http://gembundler.com/gemfile.html
 source 'http://rubygems.org'
 
-gem 'rails', '>=3.1'
+# trouble on domainfactory (support version 3.0.9)
+# (note: Ruby 1.8.7 preinstalled)
+# gem 'rails', '>=3.1'
+gem 'rails', '3.0.9'
 gem 'jquery-rails'
+
+# 2012-01-29 for Javascript Execution via Ruby
+gem 'execjs'
+gem 'therubyracer'
 
 # 2012-01-04 for file attachments:
 gem 'paperclip'
@@ -46,6 +57,7 @@ end
 group :production do
 	# for Canberra
 	# gem 'mysql2'
-	# for domain factory: evtl. sogar gem 'mysql', '2.7'
+	# for domain factory: gem 'mysql', '2.7' !! 
+	#       (version 2.8.1 does not compile on domainfactory server)
 	gem 'mysql', "2.7"
 end
