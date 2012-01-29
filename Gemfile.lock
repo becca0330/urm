@@ -48,7 +48,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.17.2)
     multi_json (1.0.4)
-    mysql (~> 2.7)
+    mysql (2.7)
     paperclip (2.5.2)
       activerecord (>= 2.3.0)
       activesupport (>= 2.3.2)
