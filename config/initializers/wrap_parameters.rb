@@ -7,7 +7,7 @@
 ActiveSupport.on_load(:action_controller) do
   # error when using:
   # wrap_parameters format: [:json]
-  # we might try:
+  # we might try (old syntax):
   wrap_parameters :format => [:json]
 end
 

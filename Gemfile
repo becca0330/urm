@@ -7,8 +7,9 @@ source 'http://rubygems.org'
 
 # trouble on domainfactory (support version 3.0.9)
 # (note: Ruby 1.8.7 preinstalled)
-# gem 'rails', '>=3.1'
-gem 'rails', '3.0.9'
+# gem 'rails', '3.0.9'
+gem 'rails', '>=3.1'
+
 gem 'jquery-rails'
 
 # 2012-01-29 for Javascript Execution via Ruby
@@ -54,6 +55,7 @@ gem 'railties'	, "~> 3.1.0" # "~> 3.2.0.beta"
 group :development do
 	gem 'sqlite3'
 end
+
 group :production do
 	# for Canberra
 	# gem 'mysql2'
