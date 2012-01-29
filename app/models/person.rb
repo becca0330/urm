@@ -26,9 +26,9 @@ class Person < ActiveRecord::Base
    end  
     
    def <=>(other)
-      return 1 if other.nil?
-      return 0 if self.nil?
-      self.name <=> other.name
+      return 1 if other.nil? || other.name.nil?
+      return 0 if self.nil? || self.name.nil?
+      self.name <=> other.name # method <=> not defined for nil in ruby 1.8.7
     end  
     
   
