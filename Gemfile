@@ -5,10 +5,19 @@
 # jf: see also: http://gembundler.com/gemfile.html
 source 'http://rubygems.org'
 
-# trouble on domainfactory (support version 3.0.9)
+# trouble on provider domainfactory (support max rails version 3.0.9)
 # (note: Ruby 1.8.7 preinstalled)
-# gem 'rails', '3.0.9'
-gem 'rails', '>=3.1'
+# 2012-01-29 we use rails 3.0.x (instead 3.1.x):
+# gem 'rails', '>=3.1'
+# for Rails 3.1 "assets"
+# gem 'coffee-rails', ">= 3.1.0"
+# gem 'uglifier'
+# jf: error: "...in <class:Railtie>': undefined method `debug_rjs=' for ActionView::Base:Class (NoMethodError)...."
+# occures with gem 'sass-rails', 	">= 3.1.0" activated ??!!
+# gem 'sass-rails', "~> 3.1.0" # "~> 3.2.0"
+# gem 'railties'	, "~> 3.1.0" # "~> 3.2.0.beta"
+gem 'rails', '3.0.9'
+gem 'railties'
 
 gem 'jquery-rails'
 
@@ -22,14 +31,6 @@ gem 'paperclip'
 # see: http://www.alfajango.com/blog/remotipart-rails-gem/
 gem "remotipart", "~> 1.0"
 
-# 2011-12-22
-# for Rails 3.1 "assets"
-gem 'coffee-rails', ">= 3.1.0"
-gem 'uglifier'
-# jf: error: "...in <class:Railtie>': undefined method `debug_rjs=' for ActionView::Base:Class (NoMethodError)...."
-# occures with gem 'sass-rails', 	">= 3.1.0" activated ??!!
-gem 'sass-rails', "~> 3.1.0" # "~> 3.2.0"
-gem 'railties'	, "~> 3.1.0" # "~> 3.2.0.beta"
 
 # Deploy with Capistrano (no capistrano used at server)
 # gem 'capistrano'
@@ -61,5 +62,8 @@ group :production do
 	# gem 'mysql2'
 	# for domain factory: gem 'mysql', '2.7' !! 
 	#       (version 2.8.1 does not compile on domainfactory server)
-	gem 'mysql', "2.7"
+	# 2012-01-29:
+	# we use locally 'mysql' with version 2.8.1 and fake the Gemfile.lock to 2.7
+	# in Gemfile.lock: "mysql (~> 2.7)"
+	gem 'mysql', '2.7'
 end
