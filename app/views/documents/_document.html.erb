@@ -17,8 +17,7 @@
 				toggler("#toggle_",document) ) %>
 			<span id="summary_document_<%=document.id%>"><%= document.summary %></span>
 			<%= link_to( image_tag("delete.png"), 
-					(report_id) ? document_path(document, :report_id => report_id )
-								: document_path(document, :finding_id => finding_id ),
+					(report_id) ? document_path(document, :report_id => report_id )	: document_path(document, :finding_id => finding_id ),
 					:method		=> :delete,
 					:remote		=> true,
 					:confirm 	=> t(:'.delete_confirm',	:summary => document.summary),
