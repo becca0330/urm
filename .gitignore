@@ -10,3 +10,4 @@ ruby/
 public/system/
 config/deploy.rb
 vendor/bundle
+dump*.sql

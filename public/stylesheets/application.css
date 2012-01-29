@@ -1,0 +1,526 @@
+/* URM Usability Reporting Manager
+ * Copyright (C) 2012 internettechnik 
+ * Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
+ *
+ */
+
+/* Note: 
+		DO NOT CHANGE ANYTHING IN THIS FILE
+		MAKE CHANGES IN app/assets/*.css
+		and copy it into this file afterwards
+		
+ 	for Rails 3.1.x find every *.css in app/assets/... 
+	for Rails 3.0.x we copy every *.css from app/assets into this file
+*/
+
+/* copied from file jquery.toastmessage.css */
+
+/* from: https://github.com/akquinet/jquery-toastmessage-plugin/wiki */
+.toast-container {
+	width: 380px;
+	z-index: 9999;
+}
+
+
+* html .toast-container {
+	position: absolute;
+}
+
+.toast-item {
+	height: auto;
+	background: #777;
+    opacity: 0.9;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	color: #eee;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 6px;
+	padding-right: 6px;
+	font-family: lucida Grande;
+	font-size: 14px;
+	border: 2px solid #999;
+	display: block;
+	position: relative;
+	margin: 0 0 12px 0;
+}
+
+.toast-item p {
+    text-align: left;
+    margin-left: 50px;
+}
+
+.toast-item-close {
+    //background:url(../assets/toastmessage/close.gif);
+    width:22px;
+    height:22px;
+    position: absolute;
+    top:7px;
+    right:7px;
+}
+
+.toast-item-image {
+    width:32px;
+    height: 32px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    float:left;
+}
+
+.toast-item-image-notice {
+    background:url(../assets/toastmessage/notice.png);
+}
+
+.toast-item-image-success {
+    background:url(../assets/toastmessage/success.png);
+}
+
+.toast-item-image-warning {
+    background:url(../assets/toastmessage/warning.png);
+}
+
+.toast-item-image-error {
+    background:url(../assets/toastmessageimages/error.png);
+}
+
+
+/**
+ * toast types
+ *
+ * pattern: toast-type-[value]
+ * where 'value' is the real value of the plugin option 'type'
+ *
+ */
+.toast-type-notice {
+    color: white;
+}
+
+.toast-type-success {
+    color: white;
+}
+
+.toast-type-warning {
+    color: white;
+    border-color: #FCBD57;
+}
+
+.toast-type-error {
+    color: white;
+    border-color: #B32B2B;
+}
+
+/**
+ * positions
+ *
+ * pattern: toast-position-[value]
+ * where 'value' is the real value of the plugin option 'position'
+ *
+ */
+.toast-position-top-left {
+    position: fixed;
+    left: 20px;
+    top: 20px;
+}
+
+.toast-position-top-center {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    margin-left: -140px;
+}
+
+.toast-position-top-right {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+.toast-position-middle-left {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    margin-top: -40px;
+}
+
+.toast-position-middle-center {
+    position: fixed;
+    left: 50%;
+    margin-left: -140px;
+    margin-top: -40px;
+    top: 50%;
+}
+
+.toast-position-middle-right {
+    position: fixed;
+    right: 20px;
+    margin-left: -140px;
+    margin-top: -40px;
+    top: 50%;
+}
+
+
+/* copied from file urm.css */
+
+/* URM Usability Reporting Manager
+ * Copyright (C) 2012 internettechnik 
+ * Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
+ *
+*/
+
+// URM the usability reporting manager
+/* *********************** * 
+	DEFINE STYLE by CLASS
+ * *********************** */
+/* available elements:
+	project_1
+	project_message_1
+		report_2
+		report_message_2
+			toggle_all_authors
+*/
+
+* {
+	font-family: Arial,Sans-serif, Verdana;
+	margin-left:auto;
+    margin-right:auto;
+    vertical-align: top;
+}
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+  vertical-align:top;
+
+}
+body {
+	text-align:left;
+	margin-left:auto;
+    margin-right:auto;
+    margin-top:3px;
+    text-align:center;
+	background-color:#FFF;
+}
+table{
+	border-width:1px;
+	border-color:#000000;
+	margin-bottom:5px;
+}
+.leftcolumn{
+	width:120px;
+}
+/* the form fields: input, textarea and the label */
+input{
+	margin-top:3px;	
+	width:90%;
+}
+textarea{
+	margin-top:3px;
+	width:90%;
+}
+label{
+	width:50px;
+}
+
+/* Main Overview - Index (=Home) Page */
+.table_index{
+	width:90%;
+	border-top-right-radius: 40px; 
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 40px; 
+	border-top-left-radius: 0px; 
+	background:#F3F3F3;
+	text-align:left;
+	margin-left:5%;
+	line-height:5em;
+	padding:15px;
+}
+
+.navigation{
+	color:blue;
+}
+/* hide dialogs (e.g. about-dialog) */
+.ui_dialog{
+	display:none;
+}
+
+/* SECTIONS project, report, author,...  set borders */ 
+.border_project, 
+.border_reports,
+.border_authors,
+.border_persons,
+.border_devices,
+.border_videos,
+.border_tasks,
+.border_task_results,
+.border_questions,
+.border_answers,
+.border_interviews,
+.border_qandas,
+.border_findings,
+.border_documents,
+.border_transcript_events {
+	width:95%;
+	border-top-right-radius: 40px; border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 40px; border-top-left-radius: 0px; 	
+	margin:auto auto; 
+	padding-bottom: 13px;
+	padding-left: 0px;
+	background-position: 0% 0%;
+	border-width:2px;
+	border-style:solid;
+	border-color:#F3F3F3;
+}
+.border_projects{ 			padding-left: 4px; margin-left:0px;}
+.border_reports{ 			padding-left: 4px; margin-left:0px;}
+.border_authors{ 			padding-left: 4px; margin-left:0%; }
+.border_persons{ 			padding-left: 4px; margin-left:0%; }
+.border_devices{ 			padding-left: 4px; margin-left:0%; }
+.border_videos{  			padding-left: 4px; margin-left:0%; }
+.border_tasks{  			padding-left: 4px; margin-left:0%; }
+.border_task_results{ 		padding-left: 4px; margin-left:0%; }
+.border_questions{ 			padding-left: 4px; margin-left:0%; }
+.border_answers{ 			padding-left: 4px; margin-left:0%; }
+.border_interviews{ 		padding-left: 4px; margin-left:0%; }
+.border_qandas{ 			padding-left: 4px; margin-left:0%; }
+.border_findings{ 			padding-left: 4px; margin-left:0%; }
+.border_documents{ 			padding-left: 4px; margin-left:0%; }
+.border_transcript_events{ 	padding-left: 4px; margin-left:0%; }
+
+/* better call it: indent for ... (instead of 'toggle')*/
+.toggle_project,
+.toggle_all_reports,
+.toggle_report,
+.toggle_all_authors,
+.toggle_author,
+.toggle_all_persons,
+.toggle_person,
+.toggle_all_devices,
+.toggle_device,
+.toggle_videos,
+.toggle_all_tasks,
+.toggle_all_task_results,
+.toggle_all_questions,
+.toggle_all_answers,
+.toggle_all_interviews,
+.toggle_interview,
+.toggle_all_qandas,
+.toggle_all_findings,
+.toggle_all_documents,
+.toggle_document,
+.toggle_all_transcript_events,
+.toggle_transcript_event{
+	width:98%;
+	vertical-align: top;
+	border-top-right-radius: 40px; 
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 40px; 
+	border-top-left-radius: 0px; 
+	margin-left:0px; // projectbackground to whitespace to borderline
+	margin-top:3px;
+	padding:2px;
+	background-image: url(../assets/icons/silk/control_equalizer.png) ;
+	background-position: 1% 0%;
+	background-repeat: no-repeat;
+	font: bold 16px Arial, Helvetica, sans-serif;
+	line-height: 1.5em;
+	display: inline-block;
+	text-align:left;
+	padding-left: 31px; // indent for toggle-image
+	padding-bottom: 10px;
+	display:block;
+}
+/* background image needs some/but few space! (minmal ident)
+.toggle_all_authors{ 			padding-left: 22px;}
+.toggle_all_persons{ 			padding-left: 22px;  }
+.toggle_videos {     			padding-left: 22px;  }
+.toggle_all_devices{ 			padding-left: 22px;  }	
+.toggle_all_tasks{ 	 			padding-left: 22px;  }
+.toggle_all_task_results{ 		padding-left: 22px; }
+.toggle_all_questions{  		padding-left: 22px; }
+.toggle_all_answers{ 	 		padding-left: 22px;  }
+.toggle_all_interviews{  		padding-left: 22px;  }
+.toggle_all_qandas{  			padding-left: 22px;}
+.toggle_all_findings{  			padding-left: 22px; }
+.toggle_all_documents{			padding-left: 22px;  }
+.toggle_all_transcript_events{  padding-left: 22px; }
+*/
+/* TODO: pretty (ajax add/delete/modify-) message needed !!! */
+.ajax_message{
+	margin-top:5px;
+	margin-left:25px;
+	padding-left: 24px;
+	background-color:#E0E000;
+	font-size:60%;
+}
+
+/* ******************* * 
+	DEFINE STYLE by ID
+ * ******************* */
+/* available elements F/S (FUNCTION/STYLE):
+	header				S logo and heading
+	navigation			S menu
+	about_message		S+F show author (temporarily) 
+
+	ajax_message		S message for add/update/delete of parts of html
+	
+	border_project		S border for a section
+	border_reports
+	border_author
+
+	toggle				S ident sub-sections
+	toggle_project		
+	toggle_author		F show/hide (the long) parts
+
+	table_project
+	table_report
+	table_author
+
+	new_report_for_project		
+*/
+#header {
+	text-align:center;
+	margin-left: auto ;
+  	margin-right: auto ;
+ 	
+}
+#header a{
+	text-decoration:none;
+}
+#navigation {
+	margin-left:auto;
+    margin-right:auto;
+	align:center;
+}
+
+
+
+
+
+#table_project,
+#table_report,
+#table_author,
+#table_person,
+#table_video,
+#table_task,
+#table_device,
+#table_task_result,
+#table_question,
+#table_answer,
+#table_interview,
+#table_qanda,
+#table_finding,
+#table_document,
+#table_transcript_event{ 
+	width:96%;
+	border-top-right-radius: 40px; 
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 40px; 
+	border-top-left-radius: 0px; 
+	background:#F3F3F3;
+	text-align:left;
+	line-height:5em;
+	padding:5px;
+	padding-left:10px;
+	margin-top:5px;
+}
+/* width and color for single author, person, video...
+#table_project 			{	 }
+#table_report 			{	}
+#table_author 			{}
+#table_person 			{	}
+#table_video 			{}
+#table_task 			{}
+#table_device 			{	}
+#table_task_result 		{		}
+#table_question	 		{}
+#table_answer	 		{}
+#table_interview 		{	}
+#table_qanda 			{		}
+#table_finding 			{}
+#table_document			{		}
+#table_transcript_event	{	}
+*/
+
+
+/* some single input fields must be shorter*/
+#project_title{width:70%;}
+#input_title{width:50%;}
+
+#question_rangefrom,
+#question_rangeto{ width: 26%;}
+#question_rangescale{ width: 34%;}
+
+/* set some special with for date and time inputs: */
+#transcript_event_time,
+#person_time,
+#task_result_start,
+#task_result_end,
+#report_time			{ width: 5em;}
+#person_date,
+#report_date 			{ width: 8em;}
+
+/* set some special with for numeric inputs: */
+#person_age,
+#person_itexperience_pcusageperweek,
+#person_itexperience_pcusageinyears,
+#person_itexperience_webusageperweek,
+#task_durationscheduled,
+#task_result_durationactual,
+#task_result_completion,
+#answer_value,
+#finding_priority				{ width: 4em;}
+
+/*special 'it-attributes' sub-table for a person*/
+#person_it_attributes {   width:90%; }
+
+/* dynamic (=non-available) div elements: F FUNCTION (no S STYLE)
+	project_1
+	edit_project_1
+	project_message_1
+		report_2		
+		edit_report_2		// highlight element (yellow) on change
+		report_message_2
+		toggle_report_2
+		new_author_for_report_2
+		all_authors_of_report_2		F trigger: hide/show all authors
+			author_3
+			toggle_author_3
+			edit_author_3
+			author_message_3
+*/
+
+
+/* copied from file urm_table.css */
+
+
+/* URM Usability Reporting Manager
+ * Copyright (C) 2012 internettechnik 
+ * Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
+ *
+*/
+
+/* all we need for a table */
+.container {
+    display: table;
+	width: 100%;
+	margin: 5px;
+    }
+
+.row  {
+    display: table-row;
+    }
+
+.left, .right, .middle {
+    display: table-cell;
+	text-align:left;
+	vertical-align:top;
+    }
+.tbl_data_date{		width:8em; }
+.tbl_data_number{	width:4em; }
+.tbl_data_bool{  	width:4em; }
+.tbl_data_short{  	width:20%; }
+.tbl_data_long{  	}
+.table_data_button{ width: 7%; text-align:center; }
+.middle input{		 }
