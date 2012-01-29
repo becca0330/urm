@@ -11,6 +11,11 @@
 		
  	for Rails 3.1.x find every *.css in app/assets/... 
 	for Rails 3.0.x we copy every *.css from app/assets into this file
+
+	!!! adjust the pathes: 
+		use images/toastmessage/success.png 
+		instead of assets/toastmessage/success.png !!!
+
 */
 
 /* copied from file jquery.toastmessage.css */
@@ -51,7 +56,7 @@
 }
 
 .toast-item-close {
-    //background:url(../assets/toastmessage/close.gif);
+    //background:url(../images/toastmessage/close.gif);
     width:22px;
     height:22px;
     position: absolute;
@@ -69,19 +74,19 @@
 }
 
 .toast-item-image-notice {
-    background:url(../assets/toastmessage/notice.png);
+    background:url(../images/toastmessage/notice.png);
 }
 
 .toast-item-image-success {
-    background:url(../assets/toastmessage/success.png);
+    background:url(../images/toastmessage/success.png);
 }
 
 .toast-item-image-warning {
-    background:url(../assets/toastmessage/warning.png);
+    background:url(../images/toastmessage/warning.png);
 }
 
 .toast-item-image-error {
-    background:url(../assets/toastmessageimages/error.png);
+    background:url(../images/toastmessageimages/error.png);
 }
 
 
@@ -320,7 +325,7 @@ label{
 	margin-left:0px; // projectbackground to whitespace to borderline
 	margin-top:3px;
 	padding:2px;
-	background-image: url(../assets/icons/silk/control_equalizer.png) ;
+	background-image: url(../images/icons/silk/control_equalizer.png) ;
 	background-position: 1% 0%;
 	background-repeat: no-repeat;
 	font: bold 16px Arial, Helvetica, sans-serif;
