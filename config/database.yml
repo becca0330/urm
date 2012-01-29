@@ -37,4 +37,5 @@ production:
   database: db41647_6
   username: db41647_6
   password: pwd_urm
-  socket: /var/run/mysqld/mysqld.sock
+  host: mysql5.feiner.at
+  #socket: /var/run/mysqld/mysqld.sock

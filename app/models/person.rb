@@ -25,7 +25,11 @@ class Person < ActiveRecord::Base
      self.alias.to_s+": "+self.name.to_s[0,15]+"..."
    end  
     
-    
+   def <=>(other)
+      return 1 if other.nil?
+      return 0 if self.nil?
+      self.name <=> other.name
+    end  
     
   
     
