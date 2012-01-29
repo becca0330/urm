@@ -35,6 +35,6 @@ production:
   # feiner.at
   adapter: mysql
   database: db41647_6
-  username: db41647-6
+  username: db41647_6
   password: pwd_urm
   socket: /var/run/mysqld/mysqld.sock
