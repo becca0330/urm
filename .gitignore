@@ -7,7 +7,7 @@ ruby/
 # we bundle the gems for server deployment
 #Gemfile.lock
 .sass-cache/
-public/system/
+public/system/attachments
 config/deploy.rb
 vendor/bundle
 dump*.sql
