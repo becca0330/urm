@@ -36,9 +36,7 @@ class AttributesOfPeopleController < ApplicationController
     
       def destroy
          @attribute_of_people = AttributesOfPerson.find(params[:id])
-         ca= (@attribute_of_people.custom_attribute) ?
-              @attribute_of_people.custom_attribute.title 
-              : @attribute_of_people.id
+         ca= (@attribute_of_people.custom_attribute) ?               @attribute_of_people.custom_attribute.title : @attribute_of_people.id
          logger.debug("LOG: ajax-remove custom attribute '#{ca}' of given person.")
          @attribute_of_people.delete
          respond_to do | format |  
@@ -55,9 +53,7 @@ class AttributesOfPeopleController < ApplicationController
        def update
          @attribute_of_people = AttributesOfPerson.find(params[:id])
     
-         ca= (@attribute_of_people.custom_attribute) ?
-               @attribute_of_people.custom_attribute.title 
-               : @attribute_of_people.id
+         ca= (@attribute_of_people.custom_attribute) ?             @attribute_of_people.custom_attribute.title  : @attribute_of_people.id
          logger.debug("ajax-update '#{ca}' of given person")
     
          #params[:person]=remove_timestamp_set_date_and_time(params[:person])
