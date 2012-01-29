@@ -24,6 +24,7 @@ URM::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
   
+  # 2012-01-29 NO assets with Rails 3.0.x
   # 2011-12-07
   # but do not use it on canberra server
   # so development ONLY (see Gemfile group)
@@ -31,11 +32,11 @@ URM::Application.configure do
   
   # 2011-12-22 jf for rails 3.1
   # Do not compress assets
-  config.assets.compress = false
+  # config.assets.compress = false
   
   # Expands the lines which load the assets
   # ...When debug mode is off Sprockets concatenates and runs the necessary preprocessors on all files. With debug mode turned off the manifest above would generate instead...
-  config.assets.debug = false
+  # config.assets.debug = false
   # jf: error: "...in <class:Railtie>': undefined method `debug_rjs=' for ActionView::Base:Class (NoMethodError)...."
   # occures with gem 'sass-rails', 	">= 3.1.0" activated ??!!
   # deleteing public/assets does not help
@@ -46,7 +47,7 @@ URM::Application.configure do
   #config.action_view.debug_rjs             = true
   
   # 2012-01-18 try to fix error: "rake assets:precompile  fails undefined method `context_class' for nil:NilClass"
-   config.assets.initialize_on_precompile = false
+  # config.assets.initialize_on_precompile = false
   
 end
 
