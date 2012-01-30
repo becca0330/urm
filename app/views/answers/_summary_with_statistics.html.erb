@@ -3,5 +3,5 @@
   	vals=statistic[q.id] || [] # list of answer-values per question
 	avg= "%.1f" % ( vals.sum.to_f / vals.size ) # average
 	%>
-	<%=q.order%>.) <%=q.description%>: ø=<%=avg%> "<%=vals.join('-') %>"
+	<%=q.order%>.) <%=q.description%>: avg=<%=avg%> "<%=vals.join('-') %>"
 <%end %>

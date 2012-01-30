@@ -54,7 +54,7 @@ gem "remotipart", "~> 1.0"
 #end
 
 group :development do
-	gem 'sqlite3'
+	gem 'mysql'
 end
 
 group :production do
@@ -64,6 +64,7 @@ group :production do
 	#       (version 2.8.1 does not compile on domainfactory server)
 	# 2012-01-29:
 	# we use locally 'mysql' with version 2.8.1 and fake the Gemfile.lock to 2.7
-	# in Gemfile.lock: "mysql (2.7)"
-	gem 'mysql' 
+	# in Gemfile.lock: "mysql (2.7)" (only for development on local machine: (2.8.1))
+
+	#gem 'mysql', "2.7"
 end

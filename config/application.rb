@@ -8,7 +8,10 @@ if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   # Bundler.require *Rails.groups(:assets => %w(development test))
   # If you want your assets lazily compiled in production, use this line
-  Bundler.require(:default, :assets, Rails.env)
+  
+  # 2012-01-30 we do not use assets any more with Rails 3.0.x
+  # Bundler.require(:default, :assets, Rails.env)
+  Bundler.require(:default, Rails.env)
 end
 
 module URM
