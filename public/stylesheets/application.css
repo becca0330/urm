@@ -16,6 +16,9 @@
 		use images/toastmessage/success.png 
 		instead of assets/toastmessage/success.png !!!
 
+	for jquery-ui we include furthermore:
+		stylesheets/jquery_ui_overcast/jquery-ui-1.8.16.custom.css
+
 */
 
 /* copied from file jquery.toastmessage.css */
