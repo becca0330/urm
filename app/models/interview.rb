@@ -12,8 +12,10 @@ class Interview < ActiveRecord::Base
 
   # sort interviews by person-name
    def <=>(other)
-      return 1 unless other.person
-      return -1 unless self.person
+      return  1 unless other.person
+      return -1 unless  self.person
+      return  1 unless other.person.name # with ruby 1.8.x we have no:  nil.<=>
+      return -1 unless  self.person.name
       self.person.name <=> other.person.name
    end
 

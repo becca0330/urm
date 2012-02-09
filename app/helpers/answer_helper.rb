@@ -12,7 +12,7 @@ module AnswerHelper
     answs=report.answers
     
     # output the questions ordered by the number given in attribute "order"
-    questions = report.questions.sort # set order in model (no need for _by{|q| q.order})
+    questions = report.questions_sorted # set order in model (no need for _by{|q| q.order})
     
     # remove empty answers
     answs.delete_if{ |a| a.question_id.nil? }

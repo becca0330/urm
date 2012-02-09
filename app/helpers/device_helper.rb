@@ -9,7 +9,7 @@ module DeviceHelper
   # summary information about ALL the devices
   def alldevices_summary(report)
     return if report.nil?
-    dvs=report.devices.sort
+    dvs= report.devices ? report.devices.sort : nil
     pluralize(dvs.size,I18n.t(:'devices.device.device'))+": "+dvs.collect {|dv| dv.devicetype.to_s+": "+dv.title.to_s[0,15]+"..."}.join(", ")
   end
   

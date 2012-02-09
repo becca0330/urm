@@ -9,11 +9,11 @@ class Device < ActiveRecord::Base
 	
 	#sort by devicetype and title
   def <=>(other)
-      return 1 if other.devicetype.nil?
-      return -1 if self.devicetype.nil?
+      return  1 unless other.devicetype
+      return -1 unless  self.devicetype
       if self.devicetype == other.devicetype 
-        return 1 if other.title.nil?
-        return -1 if self.title.nil?
+        return  1 unless other.title
+        return -1 unless  self.title
         self.title <=> other.title
       else
         self.devicetype <=> other.devicetype

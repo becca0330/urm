@@ -13,8 +13,8 @@ class TranscriptEvent < ActiveRecord::Base
 	
 	 # sort by person and timestamp
    def <=>(other)
-     return 1 if other.person.nil?
-     return 0 if self.person.nil?
+     return 1 if other.nil? || other.person.nil?
+     return 0 if  self.nil? ||  self.person.nil?
       self.person.name <=> other.person.name
    end
 		

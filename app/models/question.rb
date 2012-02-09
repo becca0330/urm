@@ -21,8 +21,8 @@ class Question < ActiveRecord::Base
    
   # sort questions by 'order' attribute
   def <=>(other)
-    return 1 if other.order.nil?
-    return -1 if self.order.nil?
+    return  1 unless other && other.order
+    return -1 unless  self && self.order
     self.order <=> other.order
   end 
   	

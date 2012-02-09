@@ -65,10 +65,10 @@ $(document).ready(function() {
 	$('.flash_notice').delay(3000).fadeOut();
 
 	/* read cookies and set state accordingly */	
-	console.log("Load list of 'toggle-elements' from cookies and toogle each given div")	
+	// console.log("Load list of 'toggle-elements' from cookies and toogle each given div")	
 	// setting, reading and so on.. see urm_cookies.js
 	ac = allCookiesLike("#toggle_");
-	console.log(ac);
+	// console.log(ac);
 	for (idx in ac) {
 		$(ac[idx]).toggle();
 	}

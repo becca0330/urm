@@ -69,6 +69,13 @@ class Report < ActiveRecord::Base
       end 
     end
     
+    def answers_sorted
+      self.answers.nil? ? nil : self.answers.sort
+    end
+    def questions_sorted
+      self.questions ?  self.questions.sort : nil
+    end
+    
    private
      def init_defaults
        if new_record?

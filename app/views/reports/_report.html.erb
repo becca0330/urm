@@ -369,7 +369,8 @@
 						<span id="summary_answers"><%= allanswers_summary(report) %></span>
 						<div id="toggle_all_answers_of_report_<%=report.id%>">
 							<%= render :partial =>'answers/answer', 
-								:collection => report.answers.sort	%>  
+								:collection => report.answers_sorted # report.answers.sort	
+							%>  
 
 							<!-- html for new answer of this report will be inserted here -->
 							<div id="new_answer_for_report_<%=report.id%>"></div>

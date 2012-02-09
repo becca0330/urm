@@ -308,6 +308,8 @@ en:
         testtype:
             ta:                     "Thinking Aloud (TA)"
             he:                     "Expert Review (Heuristic Evaluation, HE)"
+    update:
+       updated:                     "Successfully updated report '%{summary}'."
   # task for test-users (persons)    
   tasks:
       delete_task_hint: "Are you sure to delete this task completion for task '%{summary}'?"

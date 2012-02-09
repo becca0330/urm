@@ -19,9 +19,13 @@ class Answer < ActiveRecord::Base
           return 1 unless other.question
           return -1 unless self.question
           #puts("comparing answer-questions #{self.question.order} with #{other.question.order}")
+          return 1 unless other.question.order
+          return -1 unless self.question.order
           self.question.order <=> other.question.order
         else
           #puts("comparing answer-names #{self.person.name} with #{other.person.name}")
+          return 1 unless other.person.name
+          return -1 unless self.person.name
           self.person.name <=> other.person.name
         end
     end
