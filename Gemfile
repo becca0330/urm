@@ -1,4 +1,6 @@
 # for bundle instruction read also:
+# http://gembundler.com/rationale.html
+# and maybe:
 # http://yehudakatz.com/2011/05/30/gem-versioning-and-bundler-doing-it-right/
 
 
@@ -54,7 +56,7 @@ gem "remotipart", "~> 1.0"
 #end
 
 group :development do
-	gem 'mysql'
+	gem 'mysql2', '< 0.3' # for rails 3.0.x (version >= 0.3 works with rails 3 only)
 end
 
 group :production do
@@ -65,6 +67,5 @@ group :production do
 	# 2012-01-29:
 	# we use locally 'mysql' with version 2.8.1 and fake the Gemfile.lock to 2.7
 	# in Gemfile.lock: "mysql (2.7)" (only for development on local machine: (2.8.1))
-
-	#gem 'mysql', "2.7"
+	gem 'mysql', "2.7"
 end

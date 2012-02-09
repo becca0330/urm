@@ -49,6 +49,7 @@ GEM
     mime-types (1.17.2)
     multi_json (1.0.4)
     mysql (2.7)
+    mysql2 (0.2.18)
     paperclip (2.5.2)
       activerecord (>= 2.3.0)
       activesupport (>= 2.3.2)
@@ -92,7 +93,8 @@ PLATFORMS
 DEPENDENCIES
   execjs
   jquery-rails
-  mysql
+  mysql (= 2.7)
+  mysql2 (< 0.3)
   paperclip
   rails (= 3.0.9)
   railties

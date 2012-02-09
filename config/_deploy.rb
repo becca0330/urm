@@ -52,19 +52,25 @@ namespace :deploy do
    end
 end
 
-desc "URM: (re-)create the 'ruby'-dir link within the current app" 
-task :setuprubylink, :roles => [:app, :db, :web] do
-     run "rm -Rf #{current_path}/ruby"
-     run "ln -s  #{shared_path}/ruby #{current_path}/ruby"
-end
+# do NOT use this
+#desc "URM: (re-)create the 'ruby'-dir link within the current app" 
+#task :setuprubylink, :roles => [:app, :db, :web] do
+#     run "rm -Rf #{current_path}/ruby"
+#     run "ln -s  #{shared_path}/ruby #{current_path}/ruby"
+#end
 
+# see: http://gembundler.com/rationale.html
+# location for app-specific gems (shared across several deployments)
+# (bundler will install into this directory)
+# (bundler might use cache-subdir for not connecting to the net for installation)
+# on SERVER run: bundle install --deployment
 desc "URM: (re-)create the 'vendor'-dir link within the current app" 
 task :setupvendorlink, :roles => [:app, :db, :web] do
      run "rm -Rf #{current_path}/vendor"
      run "ln -s  #{shared_path}/vendor #{current_path}/vendor"
 end
 
-after "deploy", :setuprubylink, :setupvendorlink
+after "deploy", :setupvendorlink
 
 
 # some optional tasks with the database:
