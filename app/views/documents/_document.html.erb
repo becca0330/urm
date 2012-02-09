@@ -95,7 +95,7 @@
 									:title => t(:'documents.document.hint_source'),
 								:class => 'submittable' %>
 								<div class="attachmentsubtitle" id="document_link_<%= document.id %>">
-									<a href="<%=document.source %>">(follow link)</a>
+									<%= link_to('follow link', document.source) %>
 								</div>
 							</div><!-- end show source of remote url -->
 							

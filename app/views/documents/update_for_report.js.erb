@@ -3,8 +3,8 @@
 			:locals => {:document => o}
 			) %>
 $( "#<%=n %>_preview_<%=o.id%>" ).html("<%= escape_javascript( pre) %>");
-// update the link (=source) entry:
-$( "#<%=n %>_link_<%=o.id%>" ).html("<%= escape_javascript( link_to(o.source,'follow link') ) %>");
+// update the link (=source) entry for report-document:
+$( "#<%=n %>_link_<%=o.id%>" ).html("<%= escape_javascript( link_to('follow link',o.source) ) %>");
 <%# and clear ALL the upload file %>
 $('input[type=file]').val("")
 
