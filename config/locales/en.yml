@@ -10,9 +10,10 @@
 
 en:
   # General (navigation/header) section
-  about: "About"
-  
-  
+  about:                    "About"
+  hint_about:               "2012 by Internettechnik"
+  admin:                    "Admin"
+  hint_admin:               "URM Administration: Manage ToDos,..."
  
   # the answers for the questions in the questionnaire
   answers:
@@ -215,13 +216,19 @@ en:
            updated:        "Successfully updated test user '%{summary}'."
          
   projects:
-      index:
+    index:
         project_tab_title:              "Projects"
         project_descripion_tab_title:   "Description and list of reports"
-        project_manage_tab_title:       "View"
+        project_manage_tab_title:       "Export/View"
         manage_projects:                "Manage Projects"
         add_link:                       "Add project"
         add_hint:                       "Add a new project"
+    link_edit:                      "edit"
+    link_export:                    "export"
+    link_view:                      "view"
+    hint_edit:                      "Click to edit the project."
+    hint_export:                    "Click to export the project to XML."
+    hint_view:                      "Click to view the project rendered with XSL stylesheet"
         
   # qanda questions and answers
   qandas:
@@ -310,6 +317,12 @@ en:
             he:                     "Expert Review (Heuristic Evaluation, HE)"
     update:
        updated:                     "Successfully updated report '%{summary}'."
+    link_edit:                      "edit"
+    link_export:                    "export"
+    link_view:                      "view"
+    hint_edit:                      "Click to edit the report."
+    hint_export:                    "Click to export the report to XML."
+    hint_view:                      "Click to view the report rendered with XSL stylesheet"
   # task for test-users (persons)    
   tasks:
       delete_task_hint: "Are you sure to delete this task completion for task '%{summary}'?"

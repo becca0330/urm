@@ -89,6 +89,7 @@
 							<!-- TODO: show only ONE of the alternatives -->
 							
 							<div class="alternative_link" <%= (document.doctype=='link') ? "" : "style=display:None" %> >
+								<%# store url in field "source" %>
 				  				<%= frm_doc.text_field :source, 
 									:rows => 4,
 									:placeholder => t(:'documents.document.hint_source'),
@@ -100,6 +101,8 @@
 							</div><!-- end show source of remote url -->
 							
 							<div class="alternative_doc" <%= (document.doctype=='doc') ? "" : "style=display:None" %> >
+								<%# store local document as attacment %>
+								<%# nothing to store in field "source" %>
 								<%= frm_doc.file_field :attachment, 
 									:rows => 4,
 									:placeholder => t(:'documents.document.hint_attach'),
@@ -115,7 +118,7 @@
 							
 							<div class="alternative_bibentry" <%= (document.doctype=='bibentry') ? "" : "style=display:None" %> >
 				  				<%# nothing to enter if bibentry (especially NO Source-info!) %>
-								
+								<%# nothing to store in field "source" %>
 							</div><!-- end show source of bib-entry -->
 						</td>
 					</tr>

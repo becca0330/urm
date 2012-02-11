@@ -26,7 +26,7 @@
 		
 		<div id="navigation">
 			<%= link_to_function t(:'about'), 
-				"showAboutDialog();" %>
+				"showAboutDialog();", :title=> t (:'hint_about') %>
 				<div id="aboutdialog" class="ui_dialog" title="About URM">
 					<p>URM basiert auf dem Code von Wei-Ju Lin, 2011</p>
 					<hr/>
@@ -35,8 +35,8 @@
 					       Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 					</small>
 				</div>&nbsp;|&nbsp;
-			<%= link_to "Admin", 
-				todos_path %>	
+			<%= link_to 	t(:'admin'), 
+					todos_path, :title => t(:'hint_admin') %>	
 		</div>
 
 		<%= yield %>

@@ -4,7 +4,7 @@ xml.instruct! # prints encoding and version
 # optionally we add the stylesheet instruction:
 # http://localhost:3000/projects/1.xml?includestyle=true
 if @includestyle 
-  xml.instruct! 'xml-stylesheet', { :href=>'usabml-to-html5.xsl',
+  xml.instruct! 'xml-stylesheet', { :href=>'../stylesheets/usabml-to-html5.xsl',
                                     :type=>'text/xml'}
 end
 

@@ -13,18 +13,19 @@
 	Tested with "Safari 5.x" only.
 	
 -->
-<xsl:stylesheet 
+<xsl:stylesheet version="2.0" 
 	xmlns:fn="http://www.w3.org/2005/xpath-functions"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	version="2.0" >
+	>
+	
      
 	<!-- The UsabML Stylesheet for HTML5 creation 
 		(for *.xml exported usability test result reports) -->
 	<xsl:template match="/">
 		<html>
 			<head>
-				<link href="usabml-to-html5.css" rel="stylesheet" type="text/css"/>
+				<link href="../stylesheets/usabml-to-html5.css" rel="stylesheet" type="text/css"/>
 				<title>
 					<xsl:value-of select="project/title"/>: <xsl:value-of select="project/report/title"/>
 				</title>
@@ -1397,7 +1398,31 @@
 			</a>
 		</xsl:if>
 		<xsl:if test="@type = 'doc'"><a href="{filename}">
-				<xsl:value-of select="filename"/></a>
+				<xsl:variable name="fn" select="filename"/>
+				<!-- 
+					ignore the leading path and maybe the trailing params
+					/mediamarkt/images/users.hmtl?7786	
+				
+				Version a (use regex, BUT this works in Oxygen, but not in browsers): 
+				
+				<xsl:analyze-string select="{$fn}" regex="(.*)?/(.*)([?].*)?">
+					<xsl:matching-substring>
+						<xsl:value-of select="regex-group(2)"/>
+					</xsl:matching-substring>
+					<xsl:non-matching-substring>    
+						<xsl:value-of select="filename"/>
+					</xsl:non-matching-substring>
+				</xsl:analyze-string>
+				
+				Version b (original value):
+				<xsl:value-of select="filename"/>
+				
+				Version c (create helper templates for pretty print filename without path and get-params):
+				-->
+		      		<xsl:call-template name="pretty_filename">
+				         <xsl:with-param name="value" select="filename"/>
+				    </xsl:call-template>
+	            </a>
 		</xsl:if>
 			<xsl:if test="@type = 'bibentry'">
 				<xsl:value-of select="reference"/>
@@ -1422,6 +1447,62 @@
 		<xsl:value-of select="' '"/>
 		<xsl:value-of select="$tm"/>
 	</xsl:template>
-
 	
+
+	<xsl:template name="pretty_filename">
+		<xsl:param name="value"/>
+		<!-- first we remove the path until the last slash /dir/subdir/ --> 
+		<xsl:variable name="path_removed">
+	        <xsl:call-template name="remove_path">
+	          <xsl:with-param name="value" select="$value"/>
+	        </xsl:call-template>
+		</xsl:variable>
+		<!-- next we remove any trailing get params ?23345&user=admin -->
+		<xsl:variable name="getparams_removed">
+	        <xsl:call-template name="remove_getparams">
+	          <xsl:with-param name="value" select="$path_removed"/>
+	        </xsl:call-template>
+		</xsl:variable>
+		<xsl:value-of select="$getparams_removed"/>
+	</xsl:template>
+	
+	
+	
+	<xsl:template name="remove_getparams">
+		<!-- pretty print by removing path and get-params
+			/system/attachments/17/original/orient.html?1326048377
+		-->
+        <xsl:param name="value"/>
+		<xsl:choose>
+			<xsl:when test="contains($value, '?')">
+	       		<xsl:value-of select="substring-before($value, '?')" />
+			</xsl:when>
+			<xsl:otherwise>
+				 <xsl:value-of select="$value" />
+			</xsl:otherwise>
+		</xsl:choose>
+    </xsl:template>
+
+	<xsl:template name="remove_path">
+		<!-- pretty print by removing path and get-params
+			/system/attachments/17/original/orient.html?1326048377
+		Note we use recursion to remove every dir/subdir/subsubdir/...
+		-->
+    	<xsl:param name="value" />
+		<xsl:choose>
+			<xsl:when test="contains($value, '/')">
+				<xsl:variable name="path_removed">
+				    <xsl:call-template name="remove_path">
+				         <xsl:with-param name="value" select="substring-after($value, '/')"/>
+				    </xsl:call-template>
+				</xsl:variable>
+				<xsl:value-of select="$path_removed"/>
+			</xsl:when>
+			<xsl:otherwise>
+			    <xsl:value-of select="$value" />
+			</xsl:otherwise>
+		</xsl:choose>
+    </xsl:template>
+
+
 </xsl:stylesheet>

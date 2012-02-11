@@ -4,24 +4,37 @@
 	<tr>
 		<th><%= t '.project_tab_title' %></th>
 		<th><%= t '.project_descripion_tab_title' %></th>
-		<th colspan="2"><%=t(:'.project_manage_tab_title')%></th>
+		<th><%=t(:'.project_manage_tab_title')%></th>
 	</tr>
 
 	<% @projects.each do |project| %>
 		<tr>
-		  <td><%= link_to project.title, edit_project_path(project) %></td>
+		  <td><%= link_to( project.title, edit_project_path(project),
+				:title => t(:'projects.hint_edit') 
+				) %></td>
 		  <td><%= project.description %>
 		<ul>
 			<% project.reports.each do |r| %>
-				<li><%= r.description %></li>
+				<li>
+					<%= link_to(r.title , 	edit_report_path(r), 
+											:title => t(:'reports.hint_edit') ) %>: 
+					<%= link_to(t(:'reports.link_export') , 	report_path(r, 	:format => :xml),
+					  						:title => t(:'reports.hint_export') )%> / 
+				 	<%= link_to(t(:'reports.link_view'), 	report_path(r, 	:includestyle=>true, 
+															:format => :xml),
+											:title => t(:'reports.hint_view'))  %>
+				<br /> <%=r.description %>	<br /><br />
+				</li>
 			<% end %>
 		</ul>
 		</td>
-		  <td><%= link_to "XML", project_path(project, :format => :xml)  %> 
-			<br/>(plain)</td>
-		  <td><%= link_to "XML+XSL", project_path(project, :includestyle=>true, 
-							:format => :xml)  %>
-			<br/>(with style)</td>
+		  <td>
+				<%= link_to(t(:'projects.link_export') , 	project_path(project, 	:format => :xml),
+				  						:title => t(:'projects.hint_export') )%> / 
+			 	<%= link_to(t(:'projects.link_view'), 	project_path(project, 	:includestyle=>true, 
+														:format => :xml),
+										:title => t(:'projects.hint_view'))  %>
+</td>
 		</tr>
 	<% end %>
 </table>

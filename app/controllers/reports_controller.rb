@@ -67,4 +67,32 @@ class ReportsController < ApplicationController
     newhash
   end
   
+  
+  # GET /reports/1/edit
+  def edit
+    # TODO caching!!
+    @Eventcodes = Eventcode.all
+    @persontypes = Persontype.all
+    @CustomAttribs = CustomAttribute.all
+
+    @report=Report.find(params[:id])
+    @project = @report.project
+    render( :locals => {:report => @report})
+  end
+  
+  # GET /projects/1.xml
+  def show
+    @Eventcodes = Eventcode.all #TODO: cache!
+    @report = Report.find(params[:id])
+    @project = @report.project
+
+    # optionally we add the stylesheet instruction:
+    # http://localhost:3000/reports/1.xml?includestyle=true
+    @includestyle=params[:includestyle] || false
+
+    respond_to do |format|
+      format.xml  # use the custom show.xml.builder
+    end
+  end
+  
 end
