@@ -43,5 +43,13 @@ class Answer < ActiveRecord::Base
          msg+": "+self.value.to_s[0,10]
     end
 
-
+    def Answer.allanswers_hash(allanswers)
+      # we get all answers sorted by question
+      h={}
+      # we return a hash with keys = question_ids and values = list of answers for the question 
+      allanswers.each do |a|
+        h[a.question_id] ? h[a.question_id] << a : h[a.question_id] = [a]
+      end
+      h
+    end
 end

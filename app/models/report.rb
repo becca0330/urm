@@ -75,7 +75,9 @@ class Report < ActiveRecord::Base
     def questions_sorted
       self.questions ?  self.questions.sort : nil
     end
-    
+    def answers_sorted_by_questionid
+      self.answers ? self.answers.order(:'question_id') : nil
+    end 
    private
      def init_defaults
        if new_record?

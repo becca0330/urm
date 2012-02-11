@@ -1027,17 +1027,19 @@
 					<th>-</th>
 					<th>Severity per Person</th>
 					<th>Severity Average</th>
-					<th>Severity Std. Dev.</th>
+					<!-- TODO th>Severity Std. Dev.</th -->
 					
 				</tr>
 			</thead>
 			<tbody>
 				<xsl:for-each select="questionnaireresults/answerforquestion">
-					<!--xsl:sort select="@questionid" data-type="number" does now work with question_23/-->
-					<xsl:sort select="@questionid" />
+					<!--xsl:sort select="@questionid" data-type="number" does now work with question_23/
+						so we strip off the prefix "question_" and we get "23" and treat this as number!
+					-->
+					<xsl:sort select="substring-after(@questionid, '_')" data-type="number"  />
 					<xsl:variable name="qid" select="./@questionid" />
 					<tr>
-						<td>
+						<td><!--xsl:value-of select="substring-after(@questionid, '_')" /-->
 							<!--xsl:apply-templates select="$qid"/--> 							
 							<xsl:apply-templates select="//questionnaire/question[@id=$qid]/description"/>
 						</td>
@@ -1046,12 +1048,14 @@
 						<td> <xsl:apply-templates select="//questionnaire/question[@id=$qid]/rangeto"   /> </td>
 						<td>
 							<xsl:for-each select="./answer">
-								<xsl:apply-templates select="./value"/> (<xsl:variable name="pid" select="@personid" />
-				<xsl:apply-templates select="//report/persons/person[@id=$pid]/alias"/>)<br /> 
+								<xsl:apply-templates 
+										select="./value"/> (<xsl:variable name="pid" select="@personid" />
+									<xsl:apply-templates 
+										select="//report/persons/person[@id=$pid]/alias"/>)<br /> 
 							</xsl:for-each>
 						</td>
 						<td> <xsl:value-of select="format-number(sum(*) div count(*) ,'#0.00')"/>  </td>
-						<td> ... </td>
+						<!--td> ... </td-->
 					</tr>
 				</xsl:for-each>
 			</tbody>
