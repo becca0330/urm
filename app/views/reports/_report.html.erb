@@ -23,6 +23,13 @@
 						:remote		=> true,
 						:confirm 	=> t(:'.delete_confirm',:summary => report.summary),
 						:title 		=> t(:'.delete_hint',	:summary => report.summary)  )%>
+				&nbsp;&nbsp;&nbsp;	
+				<%= link_to(image_tag('xml.png'), 	report_path(report, :format => :xml),
+  							:title => t(:'reports.hint_export') )%>
+ 							&nbsp;&nbsp;&nbsp;	
+				<%= link_to(image_tag('preview.png'), 	report_path(report, :includestyle=>true, 
+																			:format => :xml),
+							:title => t(:'reports.hint_view'))  %>
 			<% end # of form report (part 1 summary) TODO: check no form needed? %>
 				
 			<!-- SUB SECTION SINGLE REPORT Details (modifiable details) -->

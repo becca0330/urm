@@ -26,6 +26,13 @@
 					# Note: we redirect to overview page, so NO AJAX here!!
 					:remote		=> false,
 					:title => "Remove this project" ) %>
+				&nbsp;&nbsp;&nbsp;	
+				<%= link_to(image_tag('xml.png') , 	project_path(@project, 	:format => :xml),
+				  						:title => t(:'projects.hint_export') )%>
+				&nbsp;&nbsp;&nbsp;
+			 	<%= link_to(image_tag('preview.png'), 	project_path(@project, 	:includestyle=>true, 
+														:format => :xml),
+										:title => t(:'projects.hint_view'))  %>
 			<% end  %> <!-- end of project-form -->
 			
 			<!-- SUB SECTION SINGLE Project Details (modifiable details) -->
