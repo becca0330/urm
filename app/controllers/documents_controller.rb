@@ -40,6 +40,7 @@ class DocumentsController < ApplicationController
  
    end
   
+  # AJAX JavaScript update => update_for_xxx.js.erb
   def update
     @document = Document.find(params[:id])
     r_id=params[:document][:report_id]; params[:document].delete(:report_id)
