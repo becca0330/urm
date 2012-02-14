@@ -9,14 +9,18 @@ class FindingsController < ApplicationController
   
   def new
     @report = Report.find(params[:report_id])
+    findingtype = params[:findingtype] || 'positive' # positive finding or recommendation
     
-    logger.info("ajax-add a new finding for given report...")
+    logger.info("ajax-add a new finding (type=#{findingtype}) for given report...")
     @finding = Finding.new
+    @finding.findingtype=findingtype
     @report.findings.push(@finding)
+    
+    page = (findingtype=='positive') ? :new : :new_recommendation
     
     respond_to do | format |  
       format.js {
-        render(:new, :locals=>{:finding=>@finding}) 
+        render(page, :locals=>{:finding=>@finding}) 
       }  
     end
   end

@@ -40,23 +40,6 @@
 					</tr>
 					<tr>
 						<td>
-						    <%= frm_fdg.label( :findingtype, t(:'.label_findingtype'),
-						 			:title => t(:'.prompt_findingtype')
-						 			)%> 
-						</td> 
-						<td>
-					 		<%= frm_fdg.select(
-									:findingtype, 
-									{	t(:'.findingtype.positive')			=>"positive", 
-										t(:'.findingtype.recommendation')	=> "recommendation",
-										t(:'.findingtype.discussion')		=> "discussion"},
-									{}, # no options
-									:class 					=> 'submittable'
-							) %>
-						</td>
-					</tr>
-					<tr>
-						<td>
 						    <%= frm_fdg.label :priority, t(:'.label_priority') ,
 						 		:title => t(:'.hint_priority') %> 
 						</td> 

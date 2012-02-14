@@ -78,6 +78,14 @@ class Report < ActiveRecord::Base
     def answers_sorted_by_questionid
       self.answers ? self.answers.order(:'question_id') : nil
     end 
+    
+    def positive_findings 
+      self.findings.where("findingtype=?", 'positive')
+    end
+    def negative_findings # =recommendations
+      self.findings.where("findingtype=?", 'recommendation')
+    end
+    
    private
      def init_defaults
        if new_record?

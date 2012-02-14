@@ -26,7 +26,7 @@
 				&nbsp;&nbsp;&nbsp;	
 				<%= link_to(image_tag('xml.png'), 	report_path(report, :format => :xml),
   							:title => t(:'reports.hint_export') )%>
- 							&nbsp;&nbsp;&nbsp;	
+ 				&nbsp;&nbsp;&nbsp;	
 				<%= link_to(image_tag('preview.png'), 	report_path(report, :includestyle=>true, 
 																			:format => :xml),
 							:title => t(:'reports.hint_view'))  %>
@@ -34,7 +34,7 @@
 				
 			<!-- SUB SECTION SINGLE REPORT Details (modifiable details) -->
 			<div id="toggle_report_<%=report.id%>">
-				<small class="navigation"><%=t(:'.link_jumptosection')%>:  
+				<small class="navigation"><%=t(:'link_jumptosection')%>:  
 					<%=link_to t(:'authors.section_title'), 		:anchor=>"authors" 				%> |
 					<%=link_to t(:'.link_intro'),					:anchor=>"intro" 				%> |
 					<%=link_to t(:'.link_methodology'), 			:anchor=>"methodology" 			%> |
@@ -47,7 +47,9 @@
 					<%=link_to t(:'.link_questionnaire_results'),	:anchor=>"questionnaireresults"%> |
 					<%=link_to t(:'interviews.section_title'), 		:anchor=>"interviews" 			%> | 
 					<%=link_to t(:'.link_analysis'),				:anchor=>"analysis" 			%> |
-					<%=link_to t(:'findings.section_title'), 		:anchor=>"findings" 			%> | 
+					<%=link_to t(:'findings.section_title'), 		:anchor=>"findings" 			%> |
+					<%=link_to t(:'findings.recommendations.section_title'), 
+																	:anchor=>"recommendations"		%> | 
 					<%=link_to t(:'.link_transcripts'), 			:anchor=>"transcripts" 			%> |
 					<%=link_to t(:'.link_appendix'),		 		:anchor=>"appendix" 			%> 
 				</small>
@@ -441,7 +443,7 @@
 					</table>
 				<% end # of form report (part 6 analysis) %>
 				
-				<!-- SECTION ALL FINDINGS -->
+				<!-- SECTION ALL FINDINGS (POSITIVE ones!) -->
 				<a name="findings" />
 				<div class = "border_findings">
 					<div class="toggle_all_findings">
@@ -452,7 +454,7 @@
 						<span id="summary_findings"><%= allfindings_summary(report) %></span>
 						<div id="toggle_all_findings_of_report_<%=report.id%>">
 							<%= render :partial =>'findings/finding', 
-								:collection => report.findings	%>  
+								:collection => report.positive_findings	%>  
 
 							<!-- html for new finding of this report will be inserted here -->
 							<div id="new_finding_for_report_<%=report.id%>"></div>
@@ -464,6 +466,35 @@
 						</div> <!-- end all findings-->
 					</div><!-- end toggle for all findings-->
 				</div><!-- end border all findings-->
+
+
+				<!-- SECTION ALL RECOMMENDATIONS (=negative findings) -->
+				<a name="recommendations" />
+				<div class = "border_recommendations">
+					<div class="toggle_all_recommendations">
+					
+						<%= link_to_function(t(:'findings.recommendations.section_title'),
+							toggler("#toggle_all_recommendations_of_",report)
+							) %>:
+						<span id="summary_recommendations"><%= allrecommendations_summary(report) %></span>
+						<div id="toggle_all_recommendations_of_report_<%=report.id%>">
+							<%= render :partial =>'findings/recommendation', 
+								:collection => report.negative_findings,
+								:as => :finding
+								%>  
+
+							<!-- html for new recommendation of this report will be inserted here -->
+							<div id="new_recommendation_for_report_<%=report.id%>"></div>
+
+							<%= link_to( image_tag('add.png')+t(:'findings.recommendations.add_link'),
+									new_finding_path(:report_id => report.id, :findingtype=>'recommendation'),
+									:remote		=> true,
+									:title =>t(:'findings.recommendations.add_hint')) %>
+						</div> <!-- end all recommendations -->
+					</div><!-- end toggle for all recommendations -->
+				</div><!-- end border all recommendations -->
+
+
 				
 				<%= form_for(report, 
 						:remote => true, 

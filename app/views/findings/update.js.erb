@@ -1,5 +1,5 @@
 $("#summary_finding_<%=finding.id%>" ).html("<%=finding.summary%>");
 $("#summary_findings" ).html("<%=allfindings_summary(finding.report) %>");
-
-showToast("<%= escape_javascript( t(:'.updated', :summary => @finding.summary) ) %>");
+<% msg = (finding.findingtype=='positive') ? t(:'.updated', :summary => @finding.summary) : t(:'.recommendations.updated', :summary => @finding.summary) %>
+showToast("<%= escape_javascript(msg) %>");
 resetHighlightingForElems('.edit_finding_<%=finding.id%>');

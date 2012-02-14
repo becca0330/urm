@@ -116,7 +116,7 @@ en:
        event_description:       "Description"
        event_description_hint:  "Event description"
 
-  # a positive finding (=recommendation) or a negative one
+  # a positive finding (for negative findings see below "recommendation")
   findings:
         section_title:          "Findings"
         add_link:               "Add finding"
@@ -140,8 +140,26 @@ en:
                     recommendation: "Recommendation"
                     discussion:     "Discussion"
         update:
-            updated:        "Successfully updated finding '%{summary}'."        
-            
+            updated:        "Successfully updated finding '%{summary}'." 
+            recommendations:
+                updated:    "Successfully updated recommendation '%{summary}'." 
+        # recommendation (= a negative finding. That's it!). For positive see section "findings"
+        recommendations:
+            section_title:          "Recommendations"
+            add_link:               "Add recommendation"
+            add_hint:               "Add a new recommendation to this report."
+        recommendation: 
+            finding:            "recommendation"
+            section_title:      "Recommendation"
+            delete_confirm:     "Are you sure to delete recommendation '%{summary}'?"
+            delete_hint:        "Remove recommendation '%{summary}'..."
+            label_title:        "Title"
+            label_priority:     "Priority"
+            label_description:  "Description"
+            hint_title:         "A short title for the recommendation"
+            hint_priority:      "Sort order is ascending, according the priority given. Higest priority = 1, then 2 and so on."
+            hint_description:   "Extensive description for this recommendation"
+
              
   # a interview with a person (contains many qanda)         
   interviews:
