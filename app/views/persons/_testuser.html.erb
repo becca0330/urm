@@ -25,11 +25,12 @@
 							) do |frm_pers| %>
 				<table id="table_person">
 					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+					<%# no need to select between staff and testusers anymore
 					<tr>
 						<td>
 						    <%= frm_pers.label :persontype, t(:'.label_persontype'),
 						 			:title => t(:'.prompt_persontype')
-									%> 
+									% > 
 						</td> 
 						<td>
 							<%= frm_pers.collection_select(
@@ -40,9 +41,10 @@
 								:name_with_description, # display "user (...)"
 								options ={:prompt => t(:'.prompt_persontype')}, 
 								:class =>"submittable") # css style
-							%>
+							% >
 						</td>
 					</tr>
+					%>
 					<tr>
 						<td>
 						    <%= frm_pers.label :name, t(:'.label_name') ,

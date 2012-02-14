@@ -38,7 +38,8 @@
 					<%=link_to t(:'authors.section_title'), 		:anchor=>"authors" 				%> |
 					<%=link_to t(:'.link_intro'),					:anchor=>"intro" 				%> |
 					<%=link_to t(:'.link_methodology'), 			:anchor=>"methodology" 			%> |
-					<%=link_to t(:'persons.section_title'), 		:anchor=>"persons" 				%> |
+					<%=link_to t(:'persons.staff.section_title'), 	:anchor=>"staff" 				%> |
+					<%=link_to t(:'persons.testusers.section_title'),:anchor=>"testusers"			%> |
 					<%=link_to t(:'.link_environment'), 			:anchor=>"environment" 			%> |
 					<%=link_to t(:'.link_training'), 				:anchor=>"training" 			%> |
 					<%=link_to t(:'.link_tasks'), 					:anchor=>"tasks" 				%> |
@@ -193,30 +194,59 @@
 				<% end # of form report (part 3 intro and methodology ) %>
 				
 				
-				<!-- SECTION ALL Persons -->
-				<a name="persons" />
+				<!-- SECTION ALL "staff" Persons (=person with persontype_id ==2 .name="staff")-->
+				<a name="staff" />
+				<!-- TODO: adjust persons for staff -->
 				<div class = "border_persons">
-					<div class="toggle_all_persons">
-					
-						<%= link_to_function(t(:'persons.section_title'),
-								toggler("#toggle_all_persons_of_",report)
+					<div class="toggle_all_staff">
+						<%= link_to_function(t(:'persons.staff.section_title'),
+								toggler("#toggle_all_staff_of_",report)
 								) %>
-						<span id="summary_persons">: <%= allpersons_summary(report) %></span>
-						<div id="toggle_all_persons_of_report_<%=report.id%>">
-							<%= render :partial =>'persons/person', 
-								:collection => report.persons	%>  
+						<span id="summary_staff">: <%= allstaff_summary(report) %></span>
+						<div id="toggle_all_staff_of_report_<%=report.id%>">
+							<%= render :partial =>'persons/staff', 
+								:collection => report.staff,
+								:as => :person
+								%>  
 
-							<!-- html for new author of this report will be inserted here -->
-							<div id="new_person_for_report_<%=report.id%>"></div>
+							<!-- html for new staff member of this report will be inserted here -->
+							<div id="new_staff_for_report_<%=report.id%>"></div>
 
-							<%= link_to( image_tag('add.png')+t(:'persons.add_link'),
-									new_person_path(:report_id => report.id),
+							<%= link_to( image_tag('add.png')+t(:'persons.staff.add_link'),
+									new_person_path(:report_id => report.id, :persontype_id => 2),
 									:remote		=> true,
-									:title =>	t(:'persons.add_hint')) %>
-						</div> <!-- end all persons-->
-					</div><!-- end toggle for all persons-->
-				</div><!-- end border all persons-->
+									:title =>	t(:'persons.staff.add_hint')) %>
+						</div> <!-- end all staff members (persons with persontype=2 "staff") -->
+					</div><!-- end toggle for all staff members (persons with persontype=2 "staff") -->
+				</div><!-- end border all staff members (persons with persontype=2 "staff") -->
 				
+				<!-- SECTION ALL "test users" Persons -->
+				<a name="testusers" />
+				<!-- TODO: adjust persons for testusers (=person with persontype_id ==1 .name="user") -->
+				<div class = "border_persons">
+					<div class="toggle_all_testusers">				
+						<%= link_to_function(t(:'persons.testusers.section_title'),
+								toggler("#toggle_all_testusers_of_",report)
+								) %>
+						<span id="summary_testusers">: <%= alltestusers_summary(report) %></span>
+						<div id="toggle_all_testusers_of_report_<%=report.id%>">
+							<%= render :partial =>'persons/testuser', 
+								:collection => report.testusers, :as => :person	%>  
+
+							<!-- html for new testuser of this report will be inserted here -->
+							<div id="new_testuser_for_report_<%=report.id%>"></div>
+
+							<%= link_to( image_tag('add.png')+t(:'persons.testusers.add_link'),
+									new_person_path(:report_id => report.id, :persontype_id => 1),
+									:remote		=> true,
+									:title =>	t(:'persons.testusers.add_hint')) %>
+						</div> <!-- end all testusers (persons with type=1 "user") -->
+					</div><!-- end toggle for all testusers (persons with type=1 "user") -->
+				</div><!-- end border all testusers (persons with type=1 "user") -->
+
+
+
+
 				
 				<%= form_for(report, 
 						:remote => true, 

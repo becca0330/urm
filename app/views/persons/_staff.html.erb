@@ -1,0 +1,76 @@
+<!-- SECTION SINGLE PERSON -->
+<div id="person_<%=person.id%>" class="border_person">
+
+	<!-- SECTION SINGLE Person Summary (modifiable details) -->
+	<div class="toggle_person" >
+		<%= form_for(person, 
+				:remote => true, 
+				:html => {:class => "edit_person_#{person.id}"}
+				) do |frm_pers| %>
+
+			<%= link_to_function(t(:'.section_title'),toggler("#toggle_",person) ) %>
+			<span id="summary_person_<%=person.id%>"><%= person.summary %></span>
+			<%= link_to( image_tag("delete.png"), 
+					person_path(person),
+					:method		=> :delete,
+					:remote		=> true,
+					:confirm 	=> t(:'.delete_confirm',:summary => person.summary),
+					:title 		=> t(:'.delete_hint',	:summary => person.summary) ) %>
+		<% end # of form person (part 1) %>	
+			<!-- SUB SECTION SINGLE Person Details (modifiable details) -->
+			<div id="toggle_person_<%=person.id%>">
+				<%= form_for(person, 
+							:remote => true, 
+							:html => {:class => "edit_person_#{person.id}"}
+							) do |frm_pers| %>
+				<table id="table_person">
+					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+					<tr>
+						<td>
+						    <%= frm_pers.label :name, t(:'.label_name') ,
+						 		:title => t(:'.hint_name') %> 
+						</td> 
+						<td>
+					 		<%= frm_pers.text_field(:name, 
+									:placeholder 	=> t(:'.hint_name'),
+									:title 			=> t(:'.hint_name'),
+									:class 			=> 'submittable'
+									) %> 
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_pers.label :alias,  t(:'.label_alias') ,
+						 		:title => t(:'.hint_alias') %> 
+						</td> 
+						<td>
+					 		<%= frm_pers.text_field :alias,
+					 			:placeholder	=> t(:'.hint_alias'),
+								:title 			=> t(:'.hint_alias'),
+								:class 			=> 'submittable' %> 
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_pers.label :annotation, t(:'.label_annotation'),
+						 			:title => t(:'.hint_annotation')
+								 %> 
+						</td>
+						<td>
+				  			<%= frm_pers.text_area 	:annotation,
+				 				:placeholder 	=> t(:'.hint_annotation') ,
+								:title 			=> t(:'.hint_annotation'),
+								:rows 			=> 3,
+								:class 			=> 'submittable' %>
+						</td>
+					</tr>
+				</table>
+				<% end # of form person (part II) %>
+
+			</div> <!-- end of id toggle_person -->
+
+	</div> <!-- end of class toggle_person -->
+
+	<div id="person_message_<%=person.id%>" class="ajax_message"></div>
+
+</div> <!-- end of div person-->

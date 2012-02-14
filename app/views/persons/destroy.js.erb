@@ -1,4 +1,6 @@
 $("#summary_person_<%=person.id%>" ).html("<%=escape_javascript( person.summary) %>");
-$("#summary_persons" ).html("<%=escape_javascript( allpersons_summary(person.report) ) %>");
+<%# we update summary for staff AND for testusers %>
+$("#summary_staff" ).html("<%=escape_javascript( allstaff_summary(person.report) ) %>");
+$("#summary_testusers" ).html("<%=escape_javascript( alltestusers_summary(person.report) ) %>");
 	
 $('#person_<%=person.id%>').fadeOut();

@@ -5,10 +5,16 @@
 
 module PersonHelper
 
-  # summary information about ALL authors
-  def allpersons_summary(report)
-    ps=report.persons
-    pluralize(ps.size,I18n.t(:'persons.person.person') ) + ": "+ps.collect {|p|  p.summary.to_s}.join(", ")
+  # summary information about ALL persons  testusers (=person with persontype_id ==1 .name="user")
+  def alltestusers_summary(report)
+    ps=report.persons.where("persontype_id=?",1)
+    pluralize(ps.size,I18n.t(:'persons.testuser.person') ) + ": "+ps.collect {|p|  p.summary.to_s}.join(", ")
+  end
+
+  
+  def allstaff_summary(report)
+    ps=report.persons.where("persontype_id=?",2)
+    pluralize(ps.size,I18n.t(:'persons.staff.person') ) + ": "+ps.collect {|p|  p.summary.to_s}.join(", ")
   end
   
   

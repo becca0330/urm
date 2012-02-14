@@ -9,19 +9,26 @@ class PersonsController < ApplicationController
 
    def new
      @report = Report.find(params[:report_id])
-
-     logger.info("ajax-add a new person for given report...")
+     persontype_id = params[:persontype_id] || '1' # persontype_id: 1=user, 2=staff, 3=heexpert
+  
+     logger.info("ajax-add a new person (persontype_id: #{persontype_id}) for given report...")
      @person = Person.new
+     @person.persontype_id = persontype_id
      @report.persons.push(@person)
 
-     # create all available custom attributes by default
-     CustomAttribute.all.each { |ca|
-       @person.custom_attributes.push(ca)
-     }
+     page = (persontype_id=='1') ? :new_testuser : :new_staff
+     logger.info("so render page #{page}...")
+     
+     if (persontype_id==1) # for test users:
+       # create all available custom attributes by default
+       CustomAttribute.all.each { |ca|
+         @person.custom_attributes.push(ca)
+       }
+     end
 
      respond_to do | format |  
        format.js {
-         render(:new, :locals=>{:person=>@person}) 
+         render(page, :locals=>{:person=>@person}) 
        }  
      end
    end
@@ -30,7 +37,7 @@ class PersonsController < ApplicationController
    def destroy
      @person = Person.find(params[:id])
 
-     puts("LOG: ajax-remove current person #{@person.name }")
+     puts("LOG: ajax-remove current person (staff or testuser or heexpert or...) #{@person.name }")
      @person.delete
      respond_to do | format |  
        format.js {

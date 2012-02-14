@@ -1,5 +1,9 @@
 $("#summary_person_<%=person.id%>" ).html("<%=person.summary%>");
-$("#summary_persons" ).html("<%=allpersons_summary(person.report) %>");
+<%# and we update the summaries for staff as well as for testusers %> 
+$("#summary_testusers" ).html("<%=alltestusers_summary(person.report) %>");
+$("#summary_staff" ).html("<%=allstaff_summary(person.report) %>");
 
-showToast("<%= escape_javascript( t(:'.updated', :summary => @person.summary) ) %>");
+<% msg = (person.persontype_id==1) ? t(:'persons.testuser.updated', :summary => person.summary) : t(:'persons.staff.updated', :summary => person.summary) %>
+showToast("<%= escape_javascript(msg) %>");
+
 resetHighlightingForElems('.edit_person_<%=person.id%>');

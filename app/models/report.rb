@@ -86,6 +86,20 @@ class Report < ActiveRecord::Base
       self.findings.where("findingtype=?", 'recommendation')
     end
     
+    # testusers (=person with persontype_id ==1 .name="user") 
+    def testusers
+      self.persons.where("persontype_id=?",1)
+    end
+    # staff (=person with persontype_id ==2 .name="staff") 
+    def staff
+      self.persons.where("persontype_id=?",2)
+    end
+    
+    # heexperts (=person with persontype_id ==3 .name="heexpert") 
+    def heexperts
+      self.persons.where("persontype_id=?",3)
+    end
+    
    private
      def init_defaults
        if new_record?
