@@ -37,7 +37,7 @@ en:
   # authors of the report
   authors:
     section_title:          "Authors"
-    add_link:               "Add author"
+    add_link:               "Add Author"
     add_hint:               "Add another author to the report..."
     author:
         author: author
@@ -51,7 +51,7 @@ en:
 
   # devices = items (location, hardware, software,...) of the environment    
   devices:
-     add_link:              "Add item"
+     add_link:              "Add Item"
      add_hint:              "Add a new item to this report."
      device:
          device:            "item"
@@ -75,7 +75,7 @@ en:
   # documents (belong to findings or belong to the report directly)      
   documents:
    section_title:           "Documents"
-   add_link:                "Add document"
+   add_link:                "Add Document"
    add_hint:                "Add a new document to this finding."
    add_to_report_link:      "Add document"
    add_to_report_hint:      "Add a new document to this report."
@@ -119,7 +119,7 @@ en:
   # a positive finding (for negative findings see below "recommendation")
   findings:
         section_title:          "Findings"
-        add_link:               "Add finding"
+        add_link:               "Add Finding"
         add_hint:               "Add a new finding to this report."
         finding: 
             finding:            "finding"
@@ -146,7 +146,7 @@ en:
         # recommendation (= a negative finding. That's it!). For positive see section "findings"
         recommendations:
             section_title:          "Recommendations"
-            add_link:               "Add recommendation"
+            add_link:               "Add Recommendation"
             add_hint:               "Add a new recommendation to this report."
         recommendation: 
             finding:            "recommendation"
@@ -164,7 +164,7 @@ en:
   # a interview with a person (contains many qanda)         
   interviews:
         section_title:              "Interviews"
-        add_link:                   "Add interview"
+        add_link:                   "Add Interview"
         add_hint:                   "Add a new interview to this report."
         interview:   
             interview:              "interview"
@@ -203,12 +203,12 @@ en:
                 hint_annotation:        "Annotations..."
                 updated:                "Successfully updated staff member '%{summary}'."
         testusers:
-                section_title:          "Test users" 
+                section_title:          "Test Users" 
                 add_link:               "Add test user"
                 add_hint:               "Add another test user to the report..."
         testuser:
                 person:             "test user"
-                section_title:      "Test user" 
+                section_title:      "Test User" 
                 with:               "with"          # interview 'with' test user 
                 delete_confirm:     "Are you sure to delete test user '%{summary}'?"
                 delete_hint:        "Remove test user '%{summary}'..."

@@ -19,5 +19,5 @@ class Todo < ActiveRecord::Base
   def pretty_date
     self.updated_at.strftime("%Y-%m-%d")
   end
-
+  
 end

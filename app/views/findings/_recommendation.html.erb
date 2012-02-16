@@ -118,21 +118,39 @@
 		
 			
 			
-			
+				<%= form_for(finding, 
+						:remote => true, 
+						:html => {:class => "edit_finding_#{finding.id}"}
+						) do |frm_fdg| %>
 				<table id="table_finding">
 					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
 					<tr>
 						<td>
-						    <%#= frm_fdg.label :codereferences, "Codereferences" %> 
-							TODO: Codereferences
+						    <%= frm_fdg.label :codereferences, "Codereferences" %> 
+							
 						</td> 
-						<td>
-					 		<!--TODO--><small>(not available yet: assign multiple code-references!)</small>
+						<td>Assign the location of the code responsible:
+								
+					 		<!--TODO-->
+							<%#= frm_fdg.text_field '',
+								:placeholder 	=> 	t(:'.hint_priority'),
+								:title			=> 	t(:'.hint_priority')#,									
+								#:class 			=> 'submittable'
+							 %>
+							<hr />
+							Pkg:   <input type="text" size="3"></input><br/>
+							Class: <input type="text" size="3"></input><br/>
+							Line:  <input type="text" size="3"></input><br/>
+							<hr />
+							<small>
+								(not available yet: assign multiple code-references!)
+							</small>
+							
 						</td>
 					</tr>
 					
 				</table>
-				
+				<% end # form finding part IV %>
 			</div> <!-- end of id toggle_finding -->
 		
 	</div> <!-- end of class toggle_finding -->
