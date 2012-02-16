@@ -10,9 +10,11 @@
 
 en:
   # General (navigation/header) section
+  home:                     "Home"
   about:                    "About"
-  hint_about:               "2012 by Internettechnik"
   admin:                    "Admin"
+  hint_home:                "Go Home, to the Overview Page"
+  hint_about:               "2012 by Internettechnik"
   hint_admin:               "URM Administration: Manage ToDos,..."
  
   # the answers for the questions in the questionnaire

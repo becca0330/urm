@@ -27,6 +27,8 @@
 				</a>
 			</div>
 		
+		<%= link_to t(:'home'), 
+				:action=>'index', :title => t(:'hint_home') %>&nbsp;|&nbsp;
 		<div id="navigation">
 			<%= link_to_function t(:'about'), 
 				"showAboutDialog();", :title=> t (:'hint_about') %>
