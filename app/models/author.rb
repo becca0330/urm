@@ -7,7 +7,7 @@ class Author < ActiveRecord::Base
   belongs_to :report
   
   def summary
-    self.name.to_s[0,10]+"..."
+    self.name ? self.name.truncate(30) : ""
   end
   
 

@@ -33,7 +33,8 @@ class Report < ActiveRecord::Base
    end
 
    	def summary
-        self.title.to_s[0,15]+": "+self.description.to_s[0,35]+"..."
+        title=self.title ? self.title.truncate(31) : ""
+        self.description.blank? ? title : title+": "+self.description.truncate(15)
     end
 
     def date=(val)

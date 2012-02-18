@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	  	<title>URM - Usability Reporting Manager</title>
+	  	<title><%= t(:title) %></title>
 		<%= stylesheet_link_tag    	"application",
 		 							"jquery_ui_overcast/jquery-ui-1.8.16.custom"  %>
 		
@@ -23,26 +23,27 @@
 		
 			<div id='header'>
 				<a href="/">
-				<h1>URM - The Usability Reporting Manager</h1>
+				<h1><%= t(:title) %></h1>
 				</a>
 			</div>
 		
-		<%= link_to t(:'home'), 
-				:action=>'index', :title => t(:'hint_home') %>&nbsp;|&nbsp;
 		<div id="navigation">
-			<%= link_to_function t(:'about'), 
-				"showAboutDialog();", :title=> t (:'hint_about') %>
-				<div id="aboutdialog" class="ui_dialog" title="About URM">
-					<p>This code for the Usability Reporting Manager URM is based on the work of Wei-Ju Lin, 2011</p>
+			<%= link_to_unless_current t(:'home'), 
+					:controller => 'projects', :action=>'index', :title => t(:'hint_home') %>&nbsp;|&nbsp;
+			<%= link_to_function t(:'about.about'), 
+				"showAboutDialog();", :title=> t (:'about.hint') %>
+				<div id="aboutdialog" class="ui_dialog" title="<%= t(:'about.box_title') %>" >
+					<p><%= t(:'about.info')%></p>
 					<hr/>
 					<small><a href="http://itm.fh-joanneum.at/usabml/urm">http://itm.fh-joanneum.at/usabml/urm</a>
 						Copyright (C) 2012 internettechnik<br /> 
 					       Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 					</small>
 				</div>&nbsp;|&nbsp;
-			<%= link_to t(:'admin'), 
+			<%= link_to_unless_current t(:'admin'), 
 				todos_path, :title => t(:'hint_admin') %>	
 		</div>
+		<br />
 
 		<%= yield %>
 

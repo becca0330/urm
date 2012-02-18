@@ -10,17 +10,24 @@
 
 en:
   # General (navigation/header) section
+  title:                    "URM - Usability Reporting Manager"
   home:                     "Home"
-  about:                    "About"
+  back:                     'Back to Project Overview'
   admin:                    "Admin"
-  hint_home:                "Go Home, to the Overview Page"
-  hint_about:               "2012 by Internettechnik"
-  hint_admin:               "URM Administration: Manage ToDos,..."
- 
+  hint_home:                "Go Home, to the overview page"
+  hint_admin:               "URM administration: manage ToDos,..."
+  hint_back:                "Go back, to the overview page"
+  
+  about:
+      about:                "About"
+      hint:                 "2012 by Internettechnik"
+      box_title:            "About URM"
+      info:                 "This code for the Usability Reporting Manager URM is based on the work of Wei-Ju Lin, 2011"
+      
   # the answers for the questions in the questionnaire
   answers:
     results: results # statistic for summary of all answer-values
-    add_link:               "Add answer"
+    add_link:               "Add Answer"
     add_hint:               "Add a new answer to this report."
     answer:
         section_title:      "Answer"
@@ -39,6 +46,7 @@ en:
   # authors of the report
   authors:
     section_title:          "Authors"
+    toggle_section_title:   "Click to hide/show the authors..."
     add_link:               "Add Author"
     add_hint:               "Add another author to the report..."
     author:
@@ -178,7 +186,7 @@ en:
             prompt_person:          "Select the test user interviewed..."
             qandas:
                 section_title:          "Question and Answers"
-                add_link:               "Add question with answer"
+                add_link:               "Add Question with Answer"
                 add_hint:               "Add a new Question/Answer to this interview."
                 qanda:
                     qanda:              "question"
@@ -192,7 +200,7 @@ en:
   persons:
         staff:
                 section_title:          "Staff" 
-                add_link:               "Add staff member"
+                add_link:               "Add Staff Member"
                 add_hint:               "Add another staff member to the report..."
                 delete_confirm:         "Are you sure to delete staff member '%{summary}'?"
                 delete_hint:            "Remove staff member '%{summary}'..."
@@ -206,7 +214,7 @@ en:
                 updated:                "Successfully updated staff member '%{summary}'."
         testusers:
                 section_title:          "Test Users" 
-                add_link:               "Add test user"
+                add_link:               "Add Test User"
                 add_hint:               "Add another test user to the report..."
         testuser:
                 person:             "test user"
@@ -252,10 +260,10 @@ en:
   projects:
     index:
         project_tab_title:              "Projects"
-        project_descripion_tab_title:   "Description and list of reports"
+        project_descripion_tab_title:   "Description and List of Reports"
         project_manage_tab_title:       "Export/View"
         manage_projects:                "Manage Projects"
-        add_link:                       "Add project"
+        add_link:                       "Add Project"
         add_hint:                       "Add a new project"
     link_edit:                      "edit"
     link_export:                    "export"
@@ -263,7 +271,18 @@ en:
     hint_edit:                      "Click to edit the project."
     hint_export:                    "Click to export the project to XML."
     hint_view:                      "Click to view the project rendered with XSL stylesheet"
-        
+    project:
+            section_title:          "Project"
+            hint_section_title:     "Click to hide or show project details."
+            placeholder_title:      "The project title should consist of just a few words. For example just the name of the company."
+            hint_title:             "The project title should consist of just a few words. For example just the name of the company."
+            delete_hint:            "Remove the project '%{summary}'..." 
+            delete_confirm:         "Are you sure to delete this project '%{summary}'?"
+            description:            "Overall Project Description"
+            hint_description:       "The project description gives an overview of content, authors, date etc. in one or two sentences."
+            placeholder_description: "The project description gives an overview of content, authors, date etc. in one or two sentences."
+            add_he_link:              "Add Report of Heuristic Evaluation"
+            add_ta_link:              "Add Report of Thinking Aloud Test"
   # qanda questions and answers
   qandas:
       qanda:
@@ -276,7 +295,7 @@ en:
           hint_answ:            "Answer given by the test user"
   # questions
   questions:
-      add_link:     "Add question"
+      add_link:     "Add Question"
       add_hint:     "Add a new question to this report."
       question:
           section_title:            "Question"
@@ -301,11 +320,12 @@ en:
   # everything that belongs directly to a report
   reports:
     section_title:                  "Reports"
+    toggle_section_title:           "Click to hide/show all reports"
     report:
         report:                     "report"
         delete_hint:                "Remove report '%{summary}'..."
         delete_confirm:             "Are you sure to delete this report '%{summary}'?"
-        link_jumptosection_:        "Jump to section"
+        link_jumptosection:         ""
         link_intro:                 "Intro"
         link_analysis:              "Discussion" # we call the analysis: "discussion" 
         link_methodology:           "Methodology"
@@ -360,7 +380,7 @@ en:
   # task for test-users (persons)    
   tasks:
       delete_task_hint: "Are you sure to delete this task completion for task '%{summary}'?"
-      add_link:                     "Add task"
+      add_link:                     "Add Task"
       add_hint:                     "Add a new task to this project."
       task:
         task:                       "task"
@@ -382,14 +402,14 @@ en:
         placeholder_durationscheduled:  "120"
   
   task_results:
-      add_link:    "Add task result"
+      add_link:    "Add Task Result"
       add_hint:    "Add a new task completion (result) to this project."
       update:
            updated:        "Successfully updated task completion (result) '%{summary}'."
            
   transcript_events:
       section_title:    "Transcripts"
-      add_link:         "Add transcript entry"
+      add_link:         "Add Transcript Entry"
       add_hint:         "Add a new entry to this report."
       events:           "Events"
       transcript_event:
@@ -405,7 +425,7 @@ en:
           video:                "video"
           delete_hint:          "Remove video '%{summary}'..."
           delete_confirm:       "Are you sure to delete this video '%{summary}'?"
-      add_link:                 "Add a new video"
+      add_link:                 "Add a New Video"
       add_hint:                 "Add a new video to this test user."
       update:
            updated:             "Successfully updated video '%{summary}'."

@@ -10,9 +10,10 @@ class ReportsController < ApplicationController
   # get url=/reports/ajax_add => rails-path="ajax_add_reports" 
   def ajax_add
     @project = Project.find(params[:project_id])
-    
+    testtype = params[:testtype] || 'ta'
     logger.info("ajax-add a new report for given project...")
     @report = Report.new
+    @report.testtype = testtype
     
     # create some default fields/sections to be available 
     # the MUST-HAVE sections: at least one author and at least one....

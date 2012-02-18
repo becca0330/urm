@@ -7,25 +7,20 @@
 					:remote => true, 
 					:html => {:class => "edit_project_#{@project.id}"}	
 					) do |frm_pro| %>
-				<%= link_to_function("Project", 
+				<%= link_to_function(t(:'.section_title'), 
 					toggler("#toggle_",@project),
-					:title => "Click to hide or show project details.") %>
+					:title => t(:'.hint_section_title') ) %>
 				<%= frm_pro.text_field(	:title, 
-					:placeholder => "The project title should consist of just"+
-									" a few words. For example just the name"+
-									" of the company.", 
-					:title => "The project title should consist of"+
-									" just a few words. For example just"+
-									" the name of the company.",
+					:placeholder => t(:'.placeholder_title'), 
+					:title => t(:'.hint_title'),
 					:class => 'submittable') %>
 				<%= link_to( image_tag('delete.png'),
 					project_path(@project),
-					:method => :delete,
-					:confirm => "Are you sure to delete this"+
-								" project '#{@project.title}'?",
 					# Note: we redirect to overview page, so NO AJAX here!!
-					:remote		=> false,
-					:title => "Remove this project" ) %>
+					:method => :delete, :remote		=> false,
+					:confirm => t(:'.delete_confirm',:summary => @project.summary),
+					:title => t(:'.delete_hint',	:summary => @project.summary) )	%>
+					 
 				&nbsp;&nbsp;&nbsp;	
 				<%= link_to(image_tag('xml.png') , 	project_path(@project, 	:format => :xml),
 				  						:title => t(:'projects.hint_export') )%>
@@ -46,15 +41,12 @@
 						<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
 						<tr>
 							<td><%= frm_pro.label(:description, 
-									"Overall project description:") %></td>
+									t(:'.description'),
+									:title => t(:'.hint_description') ) %></td>
 							<td><%= frm_pro.text_area :description, 
 									:rows => 4,
-							 		:placeholder => "The project description gives"+
-											" an overview of content, authors,"+
-											" date etc. in one or two sentences.",
-							 		:title => "The project description gives an"+
-											" overview of content, authors, date"+
-											" etc. in one or two sentences.",
+							 		:placeholder => t(:'.placeholder_description'),
+							 		:title => t(:'.hint_description'),
 									:class => 'submittable'	%></td>
 						</tr>
 					</table>  
@@ -66,8 +58,9 @@
 				<div class="border_reports">
 					<div class="toggle_all_reports">
 						<%= link_to_function( t(:'reports.section_title'),
-								toggler("#toggle_all_reports_of_",@project)	
-							) %>:
+								toggler("#toggle_all_reports_of_",@project),
+								:title => t(:'reports.toggle_section_title')
+							) %>
 						<span id="summary_reports"><%= allreports_summary(@project) %></span>	
 						<div id="toggle_all_reports_of_project_<%=@project.id%>">
 					 		<%= render :partial =>'reports/report', 
@@ -81,15 +74,21 @@
 				<!-- html for new report will be inserted here -->
 				<div id="new_report_for_project"></div>
 				
-				<%= link_to( image_tag('add.png'),
-						ajax_add_reports_path(:project_id => @project.id),
+				<%= link_to( image_tag('add.png')+t(:'.add_ta_link'),
+						ajax_add_reports_path(:project_id => @project.id, :testtype => 'ta'),
 						:remote		=> true,
-						:title =>"Add a new report to this project.") %>Add report
-				
+						:title => t(:'.add_ta_link')) %>
+				<!-- TODO: activate this link when he is ready to be used!>
+				&nbsp;
+				<%= link_to( image_tag('add.png')+t(:'.add_he_link'),
+						ajax_add_reports_path(:project_id => @project.id, :testtype => 'he'),
+						:remote		=> true,
+						:title => t(:'.add_he_link')) %>
+				-->
 			</div><!-- end of id toggle_project (details)-->
 		</div> <!-- end of class toggle (project with summary)-->
 </div> <!-- end of single project -->
 
 <br />
 
-<%= link_to 'Back to project overview.', projects_path %>
+<%= link_to t(:'back'),  projects_path, :title => t(:'hint_back') %>
