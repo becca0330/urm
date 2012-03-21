@@ -15,14 +15,16 @@ module FindingHelper
   def allfindings_summary(report)
     return if report.nil?
     fds=report.findings.where("findingtype=?", 'positive')
-    pluralize(fds.size, t(:'findings.finding.finding') ) + ": "+fds.collect {|fdg| fdg.title.to_s[0,15]+"..."}.join(", ")
+    pluralize(fds.size, t(:'findings.finding.finding') ) + 
+      ": "+fds.collect {|fdg| fdg.title.to_s.truncate(15)}.join(", ")
   end
   
   # summary information about ALL the recommendations (=negative findings)
   def allrecommendations_summary(report)
     return if report.nil?
     fds=report.findings.where("findingtype=?", 'recommendation')
-    pluralize(fds.size, t(:'findings.recommendation.finding') ) + ": "+fds.collect {|fdg| fdg.title.to_s[0,15]+"..."}.join(", ")
+    pluralize(fds.size, t(:'findings.recommendation.finding') ) + 
+      ": "+fds.collect {|fdg| fdg.title.to_s.truncate(15) }.join(", ")
   end
   
 end

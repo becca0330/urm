@@ -1,5 +1,7 @@
 $("#summary_finding_<%=finding.id%>" ).html("<%=finding.summary%>");
 $("#summary_findings" ).html("<%=allfindings_summary(finding.report) %>");
+$("#summary_recommendations" ).html("<%=allrecommendations_summary(finding.report) %>");
+
 
 <% msg = (finding.findingtype=='positive') ? t(:'.updated', :summary => @finding.summary) : t(:'.recommendations.updated', :summary => @finding.summary) %>
 showToast("<%= escape_javascript(msg) %>");

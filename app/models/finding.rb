@@ -15,7 +15,7 @@ class Finding < ActiveRecord::Base
 
 	def summary
 	  t=self.title.to_s.truncate(35) || ""
-	  d= self.description.empty? ? "" : ": "+self.description.truncate(25)
+	  d= self.description.to_s.empty? ? "" : ": "+self.description.to_s.truncate(25)
 	  t+d
   end
 
