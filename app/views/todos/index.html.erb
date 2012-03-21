@@ -5,17 +5,12 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="left   tbl_data_date"  	><%= link_to "Date", 		
-														todos_path(:sort => "updated_at") %>:</div>
-			<div class="middle tbl_data_number"	><%= link_to "Priority", 	
-														todos_path(:sort => "priority"	) %>:</div>
-			<div class="middle table_data_short"><%= link_to "Title", 		
-														todos_path(:sort => "title"		) %>:</div>
-			<div class="middle table_data_long"	><%= link_to "Description",	
-														todos_path(:sort => "description") %>:</div>
-			<div class="middle tbl_data_bool"  	><%= link_to "Solved",	
-														todos_path(:sort => "solved") %>:</div>
-			<div class="right table_data_button">&nbsp;</div>
+			<div class="left   	tbl_data_date"  ><%= sort_link_title("updated_at") 	%>:</div>
+			<div class="middle 	tbl_data_number"><%= sort_link_title("priority")   	%>:</div>
+			<div class="middle 	tbl_data_short"	><%= sort_link_title("title" ) 		%>:</div>
+			<div class="middle 	tbl_data_long"	><%= sort_link_title("description") %>:</div>
+			<div class="middle 	tbl_data_date" 	><%= sort_link_title("solved") 		%>:</div>
+			<div class="right 	tbl_data_button">&nbsp;</div>
 		</div>
 	</div>
 	<div id="todos" class="container">

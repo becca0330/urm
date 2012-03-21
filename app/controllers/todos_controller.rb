@@ -10,17 +10,18 @@ class TodosController < ApplicationController
 	   def index
        params[:sort] || params[:sort] = "updated_at"
        
-       if session[:asc_sort_order]
-           logger.info("sort todos ascending")
+       if session["sortimg_#{params[:sort]}"] == "sort_descending.png";
+           logger.info("sort todos ascending by #{params[:sort]}")
             @todos = Todo.find(:all, :order => params[:sort])
+            session["sortimg_#{params[:sort]}"]="sort_ascending.png";
        else
             @todos = Todo.find(:all, :order => "#{params[:sort]} DESC")
-            logger.info("sort todos descending")
+            logger.info("sort todos descending by #{params[:sort]}")
+            session["sortimg_#{params[:sort]}"]="sort_descending.png";
        end if
        logger.info("todos: #{@todos}")
-       session[:asc_sort_order] = !session[:asc_sort_order]
 
-
+       
 	     respond_to do |format|
 	       format.html # index.html.erb
 	     end

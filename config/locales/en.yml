@@ -416,7 +416,19 @@ en:
             section_title:              "Event"
             delete_hint:                "Remove event '%{summary}'..."
             delete_confirm:             "Are you sure to delete this event '%{summary}'?"
-            
+  
+  todos:
+    tableheading_updated_at:    "Date"
+    tableheading_priority:      "Prio"
+    tableheading_title:         "Title"
+    tableheading_description:   "Description"
+    tableheading_solved:        "Solved"
+    tableheadinghint_priority:      "Sort by priority"
+    tableheadinghint_updated_at:    "Sort by date"
+    tableheadinghint_title:         "Sort by title"
+    tableheadinghint_description:   "Sort by description"
+    tableheadinghint_solved:        "Sort by status"
+    
   # a person (test-user) has assigned one or may videos   
   # a finding might refer to an existing (person=test-user) video   
   videos:
