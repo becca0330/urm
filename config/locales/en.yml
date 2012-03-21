@@ -341,7 +341,7 @@ en:
         label_testtype:             "Testtype"
         label_description:          "Description"
         label_summary:              "Executive Summary"
-        label_introduction:         "Introduction to the usability study"
+        label_introduction:         "Introduction"
         label_methodology:          "Methodology"
         label_environment_description: "Environment/Location"
         label_training:             "Training"
