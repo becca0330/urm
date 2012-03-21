@@ -10,6 +10,6 @@ class Task < ActiveRecord::Base
   has_many :task_results
 
   def summary
-      self.title.to_s[0,35]+"..."
+      self.title.to_s.truncate(35)
   end
 end

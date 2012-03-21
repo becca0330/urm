@@ -10,13 +10,9 @@ class TaskResult < ActiveRecord::Base
 	
 	def summary
       #self.id.to_s+":"+self.start.to_s+"-"+self.end.to_s+"..."
-      "#{ self.person ? self.person.name.to_s[0,10] : ''}: #{ self.task ? self.task.title.to_s[0,20] : ''} (#{self.completion}%)" 
+      "#{ self.person ? self.person.name.to_s.truncate(10) : ''}: #{ self.task ? self.task.title.truncate(20) : ''} (#{self.completion}%)" 
   end
   
-  
-  
   # to set "session at" - timestamps (starttime endtime) for a task results:
-  
- 
   
 end

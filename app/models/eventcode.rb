@@ -9,7 +9,7 @@ class Eventcode < ActiveRecord::Base
   	
   	
   def summary
-     self.code.to_s + ": "+self.description.to_s[0,10]+"..."
+     self.code.to_s + ": "+self.description.to_s.truncate(10)
    end	
   	
   def code_and_description

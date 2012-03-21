@@ -13,7 +13,7 @@ class Todo < ActiveRecord::Base
     
     
   def summary
-      self.title.to_s[0,12]+":"+self.description.to_s[0,25]+" ("+self.solved.to_s+")..."
+      self.title.to_s.truncate(12)+":"+self.description.to_s.truncate(25)+" ("+self.solved.to_s+")"
   end
   
   def pretty_date

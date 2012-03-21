@@ -11,9 +11,9 @@ class Question < ActiveRecord::Base
   	def summary
   	   msg=self.order.to_s+". "
   	   if self.rangescale && self.rangescale.length>0 
-         msg+=self.description.to_s[0,30]+" ("+self.rangescale.to_s+")..."
+         msg+=self.description.to_s.truncate(30)+" ("+self.rangescale.to_s+") "
        else
-         msg+=self.description.to_s[0,35]+"..."
+         msg+=self.description.to_s.truncate(35)
        end
        msg
      end

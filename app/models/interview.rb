@@ -22,8 +22,7 @@ class Interview < ActiveRecord::Base
   def summary
       # show also the person (-name)
      p= (self.person) ? " "+ I18n.t(:'persons.person.with')+" "+ self.person.name.to_s : ""
-     #self.id.to_s[0,5]+": "+
-     p.to_s[0,15]+"..."
+     p.to_s.truncate(15)
   end
   
 end

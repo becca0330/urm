@@ -39,8 +39,8 @@ class Answer < ActiveRecord::Base
   	     end
   	     msg+= " on "+I18n.t(:'questions.question.question')+" "+
   	            self.question.order.to_s+" '" +
-  	            self.question.description.to_s[0,25]+"...'" unless self.question.nil?
-         msg+": "+self.value.to_s[0,10]
+  	            self.question.description.truncate(25) unless self.question.nil?
+         msg+": "+self.value.to_s.truncate(10)
     end
 
     def Answer.allanswers_hash(allanswers)

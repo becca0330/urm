@@ -14,9 +14,9 @@ class Finding < ActiveRecord::Base
   accepts_nested_attributes_for :documents_of_findings
 
 	def summary
-	  t=self.title.to_s[0,35]+"..." || ""
-	  d=self.description ? self.description[0,25] : ""
-	  t+": "+d+"..."
+	  t=self.title.to_s.truncate(35) || ""
+	  d= self.description.empty? ? "" : ": "+self.description.truncate(25)
+	  t+d
   end
 
 end

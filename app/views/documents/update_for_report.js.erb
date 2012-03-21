@@ -9,8 +9,8 @@ $( "#<%=n %>_link_<%=o.id%>" ).html("<%= escape_javascript( link_to('follow link
 $('input[type=file]').val("")
 
 // we update the summary:
-$("#summary_<%=n%>_<%=o.id%>" ).html("<%= escape_javascript(o.summary) %>");
-$("#summary_<%=n%>s" ).html("<%=escape_javascript( alldocuments_summary(report) ) %>");
+$("#summary_<%= n %>_<%= o.id %>" ).html("<%= escape_javascript(o.summary) %>");
+$("#summary_<%= n %>s" ).html("<%=escape_javascript( alldocuments_summary(report) ) %>");
 
 showToast("<%= escape_javascript( t(:'.updated', :summary => o.summary) ) %>");
 resetHighlightingForElems('.edit_<%=n%>_<%=o.id%>');

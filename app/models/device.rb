@@ -21,7 +21,9 @@ class Device < ActiveRecord::Base
   end
     
 	def summary
-    self.devicetype.to_s+": '"+self.title.to_s[0,10]+"...':("+self.description.to_s[0,10]+"...)"
+    self.devicetype.to_s+": '"+
+      self.title.to_s.truncate(10)+
+      (!self.description.empty? ? ":("+self.description.to_s.truncate(10)+")" : "")
   end
   
   

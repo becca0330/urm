@@ -1,15 +1,6 @@
-$( "#question_message_<%=question.id%>" ).html( 
-	"<%= escape_javascript( render( :partial => "update", :locals => { :question => @question} ) ) %>" );	
-$('#question_message_<%=question.id%>').show();
+showToast("<%= escape_javascript( t(:'.updated', :summary => question.summary) ) %>");
+resetHighlightingForElems('.edit_question_<%=question.id%>');
 
-// we reset the colors (in ONE forms of) the current task
-$('.edit_question_<%=question.id%>').find('.submittable').css('background-color','#F0F0F0');
-// remove highlighting of all 'submittable' (maybe changed) fields
-$('.edit_question_<%=question.id%>').find('.submittable').css('color','black');
-
-
-/* Fade out the message after some time*/
-$('#question_message_<%=question.id%>').delay(1000).fadeOut();
 
 $("#summary_question_<%=question.id%>" ).html("<%=question.summary%>");
 $("#summary_questions" ).html("<%=allquestions_summary(question.report) %>");

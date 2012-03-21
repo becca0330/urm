@@ -17,9 +17,12 @@ class Document < ActiveRecord::Base
 	has_attached_file :attachment
 	
 	def summary
-	  msg  = self.description ? self.description+": " : ""
-	  msg += (self.source && self.source.size>0) ? "("+self.source+")" : ""
-    msg[0,35]+"..."
+	  msg  = self.description ? self.description : ""
+	  if self.doctype=="link" # for a link we want to show the url also: 
+	    msg += ":" unless msg.empty? || self.source || self.source.size<1
+	    msg += (self.source && self.source.size>0) ? "("+self.source+")" : ""
+    end
+    msg.truncate(30)
   end
 	
 	

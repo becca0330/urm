@@ -25,7 +25,7 @@ class TranscriptEvent < ActiveRecord::Base
 	    msg +=  self.timestamp.strftime("%H:%M ")
 	  end
     msg += self.eventcode ? "("+self.eventcode.code+") " : ""
-    msg+self.event.to_s+"..."
+    msg+self.event.to_s
   end
   
   

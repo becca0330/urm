@@ -7,7 +7,7 @@ class Project < ActiveRecord::Base
   has_many :reports, :dependent => :destroy
 
  	def summary
-      self.title.to_s[0,15]+": "+self.description.to_s[0,25]+"..."
+      self.title.to_s.truncate(15)+": "+self.description.to_s.truncate(25)
   end
 
 end

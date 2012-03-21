@@ -22,7 +22,7 @@ class Person < ActiveRecord::Base
   validate :init_defaults
     
   def summary
-     self.alias.to_s+": "+self.name.to_s[0,15]+"..."
+     self.alias.to_s+": "+self.name.to_s.truncate(15)
    end  
     
    def <=>(other)

@@ -7,7 +7,7 @@ class Qanda < ActiveRecord::Base
   belongs_to :interview
   
   def summary
-     self.quest.to_s[0,18]+"..."
+     self.quest.to_s.truncate(18)
    end
    
    # sort question-and-answer by question-id (id given by creation). TODO: order for qanda (necessary?)

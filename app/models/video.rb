@@ -13,7 +13,7 @@ class Video < ActiveRecord::Base
   
   
   def summary
-      self.description.to_s[0,15]+"..."
+      self.description.to_s.truncate(15)
   end
     
 end
