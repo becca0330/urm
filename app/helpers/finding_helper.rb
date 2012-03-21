@@ -11,7 +11,7 @@ module FindingHelper
   end
   
   
-  # summary information about ALL the positive findings
+  # summary information about ALL the (positive!) findings
   def allfindings_summary(report)
     return if report.nil?
     fds=report.findings.where("findingtype=?", 'positive')
