@@ -512,7 +512,7 @@ label{
 /* all we need for a table */
 .container {
     display: table;
-	width: 100%;
+	width: 99%;
 	margin: 5px;
     }
 
