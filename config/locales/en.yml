@@ -225,7 +225,7 @@ en:
                 label_persontype:   "Type"
                 label_name:         "Name"
                 label_alias:        "Alias"
-                label_timestamp:    "Session at"
+                label_timestamp:    "Date"
                 label_gender:       "Gender"
                 label_age:          "Age"
                 label_education:    "Education"
