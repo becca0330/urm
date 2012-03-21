@@ -78,8 +78,9 @@
 						ajax_add_reports_path(:project_id => @project.id, :testtype => 'ta'),
 						:remote		=> true,
 						:title => t(:'.add_ta_link')) %>
-				<!-- TODO: activate this link when he is ready to be used!>
-				&nbsp;
+				<!-- TODO: remove this line when link below is ready to be used-->
+				&nbsp;<%= image_tag('add.png')+t(:'.add_he_link') %>
+				<!-- TODO: activate this link when he is ready to be used!
 				<%= link_to( image_tag('add.png')+t(:'.add_he_link'),
 						ajax_add_reports_path(:project_id => @project.id, :testtype => 'he'),
 						:remote		=> true,

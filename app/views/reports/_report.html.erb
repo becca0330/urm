@@ -86,9 +86,11 @@
 									t(:'.label_testtype'),
 							 		:title => t(:'.prompt_testtype')  )%> 
 							</td> 
-							<!-- NOT USED ANYMORE: we set this attribute on creation! >
-							<td>
-						 		<%= frm_rep.select(
+							
+							<td><%= report.testtype == 'he' ? "Inspection (Heuristic Evaluation)" : "Test (Thinking Aloud)" %>
+						 		<!-- NOT USED ANYMORE: 
+									we set this attribute on creation! >
+								<%= frm_rep.select(
 											:testtype, 
 											{	t(:'.testtype.ta')	=> "ta", 
 												t(:'.testtype.he') 	=> "he"}, # also called "Expert Review"
@@ -96,8 +98,9 @@
 											:class => 'submittable',
 											:title => t(:'.prompt_testtype')
 											) %>
+								-->
 							</td>
-							-->
+							
 						</tr>
 						<tr>
 							<td>

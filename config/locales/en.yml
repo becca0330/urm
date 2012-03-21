@@ -338,7 +338,7 @@ en:
         link_analysis:              "Discussion" # we call the analysis: "discussion" 
         link_transcripts:           "Transcripts"
         link_appendix:              "Appendix"
-        label_testtype:             "Testtype"
+        label_testtype:             "Evaluation Type"
         label_description:          "Description"
         label_summary:              "Executive Summary"
         label_introduction:         "Introduction"
