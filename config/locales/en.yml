@@ -20,9 +20,9 @@ en:
   
   about:
       about:                "About"
-      hint:                 "2012 by Internettechnik"
+      hint:                 "2012 by John Feiner and Keith Andrews"
       box_title:            "About URM"
-      info:                 "This code for the Usability Reporting Manager URM is based on the work of Wei-Ju Lin, 2011"
+      info:                 "The Usability Reporting Manager URM was developed at FH JOANNEUM Internettechnik and TU Graz IICM. The code is based on the work of Wei-Ju Lin, 2011"
       
   # the answers for the questions in the questionnaire
   answers:
