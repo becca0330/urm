@@ -49,5 +49,13 @@ URM::Application.configure do
   # 2012-01-18 try to fix error: "rake assets:precompile  fails undefined method `context_class' for nil:NilClass"
   # config.assets.initialize_on_precompile = false
   
+  
+  # 2012-03-22 for creating urls inside the mail,
+  #            when sending (registration) mail
+  config.action_mailer.default_url_options = {
+      :host => "127.0.0.1:3000",
+  }
+  
+  
 end
 

@@ -46,10 +46,41 @@ function toogle_doc_type(elem){
 	}	
 };
 
+// if the selection within this dropdown is "OTHER", 
+//  then show the other input filed
+// TODO: check (hide/show) this on load also!!
+function dropdown_mainoperatingsystem(elem){
+	frm=elem.closest('form') 
+	// store the latest-enterd value into all the fields (dropdown or freetext)
+	frm.find('#person_itexperience_mainoperatingsystem')[1].value=elem.val();
+	// if dropdown and no known contents is selected:
+	if ( ["WINDOWS","LINUX","MAC"].indexOf( elem.val() ) >= 0 ){
+		frm.find('.OTHER').hide();
+	}else{
+		frm.find('.OTHER').show();
+	}
+}
+// if the selection within this dropdown is "OTHER", 
+//  then show the other input filed
+// TODO: check (hide/show) this on load also!!
+function dropdown_mainwebbrowser(elem){
+	frm=elem.closest('form') 
+	// store the latest-enterd value into all the fields (dropdown or freetext)
+	frm.find('#person_itexperience_mainwebbrowser')[1].value=elem.val();
+	// if dropdown and no known contents is selected:
+	if ( ["FIREFOX","CHROME","SAFARI","OPERA","IE"].indexOf( elem.val() ) >= 0 ){
+		frm.find('.OTHER_BROWSER').hide();
+	}else{
+		frm.find('.OTHER_BROWSER').show();
+	}
+}
+
 // we would like to save changes automatically (on leave input-field):
 $('.submittable').live('change', function() {
   if ( $(this).attr("id") =="video_doctype" 	) toogle_doc_type($(this));
   if ( $(this).attr("id") =="document_doctype" 	) toogle_doc_type($(this));
+  if ( $(this).attr("id") =="person_itexperience_mainoperatingsystem" 	) dropdown_mainoperatingsystem(	$(this));
+  if ( $(this).attr("id") =="person_itexperience_mainwebbrowser" 		) dropdown_mainwebbrowser(		$(this));
   $(this).closest('form').trigger('submit');
 });
 

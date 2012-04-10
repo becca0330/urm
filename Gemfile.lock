@@ -1,6 +1,8 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    aasm (3.0.3)
+      activerecord
     abstract (1.0.0)
     actionmailer (3.0.9)
       actionpack (= 3.0.9)
@@ -29,6 +31,9 @@ GEM
       activesupport (= 3.0.9)
     activesupport (3.0.9)
     arel (2.0.10)
+    authlogic (3.1.0)
+      activerecord (>= 3.0.7)
+      activerecord (>= 3.0.7)
     builder (2.1.2)
     cocaine (0.2.1)
     erubis (2.6.6)
@@ -91,6 +96,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
+  authlogic
   execjs
   jquery-rails
   mysql (= 2.7)

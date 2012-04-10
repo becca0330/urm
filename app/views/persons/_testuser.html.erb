@@ -171,7 +171,7 @@
 									:class => 'submittable') %> 
 						    	</td></tr><tr><td>
 								<%= frm_pers.label :itexperience_pcusageinyears, 
-									"PC-Usage (in yrs)" %> 
+									"PC-Usage (yrs)" %> 
 				  				</td><td>
 								<%= frm_pers.text_field :itexperience_pcusageinyears, 
 									:size => 3,
@@ -179,7 +179,7 @@
 									:class => 'submittable' %> 
 						    	</td></tr><tr><td>
 								<%= frm_pers.label :itexperience_pcusageperweek, 
-									"PC-Usage (h per week)" %> 
+									"PC-Usage per Week(h)" %> 
 				  				</td><td>
 								<%= frm_pers.text_field :itexperience_pcusageperweek, 
 									:size => 3,
@@ -187,14 +187,31 @@
 									:class => 'submittable'%> 
 						    	</td></tr><tr><td>
 								<%= frm_pers.label :itexperience_mainoperatingsystem, 
-									"Main operating system" %> 
+									"Main Operating System" %> 
 								</td><td>
-								<%= frm_pers.text_field :itexperience_mainoperatingsystem, 
+								<%#= frm_pers.text_field :itexperience_mainoperatingsystem, 
 									:size => 3 ,
 									:class => 'submittable'	%> 
+								<%= frm_pers.select(:itexperience_mainoperatingsystem, 
+										{
+											t(:'.itexperience_mainoperatingsystem.win')		=>	"WINDOWS", 
+											t(:'.itexperience_mainoperatingsystem.linux')	=>	"LINUX", 
+											t(:'.itexperience_mainoperatingsystem.mac') 	=> 	"MAC", 
+											t(:'.itexperience_mainoperatingsystem.other')	=> 	"OTHER"},	
+										options = {:prompt => t(:'.prompt_itexperience_mainoperatingsystem') },
+										:class => 'submittable') %>
+								<%= frm_pers.label :itexperience_mainoperatingsystem, 
+									t(:'.label_other'),
+								 	:class => "OTHER"%>
+								<%= frm_pers.text_field :itexperience_mainoperatingsystem, 
+									:placeholder => "other operating system",
+									:title => "other operating system",
+									:size => 10 ,
+									:class => 'submittable OTHER'
+									 %>
 								</td></tr><tr><td>
 								<%= frm_pers.label :itexperience_webusageperweek, 
-									"Web usage per week",
+									"Web Usage per Week (h)",
 									:title => "E.g. 2.5 hours per week." %> 
 								</td><td>
 								<%= frm_pers.text_field :itexperience_webusageperweek, 
@@ -212,11 +229,29 @@
 									:class => 'submittable' %> 
 								</td></tr><tr><td>
 								<%= frm_pers.label :itexperience_mainwebbrowser, 
-									"Main web browser" %> 
+									"Main Web Browser" %> 
 								</td><td>
-								<%= frm_pers.text_field :itexperience_mainwebbrowser, 
+								<%#= frm_pers.text_field :itexperience_mainwebbrowser, 
 									:size => 8 ,
 									:class => 'submittable' %> 
+								<%= frm_pers.select(:itexperience_mainwebbrowser, 
+										{
+											t(:'.itexperience_mainwebbrowser.firefox')		=>	"FIREFOX", 
+											t(:'.itexperience_mainwebbrowser.chrome')		=>	"CHROME", 
+											t(:'.itexperience_mainwebbrowser.safari') 		=> 	"SAFARI", 
+											t(:'.itexperience_mainwebbrowser.opera') 		=> 	"OPERA", 
+											t(:'.itexperience_mainwebbrowser.ie') 		=> 	"IE", 
+											t(:'.itexperience_mainwebbrowser.other')		=> 	"OTHER"},	
+										options = {:prompt => t(:'.prompt_itexperience_mainwebbrowser') },
+										:class => 'submittable') %>
+								<%= frm_pers.label :itexperience_mainwebbrowser, 
+										t(:'.label_other'),
+									 	:class => "OTHER_BROWSER"%>
+								<%= frm_pers.text_field :itexperience_mainwebbrowser, 
+										:placeholder => "other web browser",
+										:title => "other web browser",
+										:size => 10 ,
+										:class => 'submittable OTHER_BROWSER' %>
 								</td></tr>
 							</table>
 						</td>

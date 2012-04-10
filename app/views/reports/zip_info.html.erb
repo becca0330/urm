@@ -1,0 +1,20 @@
+<html>
+	<body>
+		<h1>INFO:</h1> 
+		
+		<h3>The data and style files for report '<%= @report.title %>' 
+			have been downloaded via 
+			<a href="http://<%=request.host%>:<%=request.port%><%=request.fullpath%>">this link</a> 
+			from the  
+			<a href="http://<%=request.host%>:<%=request.port%>">URM</a> 
+			(Usability Reporting Manager) server on 
+			<%= Time.new.strftime("%y-%m-%d %H:%M:%S") %>.
+		</h3>
+		
+		Find the xml report in 
+			subir <a href="report">'report'</a> 
+			and the stylesheets in 
+			subdir <a href="stylesheets">'stylesheets'</a>.
+			
+	</body>
+</html>

@@ -69,3 +69,10 @@ group :production do
 	# in Gemfile.lock: "mysql (2.7)" (only for development on local machine: (2.8.1))
 	gem 'mysql', "2.7"
 end
+
+# 2012-03-22 for authentication add Authlogic
+gem 'authlogic'
+
+# 2012-03-22 for registration / confirmation via eMail
+gem 'aasm'
+

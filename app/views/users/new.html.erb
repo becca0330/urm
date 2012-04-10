@@ -1,0 +1,10 @@
+<h1>Register</h1>
+
+<% form_for @user do |f| %>
+  <%= render :partial => "form", :object => f, :locals => { :user => @user } %>
+  <%= f.submit "Register" %>
+<% end %>
+
+I do have already a password, so i need just to <%= link_to "Login", new_user_session_path %>
+
+

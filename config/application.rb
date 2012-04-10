@@ -30,6 +30,9 @@ module URM
 
     # Activate observers that should always be running.
     # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
+    
+    # 2012-03-22 an observer for confirmation mails:
+    config.active_record.observers = :user_observer
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
@@ -50,12 +53,24 @@ module URM
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
     
+    # 2012-03-22 for authlogic:
+    # filter_parameter_logging :password, 
+    #    :password_confirmation # there are underscores :-|
+    config.filter_parameters += [:password_confirmation]
+    
     
     # 2012-01-29 NO ASSETS with version 3.0.x (for provider domainfactory)
     # 2011-12-22 to rails 3.1
     # Enable the asset pipeline
     # config.assets.enabled = true 
     # Version of your assets, change this if you want to expire all your assets
-    # config.assets.version = '1.0'
+    # config.assets.version = '12.0'
+    
+    # 2012-03-22 for authentication with authlogic
+    config.gem "authlogic"
+    
+
+    
+    
   end
 end

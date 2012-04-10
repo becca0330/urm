@@ -69,4 +69,18 @@ URM::Application.configure do
 #  config.assets.initialize_on_precompile = false
   
   
+  
+  # 2012-03-22 for creating urls inside the mail,
+  #            when sending (registration) mail
+  config.action_mailer.default_url_options = {
+      :host => "urm.feiner.at"
+  }
+  # 2012-03-23 jf send mails
+  config.action_mailer.sendmail_settings = {
+     :location => '/bin/sendmail',
+     :arguments => '-t'
+  }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  
 end

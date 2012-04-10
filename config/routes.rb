@@ -37,6 +37,26 @@ URM::Application.routes.draw do
   # user / admins / todo
   resources :todos
   
+  # for authlogic sessions and users to login:
+  resources :user_sessions
+	match 'login' => "user_sessions#new",      :as => :login
+	match 'logout' => "user_sessions#destroy", :as => :logout
+  
+  # give us our some normal resource routes for users
+  resources :users  
+  # a convenience route
+  resource :user, :as => 'account', :only => [:show, :edit]  
+  
+  match 'signup' => 'users#new', :as => :signup
+  
+  
+  # 2012-03-22 for url in registration mail
+  match '/confirmation/:confirmation_code', :to => 'users#confirm', :as => :confirmation, :via => ["get","post"]
+  
+  
+  resources :password_reset_request, :except => [:index, :show, :destroy]		
+  
+  
   root :to => "projects#index"
   
 end

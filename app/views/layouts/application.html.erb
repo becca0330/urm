@@ -31,7 +31,7 @@
 			<%= link_to_unless_current t(:'home'), 
 					:controller => 'projects', :action=>'index', :title => t(:'hint_home') %>&nbsp;|&nbsp;
 			<%= link_to_function t(:'about.about'), 
-				"showAboutDialog();", :title=> t (:'about.hint') %>
+				"showAboutDialog();", :title=> t(:'about.hint') %>
 				<div id="aboutdialog" class="ui_dialog" title="<%= t(:'about.box_title') %>" ><br />
 					U R M 
 					<br />
@@ -53,13 +53,27 @@
 						Copyright (C) 2012 internettechnik<br /> 
 					       Licensed under the GNU GPLv3<br /> http://www.gnu.org/licenses/gpl.txt.
 					</small>
-				</div>&nbsp;|&nbsp;
-			<%= link_to_unless_current t(:'admin'), 
-				todos_path, :title => t(:'hint_admin') %>	
+				</div>
+			<% if current_user && current_user.logged_in? %>
+				&nbsp;|&nbsp;
+				<%= link_to_unless_current t(:'admin'), 
+					todos_path, :title => t(:'hint_admin') %>
+			<% end %>
+				&nbsp;|&nbsp;
+			<% if current_user %>
+				<%= link_to_unless_current current_user.email, account_url(current_user) %>
+			<% else %>
+				<%= link_to_unless_current "Login", new_user_session_path %>
+			<% end%>	
+				
 		</div>
 		<br />
-
+		
+		<p id="notice"><%= notice %></p>
+		
 		<%= yield %>
+
+
 
 	</body>
 </html>

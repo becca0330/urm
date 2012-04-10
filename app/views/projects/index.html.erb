@@ -32,6 +32,12 @@
 					<%= link_to(image_tag('preview.png'), 	report_path(r, 	:includestyle=>true, 
 															:format => :xml),
 											:title => t(:'reports.hint_view'))  %>
+					&nbsp;&nbsp;&nbsp;	
+					<%= link_to(image_tag('zip.png'), 	report_path(r, 
+											 :format => :xml,
+											 :includestyle => true,
+											 :zip => true),
+											:title => t(:'reports.hint_zip'))  %>
 				<br /> <%=r.description %>	<br /><br />
 				</li>
 			<% end %>
