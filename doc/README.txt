@@ -7,7 +7,7 @@ is
  ...free Software (GNU GPLv3, http://www.gnu.org/licenses/gpl.txt)
 
 test it
- ...with the free online demo at: urm.feiner.at
+ ...with the free online demo at: http://urm.feiner.at
 
 install and usage
  ... checkout from (git) repository https://github.com/internettechnik/urm

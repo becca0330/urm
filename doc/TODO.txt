@@ -1,0 +1,71 @@
+== URM ToDos (by Topic):
+
+URM Usability Reporting Manager
+Copyright (C) 2012 internettechnik 
+Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
+
+
+== Overall Functionality
+
+* add support for heuristic evaluations (HE)
+* add section to support preparation of usability evaluations
+* add git integration to view source-code
+* add (input of) references to source-code
+
+== Naming
+
+* Positive Finding versus Negative Finding with Recommendation
+* edit hints and titles to match wording of keith
+
+== I18N
+
+* add translation for German
+
+== Input via Web-GUI
+
+* add Field for Recommendation for every Negative Finding
+* add survey-like question types (with answers, with mapping to given scale) 
+* add rich text editor for longer descriptive text
+* allow references within the text. E.g.: latex-lile [Andrews2012]
+* add (parts-of) video-clips for findings
+
+
+== Feature - Authentication and Authorisation
+
+* roles (manager, scribe, evalutators) for HE
+* roles (staff: facilitator, computer operator, 
+		 logger/scribe, camera operator) for TA)
+* authorisation (view and export) for clients (=users)
+
+
+== Feature - Backup/Restore
+
+* backup as xml
+* restore by reading xml
+
+== Information / Design / Usability / User Experience
+
+* pretty look (optional skinning)
+* concise and powerful entry forms
+* drag and drop
+* video preview with timestamp selection
+* pretty xsl and css for exported Reports (HTML)
+* add info about "overall project status" 
+  (missing entries in %, data entered)
+
+== Performance
+
+* increase speed for rendering first page
+* check database index
+
+== Further Details
+
+* add URM favicon
+
+
+== Softwaredevelopment
+
+* add unit/function/integration tests
+* test generated XML against given XSD
+* Upgrade to Rails 3.1.x on Ruby 1.9.x (use assets pipeline)
+* add default values for every new data in the database

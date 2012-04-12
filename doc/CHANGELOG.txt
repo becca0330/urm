@@ -4,6 +4,10 @@ URM Usability Reporting Manager
 Copyright (C) 2012 internettechnik 
 Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 
+== 2012-04-10 v0.1.3
+
+* download (xml, xsl, css) as zip 
+
 == 2012-03-21 v0.1.2
 
 * css-bug: remove horizontal scrollbar

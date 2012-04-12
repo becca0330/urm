@@ -13,10 +13,11 @@ class UsersController < ApplicationController
     # auto-login which can't happen here because
     # the User has not yet been activated
     if @user.save
+      # the user_observer triggers send confirmation_code after save
       # 2012-03-22 change this for sending mail confimation:
       # flash[:notice] = "Your account has been created."
       # redirect_to signup_url
-      flash[:notice] = "Thanks for signing up. We just send you a confimation email"
+      flash[:notice] = "Thanks for signing up. We just send you a confimation email."
       redirect_back_or_default root_url
       
     else
@@ -47,15 +48,15 @@ class UsersController < ApplicationController
   
   def confirm
     @user = User.pending.find_using_perishable_token(params[:confirmation_code])
-    
+    session[:suggested_login_name] = params[:email]
     unless @user
         flash[:error] = "Sorry, your activation code is invalid!"
     else
       @user.confirm!
       @user.reset_perishable_token!
-      flash[:notice] = "Your registration as been confirmed successfully!"
+      flash[:notice] = "Your registration for user #{@user.name} as been confirmed successfully! Now you can log in"
     end
-    redirect_back_or_default root_url
+    redirect_back_or_default login_url
   end
   
 end

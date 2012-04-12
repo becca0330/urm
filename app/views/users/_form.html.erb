@@ -1,22 +1,21 @@
 <%= render "shared/error_messages", :target => @user %>
 
-<p>
-  <%= form.label :name %><br />
-  <%= form.text_field :name %>
-</p>
-<p>
-  <%= form.label :email %><br />
-  <%= form.text_field :email %>
-</p>
-<p>
+  <%= form.label :name, :class => "left_col" %>
+  <%= form.text_field :name, :class => "right_col" %>
+
+  <%= form.label :email, :class => "left_col" %>
+  <%= form.text_field :email, :class => "right_col" %>
+
   <%= form.label :password, 
-		form.object.new_record? ? nil : "Change password" %>
-		<br />
+		form.object.new_record? ? nil : "Change password",
+		:class => "left_col" %>
+
   <%= form.password_field :password		,
 		:title => "at least 4 chars",
-		:placeholder => "min 4 chars" %>
-</p>
-<p>
-  <%= form.label :password_confirmation %><br />
-  <%= form.password_field :password_confirmation %>
-</p>
+		:placeholder => "min 4 chars", 
+		:class => "right_col" %>
+
+  <%= form.label :password_confirmation, :class => "left_col" %><br />
+  <%= form.password_field :password_confirmation, :class => "right_col" %>
+
+

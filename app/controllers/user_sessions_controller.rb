@@ -4,6 +4,8 @@ class UserSessionsController < ApplicationController
 
   def new
     @user_session = UserSession.new
+    logger.debug("PARAM email: '#{params[:email]}'")
+    @user_session.email = session[:suggested_login_name]
   end
   
   def create

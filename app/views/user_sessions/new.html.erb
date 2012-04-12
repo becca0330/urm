@@ -1,16 +1,24 @@
 <h1>Login</h1>
 
+<div class="user">
 <%= form_for @user_session, :as => :user_session, :url => { :action => "create" } do |f| %>
   <%= render "shared/error_messages", :target => @user_session %>
-  <%= f.label :email %><br />
-  <%= f.text_field :email %><br />
-  <br />
-  <%= f.label :password %><br />
-  <%= f.password_field :password %><br />
-  <br />
-  <%= f.check_box :remember_me %><%= f.label :remember_me %><br />
-  <br />
-  <%= f.submit "Login" %>
-<% end %>
 
-I do not have a password, so i need to register first: <%= link_to "Register", new_user_path%>
+  <%= f.label :email, 				:class => "left_col" %>
+  <%= f.text_field :email, 			:class => "right_col" %>
+  
+  <%= f.label :password, 			:class => "left_col" %>
+  <%= f.password_field :password, 	:class => "right_col" %><br />
+
+  <%#= f.label :remember_me, 		:class => "left_col" %>
+  <%#= f.check_box :remember_me, 	:class => "right_col" %>
+  <br />
+  <div class="left_col">&nbsp;</div>
+  <%= f.submit "Login", 			:class => " right_col " %>
+
+<% end %>
+</div>
+<div class="content_below">
+<br />
+I do not have a password, so i need to <%= link_to "register", new_user_path%> first.
+</div>

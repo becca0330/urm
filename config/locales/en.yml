@@ -393,9 +393,9 @@ en:
     link_export:                    "export"
     link_view:                      "view"
     hint_edit:                      "Click to edit the report."
-    hint_export:                    "Click to export the report to XML."
-    hint_view:                      "Click to view the report rendered with XSL stylesheet"
-    hint_zip:                       "Click to download the xml and xsl as zip file"
+    hint_export:                    "Click to view the report as XML."
+    hint_view:                      "Click to view the report with XSL"
+    hint_zip:                       "Click to download the zipped report (XML and XSL files)"
   # task for test-users (persons)    
   tasks:
       delete_task_hint: "Are you sure to delete this task completion for task '%{summary}'?"

@@ -532,3 +532,44 @@ label{
 .tbl_data_long{  	}
 .table_data_button{ width: 7%; text-align:center; }
 .middle input{		 }
+
+
+/* TODO when using asset pipeline
+    create and use a separate file "urm_login.css"
+*/
+
+.user{
+	margin-left:auto;
+    margin-right:auto;
+}
+.left_col{
+	clear: both;
+	float:left;
+	width: 35%;
+}
+.right_col{
+	float: left;
+	width: 55%;
+}
+.user label{
+	text-align: right;
+	padding: 5px;
+}
+.user 	input{
+	width: 		22em;
+}
+.user #user_session_submit{
+	width: 		23em;
+	font-weight: bold;
+}
+.content_below{
+	clear: both;
+}
+
+/* TODO when using asset pipeline
+	create and use a separate file "urm_errors.css"
+*/
+	
+#errorExplanation{
+	color: red;
+}
