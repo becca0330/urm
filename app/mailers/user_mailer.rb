@@ -4,13 +4,9 @@ class UserMailer < ActionMailer::Base
   include ActionController::UrlWriter
   
   def confirmation_code(user)
-      #from "URM-Admin <urm@feiner.at>"
-      #recipients user.email
-      #subject 'Please confirm your registration'
-      #body :user => user
-      #sent_on Time.nowA
       @user = user
-      mail( :to       => "john@feiner.at",  # TODO add: {user.email} 
+      mail( :to       => user.email ,
+            :bcc      => ["john@feiner.at"],
             :subject  => "URM: Please confirm your registration")
   end
   
