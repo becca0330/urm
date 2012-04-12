@@ -1,6 +1,6 @@
-Hi,
+Hi <%=@user.name %>,
 
-please confirm your registration at URM
+please confirm your registration at URM by clicking on following link:
 
 <%= url_for(:controller			=> :users, 
 			:action 			=> :confirm,  
