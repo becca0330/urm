@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default :from => "urm@feiner.at"
+  default :from => "john@feiner.at"
   
   include ActionController::UrlWriter
   
@@ -9,8 +9,8 @@ class UserMailer < ActionMailer::Base
       #subject 'Please confirm your registration'
       #body :user => user
       #sent_on Time.nowA
-      @user=user
-      mail( :to       => "johannes.feiner@fh-joanneum.at,#{user.email}", 
+      @user = user
+      mail( :to       => "john@feiner.at",  # TODO add: {user.email} 
             :subject  => "URM: Please confirm your registration")
   end
   
