@@ -1,4 +1,4 @@
-ActionMailer::Base.delivery_method = :sendmail 
+#ActionMailer::Base.delivery_method = :sendmail 
 
 # NOT:
 #ActionMailer::Base.delivery_method = smtp # be sure to choose SMTP delivery

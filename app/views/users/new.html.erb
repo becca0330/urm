@@ -2,7 +2,7 @@
 
 <div class="user">
 	
-<% form_for @user do |f| %>
+<%= form_for @user do |f| %>
   <%= render :partial => "form", :object => f, :locals => { :user => @user } %>
 	<br />
   <div class="left_col">&nbsp;</div>

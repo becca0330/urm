@@ -72,9 +72,9 @@ URM::Application.configure do
   
   # 2012-03-22 for creating urls inside the mail,
   #            when sending (registration) mail
-  config.action_mailer.default_url_options = {
-      :host => "urm.feiner.at"
-  }
+  #config.action_mailer.default_url_options = {
+  #    :host => "urm.feiner.at"
+  #}
   # 2012-03-23 jf send mails
   config.action_mailer.sendmail_settings = {
      :location => '/bin/sendmail',

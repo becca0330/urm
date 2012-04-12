@@ -10,8 +10,8 @@ class UserMailer < ActionMailer::Base
       #body :user => user
       #sent_on Time.nowA
       @user=user
-      mail( :to       => "johannes.feiner@fh-joanneum.at #{user.email}", 
-            :subject  => "Please confirm your registration")
+      mail( :to       => "johannes.feiner@fh-joanneum.at,#{user.email}", 
+            :subject  => "URM: Please confirm your registration")
   end
   
 end
