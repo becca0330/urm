@@ -1,0 +1,26 @@
+<a name="authors" />
+<div class="border_authors">
+	<div class="toggle_all_authors">
+	
+		<%= link_to_function( t(:'authors.section_title'),
+				toggler("#toggle_all_authors_of_",report),
+				:title => t(:'authors.toggle_section_title')	
+			) %>
+		<span id="summary_authors"><%= allauthors_summary(report) %></span>
+		<div id="toggle_all_authors_of_report_<%=report.id%>">
+			<%= render :partial =>'authors/author', 
+				:collection => report.authors	%>  
+
+			<!-- html for new author of this report will be inserted here -->
+			<div id="new_author_for_report_<%=report.id%>"></div>
+
+			<%= link_to( image_tag('add.png',
+						:tabindex => 0,
+						:class => "submit_button" 
+					)+t(:'authors.add_link'),
+					new_author_path(:report_id => report.id),
+					:remote		=> true,
+					:title => t(:'authors.add_hint')) %>
+		</div> <!-- end all authors-->
+	</div><!-- end toggle for all authors-->
+</div><!-- end border all authors-->

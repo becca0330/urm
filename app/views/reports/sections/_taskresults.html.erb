@@ -1,0 +1,22 @@
+<a name="taskresults" />
+<div class = "border_task_results">
+	<div class="toggle_all_task_results">
+	
+		<%= link_to_function("Task Completions",
+			toggler("#toggle_all_task_results_of_",report)
+			) %>:
+			<span id="summary_task_results"><%= alltask_results_summary(report) %></span>
+		<div id="toggle_all_task_results_of_report_<%=report.id%>">
+			<%= render :partial =>'task_results/task_result', 
+				:collection => report.task_results	%>  
+
+			<!-- html for new task_result of this report will be inserted here -->
+			<div id="new_task_result_for_report_<%=report.id%>"></div>
+
+			<%= link_to( image_tag('add.png')+t(:'task_results.add_link'),
+					new_task_result_path(:report_id => report.id),
+					:remote		=> true,
+					:title =>t(:'task_results.add_hint')) %>
+		</div> <!-- end all task_results-->
+	</div><!-- end toggle for all task_results-->
+</div><!-- end border all task_results-->

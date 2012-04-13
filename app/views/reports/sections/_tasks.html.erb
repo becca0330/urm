@@ -1,0 +1,22 @@
+<a name="tasks" />
+<div class = "border_tasks">
+	<div class="toggle_all_tasks">
+	
+		<%= link_to_function("Tasks",
+			toggler("#toggle_all_tasks_of_",report)
+			) %>:
+		<span id="summary_tasks"><%= alltasks_summary(report) %></span>
+		<div id="toggle_all_tasks_of_report_<%=report.id%>">
+			<%= render :partial =>'tasks/task', 
+				:collection => report.tasks	%>  
+
+			<!-- html for new task of this report will be inserted here -->
+			<div id="new_task_for_report_<%=report.id%>"></div>
+
+			<%= link_to( image_tag('add.png')+t(:'tasks.add_link'),
+					new_task_path(:report_id => report.id),
+					:remote		=> true,
+					:title =>t(:'tasks.add_hint')) %>
+		</div> <!-- end all tasks-->
+	</div><!-- end toggle for all tasks-->
+</div><!-- end border all tasks-->

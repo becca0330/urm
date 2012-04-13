@@ -1,0 +1,38 @@
+<% if report.testtype == "ta" %>
+	<small class="navigation"><%=t(:'.link_jumptosection')%>  
+		<%=link_to t(:'authors.section_title'), 		:anchor=>"authors" 				%> |
+		<%=link_to t(:'.link_intro'),					:anchor=>"intro" 				%> |
+		<%=link_to t(:'.link_methodology'), 			:anchor=>"methodology" 			%> |
+		<%=link_to t(:'persons.staff.section_title'), 	:anchor=>"staff" 				%> |
+		<%=link_to t(:'persons.testusers.section_title'),:anchor=>"testusers"			%> |
+		<%=link_to t(:'.link_environment'), 			:anchor=>"environment" 			%> |
+		<%=link_to t(:'.link_training'), 				:anchor=>"training" 			%> |
+		<%=link_to t(:'.link_tasks'), 					:anchor=>"tasks" 				%> |
+		<%=link_to t(:'.link_taskresults'),				:anchor=>"taskresults" 			%> |
+		<%=link_to t(:'.link_questionnaire'), 			:anchor=>"questionnaire" 		%> | 
+		<%=link_to t(:'.link_questionnaire_results'),	:anchor=>"questionnaireresults"%> |
+		<%=link_to t(:'interviews.section_title'), 		:anchor=>"interviews" 			%> | 
+		<%=link_to t(:'.link_analysis'),				:anchor=>"analysis" 			%> |
+		<%=link_to t(:'findings.section_title'), 		:anchor=>"findings" 			%> |
+		<%=link_to t(:'findings.recommendations.section_title'), 
+														:anchor=>"recommendations"		%> | 
+		<%=link_to t(:'.link_transcripts'), 			:anchor=>"transcripts" 			%> |
+		<%=link_to t(:'.link_appendix'),		 		:anchor=>"appendix" 			%> 
+	</small>
+<% end %>
+
+<% if report.testtype == "he" %>
+	<small class="navigation"><%=t(:'.link_jumptosection')%>  
+		<%=link_to t(:'authors.section_title'), 		:anchor=>"authors" 				%> |
+		<%=link_to t(:'.link_intro'),					:anchor=>"intro" 				%> |
+		<%=link_to t(:'.link_methodology'), 			:anchor=>"methodology" 			%> |
+		<%=link_to t(:'persons.staff.section_title'), 	:anchor=>"staff" 				%> |
+		<%=link_to t(:'persons.reviewer.section_title'),:anchor=>"reviewer"				%> |
+		<%=link_to t(:'.link_environment'), 			:anchor=>"environment" 			%> |
+		<%=link_to t(:'.link_analysis'),				:anchor=>"analysis" 			%> |
+		<%=link_to t(:'findings.section_title'), 		:anchor=>"findings" 			%> |
+		<%=link_to t(:'findings.recommendations.section_title'), 
+														:anchor=>"recommendations"		%> | 
+		<%=link_to t(:'.link_appendix'),		 		:anchor=>"appendix" 			%> 
+	</small>
+<% end %>

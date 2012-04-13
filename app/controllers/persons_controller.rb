@@ -16,7 +16,10 @@ class PersonsController < ApplicationController
      @person.persontype_id = persontype_id
      @report.persons.push(@person)
 
-     page = (persontype_id=='1') ? :new_testuser : :new_staff
+     page = :new_testuser if persontype_id=='1'
+     page = :new_staff    if persontype_id=="2"
+     page = :new_reviewer if persontype_id=="3" # heexpert
+     
      logger.info("so render page #{page}...")
      
      if (persontype_id==1) # for test users:

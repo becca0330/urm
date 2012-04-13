@@ -1,0 +1,22 @@
+<a name="testusers" />
+<!-- TODO: adjust persons for testusers (=person with persontype_id ==1 .name="user") -->
+<div class = "border_persons">
+	<div class="toggle_all_testusers">				
+		<%= link_to_function(t(:'persons.testusers.section_title'),
+				toggler("#toggle_all_testusers_of_",report)
+				) %>
+		<span id="summary_testusers">: <%= alltestusers_summary(report) %></span>
+		<div id="toggle_all_testusers_of_report_<%=report.id%>">
+			<%= render :partial =>'persons/testuser', 
+				:collection => report.testusers, :as => :person	%>  
+
+			<!-- html for new testuser of this report will be inserted here -->
+			<div id="new_testuser_for_report_<%=report.id%>"></div>
+
+			<%= link_to( image_tag('add.png')+t(:'persons.testusers.add_link'),
+					new_person_path(:report_id => report.id, :persontype_id => 1),
+					:remote		=> true,
+					:title =>	t(:'persons.testusers.add_hint')) %>
+		</div> <!-- end all testusers (persons with type=1 "user") -->
+	</div><!-- end toggle for all testusers (persons with type=1 "user") -->
+</div><!-- end border all testusers (persons with type=1 "user") -->

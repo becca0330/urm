@@ -1,0 +1,21 @@
+<a name="questionnaireresults" />
+<div class = "border_answers">
+	<div class="toggle_all_answers">
+		<%= link_to_function("Questionnaire Results",
+			toggler("#toggle_all_answers_of_",report)) %>: 
+		<span id="summary_answers"><%= allanswers_summary(report) %></span>
+		<div id="toggle_all_answers_of_report_<%=report.id%>">
+			<%= render :partial =>'answers/answer', 
+				:collection => report.answers_sorted # report.answers.sort	
+			%>  
+
+			<!-- html for new answer of this report will be inserted here -->
+			<div id="new_answer_for_report_<%=report.id%>"></div>
+
+			<%= link_to( image_tag('add.png')+t(:'answers.add_link'),
+					new_answer_path(:report_id => report.id),
+					:remote		=> true,
+					:title =>t(:'answers.add_hint')) %>
+		</div> <!-- end all answer-->
+	</div><!-- end toggle for all answers-->
+</div><!-- end border all answers-->

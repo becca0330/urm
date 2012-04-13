@@ -11,6 +11,12 @@ module PersonHelper
     pluralize(ps.size,I18n.t(:'persons.testuser.person') ) + ": "+ps.collect {|p|  p.summary.to_s}.join(", ")
   end
 
+  # summary information about ALL persons  reviewers 
+  # (heexperts =person with persontype_id ==3 .name="heexpert")
+  def allreviewers_summary(report)
+    ps=report.persons.where("persontype_id=?",3)
+    pluralize(ps.size,I18n.t(:'persons.reviewer.person') ) + ": "+ps.collect {|p|  p.summary.to_s}.join(", ")
+  end
   
   def allstaff_summary(report)
     ps=report.persons.where("persontype_id=?",2)

@@ -1,0 +1,24 @@
+<a name="reviewers" />
+<!-- TODO: adjust persons for reviewers 
+	( heuristic experts =person with persontype_id ==3 .name="heexpert") 
+-->
+<div class = "border_persons">
+	<div class="toggle_all_reviewers">				
+		<%= link_to_function(t(:'persons.reviewers.section_title'),
+				toggler("#toggle_all_reviewers_of_",report)
+				) %>
+		<span id="summary_reviewers">: <%= allreviewers_summary(report) %></span>
+		<div id="toggle_all_reviewers_of_report_<%=report.id%>">
+			<%= render :partial =>'persons/reviewer', 
+				:collection => report.reviewers, :as => :person	%>  
+
+			<!-- html for new reviewer of this report will be inserted here -->
+			<div id="new_reviewer_for_report_<%=report.id%>"></div>
+
+			<%= link_to( image_tag('add.png')+t(:'persons.reviewers.add_link'),
+					new_person_path(:report_id => report.id, :persontype_id => 3),
+					:remote		=> true,
+					:title =>	t(:'persons.reviewers.add_hint')) %>
+		</div> <!-- end all reviewers (persons with type=3 "heexpert") -->
+	</div><!-- end toggle for all reviewers (persons with type=3 "heexpert") -->
+</div><!-- end border all reviewers (persons with type=3 "heexpert") -->

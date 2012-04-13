@@ -1,0 +1,22 @@
+<a name="interviews" />
+<div class = "border_interviews">
+	<div class="toggle_all_interviews">
+	
+		<%= link_to_function(t(:'interviews.section_title'),
+			toggler("#toggle_all_interviews_of_",report)
+			) %>:
+		<span id="summary_interviews"><%= allinterviews_summary(report) %></span>
+		<div id="toggle_all_interviews_of_report_<%=report.id%>">
+			<%= render :partial =>'interviews/interview', 
+				:collection => report.interviews.sort	%>  
+
+			<!-- html for new interview of this report will be inserted here -->
+			<div id="new_interview_for_report_<%=report.id%>"></div>
+
+			<%= link_to( image_tag('add.png')+t(:'interviews.add_link'),
+					new_interview_path(:report_id => report.id),
+					:remote		=> true,
+					:title =>t(:'interviews.add_hint')) %>
+		</div> <!-- end all interview-->
+	</div><!-- end toggle for all interview-->
+</div><!-- end border all interview-->

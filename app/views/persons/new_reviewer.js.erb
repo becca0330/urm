@@ -1,0 +1,10 @@
+$( "<%= escape_javascript( \
+	render( :partial => "reviewer", :locals => { :person => @person} )\
+	) %>" ).insertBefore("#new_reviewer_for_report_<%=person.report_id%>")
+
+$("#summary_person_<%=person.id%>" ).html("<%=person.summary%>");
+$("#summary_reviewer" ).html("<%=allreviewers_summary(person.report) %>");
+
+/* Highlight the new person */
+$("#toggle_person_<%= @person.id %>").effect("highlight", {}, 3000);
+$("#toggle_person_<%= @person.id %>").find("#person_name").focus();

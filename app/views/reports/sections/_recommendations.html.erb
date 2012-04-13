@@ -1,0 +1,24 @@
+<a name="recommendations" />
+<div class = "border_recommendations">
+	<div class="toggle_all_recommendations">
+	
+		<%= link_to_function(t(:'findings.recommendations.section_title'),
+			toggler("#toggle_all_recommendations_of_",report)
+			) %>:
+		<span id="summary_recommendations"><%= allrecommendations_summary(report) %></span>
+		<div id="toggle_all_recommendations_of_report_<%=report.id%>">
+			<%= render :partial =>'findings/recommendation', 
+				:collection => report.negative_findings,
+				:as => :finding
+				%>  
+
+			<!-- html for new recommendation of this report will be inserted here -->
+			<div id="new_recommendation_for_report_<%=report.id%>"></div>
+
+			<%= link_to( image_tag('add.png')+t(:'findings.recommendations.add_link'),
+					new_finding_path(:report_id => report.id, :findingtype=>'recommendation'),
+					:remote		=> true,
+					:title =>t(:'findings.recommendations.add_hint')) %>
+		</div> <!-- end all recommendations -->
+	</div><!-- end toggle for all recommendations -->
+</div><!-- end border all recommendations -->

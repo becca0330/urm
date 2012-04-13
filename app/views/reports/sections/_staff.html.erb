@@ -1,0 +1,24 @@
+<a name="staff" />
+<!-- TODO: adjust persons for staff -->
+<div class = "border_persons">
+	<div class="toggle_all_staff">
+		<%= link_to_function(t(:'persons.staff.section_title'),
+				toggler("#toggle_all_staff_of_",report)
+				) %>
+		<span id="summary_staff">: <%= allstaff_summary(report) %></span>
+		<div id="toggle_all_staff_of_report_<%=report.id%>">
+			<%= render :partial =>'persons/staff', 
+				:collection => report.staff,
+				:as => :person
+				%>  
+
+			<!-- html for new staff member of this report will be inserted here -->
+			<div id="new_staff_for_report_<%=report.id%>"></div>
+
+			<%= link_to( image_tag('add.png')+t(:'persons.staff.add_link'),
+					new_person_path(:report_id => report.id, :persontype_id => 2),
+					:remote		=> true,
+					:title =>	t(:'persons.staff.add_hint')) %>
+		</div> <!-- end all staff members (persons with persontype=2 "staff") -->
+	</div><!-- end toggle for all staff members (persons with persontype=2 "staff") -->
+</div><!-- end border all staff members (persons with persontype=2 "staff") -->

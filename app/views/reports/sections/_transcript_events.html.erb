@@ -1,0 +1,21 @@
+<div class = "border_transcript_events">
+	<div class="toggle_all_transcript_events">
+	
+		<%= link_to_function(t(:'transcript_events.section_title'),
+			toggler("#toggle_all_transcript_events_of_",report)
+			) %>:
+		<span id="summary_transcript_events"><%= alltranscript_events_summary(report) %></span>
+		<div id="toggle_all_transcript_events_of_report_<%=report.id%>">
+			<%= render :partial =>'transcript_events/transcript_event', 
+				:collection => report.transcript_events	%>  
+
+			<!-- html for new transcript_event of this report will be inserted here -->
+			<div id="new_transcript_event_for_report_<%=report.id%>"></div>
+
+			<%= link_to( image_tag('add.png')+t(:'transcript_events.add_link'),
+					new_transcript_event_path(:report_id => report.id),
+					:remote		=> true,
+					:title =>t(:'transcript_events.add_hint')) %>
+		</div> <!-- end all transcript_event-->
+	</div><!-- end toggle for all transcript_event-->
+</div><!-- end border all transcript_event-->

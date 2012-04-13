@@ -1,0 +1,61 @@
+<%= form_for(report, 
+		:remote => true, 
+		:html => {:class => "edit_report_#{report.id}"}
+		) do |frm_rep| %>
+	<%= frm_rep.text_field :title, 
+					:id 			=> "input_title",
+		 			:title 			=> t(:'.hint_title'),
+					:placeholder 	=> t(:'.hint_title'),
+					:class 			=> 'submittable' %> 
+	<small>created on <%= frm_rep.text_field :date, 
+					:type 			=> "date",
+					:title 			=> t(:'.hint_date'),
+					:placeholder	=> t(:'.placeholder_date'),
+					:class 			=> 'submittable',
+					:size 			=> 14 %>
+			at <%= frm_rep.text_field :time, 
+					:type 			=> "time",
+					:title 			=> t(:'.hint_time'),
+					:placeholder	=> t(:'.placeholder_time'),
+					:class			=> 'submittable',
+					:size 			=> 7 %>
+	</small>
+	<table id="table_report">
+		<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>			
+		<tr>
+			<td>
+			    <%= frm_rep.label( :testtype, 
+					t(:'.label_testtype'),
+			 		:title => t(:'.prompt_testtype')  )%> 
+			</td> 
+			
+			<td><%= report.testtype == 'he' ? "Inspection (Heuristic Evaluation)" : "Test (Thinking Aloud)" %>
+		 		<!-- NOT USED ANYMORE: 
+					we set this attribute on creation! -- >
+				<%= frm_rep.select(
+							:testtype, 
+							{	t(:'.testtype.ta')	=> "ta", 
+								t(:'.testtype.he') 	=> "he"}, # also called "Expert Review"
+							options = {:prompt => t(:'.prompt_testtype')},
+							:class => 'submittable',
+							:title => t(:'.prompt_testtype')
+							) %>
+				<!-- -->
+			</td>
+			
+		</tr>
+		<tr>
+			<td>
+			    <%= frm_rep.label :description,t(:'.label_description') ,
+			 		:title => t(:'.hint_description') %> 
+			</td> 
+			<td>
+		 		<%= frm_rep.text_area :description, :rows => 3,
+								:placeholder => t(:'.placeholder_description'),
+								:title => t(:'.hint_description'),
+								:class => 'submittable' %> 
+			</td>
+		</tr>
+		
+	</table>
+<% end # of form report (part 2 type, description and summary ) %>

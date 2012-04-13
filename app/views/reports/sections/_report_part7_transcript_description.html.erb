@@ -1,0 +1,27 @@
+<%= form_for(report, 
+		:remote => true, 
+		:html => {:class => "edit_report_#{report.id}"}
+		) do |frm_rep| %>
+	<table id="table_report">
+		<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>			
+		<tr>
+			<td><a name="transcripts" />
+			    <%= frm_rep.label(:transcripts_description, 
+					t(:'.label_transcripts') ,
+		 			:title => t(:'.hint_transcripts')
+					)%> <br />
+					<small>
+						<%= link_to "manage coding schema",
+						 		eventcodes_path %> 
+					</small>
+			</td> 
+			<td>
+		 		<%= frm_rep.text_area(:transcripts_description, 
+						:rows => 5, 
+						:placeholder => t(:'.hint_transcripts'),
+						 :title => t(:'.hint_transcripts'),
+						:class => 'submittable') %>
+			</td>
+		</tr>
+	</table>
+<% end # of form report (part 7 transcript description) %>

@@ -1,0 +1,22 @@
+<%= form_for(report, 
+			:remote => true, 
+			:html => {:class => "edit_report_#{report.id}"}
+			) do |frm_rep| %>
+	<%= link_to_function("Report",
+	 	toggler("#toggle_",report)
+		) %>
+	<span id="summary_report_<%=report.id%>"><%= report.summary %></span>
+
+	<%= link_to( image_tag("delete.png"), 
+			ajax_remove_report_path(:id => report.id),
+			:remote		=> true,
+			:confirm 	=> t(:'.delete_confirm',:summary => report.summary),
+			:title 		=> t(:'.delete_hint',	:summary => report.summary)  )%>
+	&nbsp;&nbsp;&nbsp;	
+	<%= link_to(image_tag('xml.png'), 	report_path(report, :format => :xml),
+				:title => t(:'reports.hint_export') )%>
+	&nbsp;&nbsp;&nbsp;	
+	<%= link_to(image_tag('preview.png'), 	report_path(report, :includestyle=>true, 
+																:format => :xml),
+				:title => t(:'reports.hint_view'))  %>
+<% end # of form report (part 1 summary) TODO: check no form needed? %>

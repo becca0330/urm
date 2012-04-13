@@ -1,0 +1,50 @@
+<%= form_for(report, 
+		:remote => true, 
+		:html => {:class => "edit_report_#{report.id}"}
+		) do |frm_rep| %>
+	<table id="table_report">	
+		<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>		
+		<tr>
+			<td>
+			    <%= frm_rep.label :summary, t(:'.label_summary') ,
+			 		:title => t(:'.hint_summary') %>
+		    </td> 
+			<td>
+	  			<%= frm_rep.text_area :executive_summary, 
+						:rows => 12, 
+						:placeholder => t(:'.hint_summary'),
+						:title => t(:'.hint_summary'),
+						:class => 'submittable' %>
+			</td>
+		</tr>					
+		
+		<tr>
+			<td><a name="intro" />
+			    <%= frm_rep.label(:introduction,t(:'.label_introduction') ,
+			 		:title => t(:'.hint_introduction') 
+						)%> 
+			</td> 
+			<td>
+		 		<%= frm_rep.text_area(:introduction, 
+						:rows => 7, 
+						:placeholder => t(:'.hint_introduction'),
+						 :title => t(:'.hint_introduction'),
+						:class => 'submittable') %>
+			</td>
+		</tr>
+		<tr>
+			<td><a name="methodology" />
+			    <%= frm_rep.label :methodology,t(:'.label_methodology') ,
+			 		:title => t(:'.hint_methodology') , 
+						:title => t(:'.hint_methodology') %>
+		    </td> 
+			<td>
+	  			<%= frm_rep.text_area(:methodology, 
+						:rows => 7,
+	 					:placeholder => t(:'.hint_methodology') ,
+						:placeholder => t(:'.hint_methodology') ,
+						:class => 'submittable') %>
+			</td>
+		</tr>
+	</table>
+<% end # of form report (part 3 intro and methodology ) %>

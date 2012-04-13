@@ -1,0 +1,25 @@
+<div class="border_documents">
+	<div class="toggle_documents">
+	
+		<%= link_to_function(t(:'documents.section_title'),
+			toggler("#toggle_all_documents_of_",report)
+			) %>:
+		<span id="summary_documents"><%= alldocuments_summary(report) %></span>	
+		<div id="toggle_all_documents_of_report_<%=report.id%>">
+			<%= render :partial =>'documents/document', 
+				:collection => report.documents,
+				:locals => {:report_id => report.id,
+					 		:finding_id => nil
+							}	%>  
+
+			<!-- html for new document of this report will be inserted here -->
+			<div id="new_document_for_report_<%=report.id%>"></div>
+
+
+			<%= link_to( image_tag('add.png')+t(:'documents.add_to_report_link'),
+					new_document_path(:report_id => report.id),
+					:remote		=> true,
+					:title =>t(:'documents.add_to_report_hint')) %>
+		</div> <!-- end all documents-->
+	</div><!-- end toggle for all documents-->
+</div><!-- end border all documents-->

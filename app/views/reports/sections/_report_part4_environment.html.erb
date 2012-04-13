@@ -1,0 +1,23 @@
+<%= form_for(report, 
+		:remote => true, 
+		:html => {:class => "edit_report_#{report.id}"}
+		) do |frm_rep| %>
+	<table id="table_report">
+		<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>			
+		<tr>
+			<td><a name="environment" />
+			    <%= frm_rep.label(:environment_description,
+					t(:'.label_environment_description') ,
+			 		:title => t(:'.hint_environment_description') 
+					)%> 
+			</td> 
+			<td>
+		 		<%= frm_rep.text_area(:environment_description, 
+						:rows => 5, 
+						:placeholder => t(:'.hint_environment_description'),
+						 :title => t(:'.hint_environment_description'),
+						:class => 'submittable') %>
+			</td>
+		</tr>
+	</table>
+<% end # of form report (part 4 environment) %>

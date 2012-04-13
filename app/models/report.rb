@@ -96,8 +96,8 @@ class Report < ActiveRecord::Base
       self.persons.where("persontype_id=?",2)
     end
     
-    # heexperts (=person with persontype_id ==3 .name="heexpert") 
-    def heexperts
+    # reviewers (= heexperts =person with persontype_id ==3 .name="heexpert") 
+    def reviewers
       self.persons.where("persontype_id=?",3)
     end
     

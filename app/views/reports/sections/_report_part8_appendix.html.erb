@@ -1,0 +1,23 @@
+<%= form_for(report, 
+		:remote => true, 
+		:html => {:class => "edit_report_#{report.id}"}
+		) do |frm_rep| %>
+	<table id="table_report">			
+		<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+		<tr>
+			<td><a name="appendix" />
+			    <%= frm_rep.label(:appendix_description, 
+						"Appendix",
+						:title => t(:'.hint_appendix_description')
+						)%>
+			</td> 
+			<td>
+		 		<%= frm_rep.text_area(:appendix_description, 
+						:rows => 5, 
+						:placeholder => t(:'.placeholder_appendix_description'),
+						 :title => t(:'.hint_appendix_description'),
+						:class => 'submittable') %>
+			</td>
+		</tr>
+	</table>
+<% end # of form report (part 8 appendix description) %>

@@ -1,0 +1,23 @@
+	<%# note: we call the 'devices': 'items' %>
+	<a name="devices" />
+	<div class = "border_devices">
+		<div class="toggle_all_devices">
+		
+			<%= link_to_function("Items",
+				toggler("#toggle_all_devices_of_",report)
+				) %>:
+			<span id="summary_devices"> <%= alldevices_summary(report) %></span>
+			<div id="toggle_all_devices_of_report_<%=report.id%>">
+				<%= render :partial =>'devices/device', 
+					:collection => report.devices	%>  
+
+				<!-- html for new device of this report will be inserted here -->
+				<div id="new_device_for_report_<%=report.id%>"></div>
+
+				<%= link_to( image_tag('add.png')+t(:'devices.add_link'),
+						new_device_path(:report_id => report.id),
+						:remote		=> true,
+						:title =>t(:'devices.add_hint')) %>
+			</div> <!-- end all devices-->
+		</div><!-- end toggle for all devices-->
+	</div><!-- end border all devices-->
