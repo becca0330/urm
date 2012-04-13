@@ -22,7 +22,7 @@ class PersonsController < ApplicationController
      
      logger.info("so render page #{page}...")
      
-     if (persontype_id==1) # for test users:
+     if (persontype_id=='1') # for test users: (NOT for heexperts or staff!)
        # create all available custom attributes by default
        CustomAttribute.all.each { |ca|
          @person.custom_attributes.push(ca)

@@ -6,10 +6,13 @@ xml.person(:persontype => pt, :id=>"person_"+person.id.to_s) do
 			xml.age person.age        # OPTIONAL
 			xml.timestamp person.timestamp  # required
 			
-			# OPTIONAL role OR edu/occup/itexp/hasusabtestex/customattribs
-			if ("somerolegiven" == "staff")
-			  xml.role "TODO staff"     #TOPTIONAL TODO: staff member or observer
-		  else
+			# TODO: output role(s?) (for staff only): interviewer, observer,...
+			#if (person.persontype_id==2) # persontype 1=testuser 2=staff 3=heexpert
+			#  xml.role "staff.role"
+		  
+		  # include following attributes edu/occup/itexp/hasusabtestex/customattribs
+		  # for test users only (NOT: for heexperst or staff)
+		  if (person.persontype_id==1) # persontype 1=testuser 2=staff 3=heexpert
 				xml.education person.education # OPTIONAL. REQUIRED if role is available
 				xml.occupation person.occupation # OPTIONAL
 				xml.itexperience do       # OPTIONAL. REQUIRED only, if education is available
@@ -30,7 +33,8 @@ xml.person(:persontype => pt, :id=>"person_"+person.id.to_s) do
 			                    :locals => {:person => person}).gsub(/^/, '       ')
 		      end # of customattributes 
 			  end # if custom attributes are available
-		  end # of else no xml.role
+		  end # of is test user (so ouput further attributes)
+		  
 		  xml.annotations person.annotation #OPTIONAL: annotations e.g.: wears glasses, color blind
 		  
 		  if person.videos.length > 0
