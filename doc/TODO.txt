@@ -9,6 +9,10 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 
 * add support for heuristic evaluations (HE)
 * add section to support preparation of usability evaluations
+	create section for TA-Planning. 
+	including: print consent form, orientation script, questionnaire... 
+	and event-codes, default interview questions,... 
+	also the attributes to ask user in background formular
 * add git integration to view source-code
 * add (input of) references to source-code
 
@@ -25,10 +29,28 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 
 * add Field for Recommendation for every Negative Finding
 * add survey-like question types (with answers, with mapping to given scale) 
+	click on numbers
+	select from dropdown list 
+	select one of many or many of many
+	allow dropdown selection or "other"
+* add internal mapping of scales (given range in questionnaire cp. internal range)
 * add rich text editor for longer descriptive text
 * allow references within the text. E.g.: latex-lile [Andrews2012]
-* add (parts-of) video-clips for findings
+* add (parts-of) video-clips for findings (or several videos)
+* interactive ordering/sorting of items (drag and drop "tasks" into position)
+* prepare for iPad input (bigger buttons)
+* add URM favicon
+* todo for HE:
+	adjust naming for fields: alias name id 
+* select the color for markers with RGB-chooser
+* allow free-text to explain reference for a transcript event
+* switch languages with a flag
 
+
+== Feature - Reports
+* special, and separate sections for TA Plan and TA filled-out-forms
+* calculate some static values for many anwsers to a single question 
+	XML+XSL calculate "Std. Deviation"
 
 == Feature - Authentication and Authorisation
 
@@ -51,21 +73,27 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 * video preview with timestamp selection
 * pretty xsl and css for exported Reports (HTML)
 * add info about "overall project status" 
-  (missing entries in %, data entered)
+  	missing entries in %, data entered
+	calculate statistics (successful tasks)
+* use a triangle icon to toggle sections
+* color or show hints for manatory fields (but do NOT enforce input)
 
 == Performance
 
 * increase speed for rendering first page
 * check database index
-
-== Further Details
-
-* add URM favicon
-
+* use local storage instead of cookies to store the toggle state 
+	HTML5 local storage
 
 == Softwaredevelopment
 
-* add unit/function/integration tests
+* add unit/function/integration tests: cucumber
 * test generated XML against given XSD
 * Upgrade to Rails 3.1.x on Ruby 1.9.x (use assets pipeline)
 * add default values for every new data in the database
+* add/check for GPL notes within the code
+
+== Fix Known Bugs
+
+* uploading: A part of the AJAX "update the local preview" 
+	does not work with safari (works on firefox)?!
