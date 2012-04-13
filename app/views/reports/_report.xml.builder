@@ -55,9 +55,9 @@
 				              :locals => {:report => report}
 				              ).gsub(/^/, '  ') # correct identation
 			
-	    # for HE ONLY:
-    	#xml << render(:partial => 'reports/xml/heuristicissues', 
-			#              :locals => {:report => report})
+	    # heuristic issues for HE ONLY:
+    	xml << render(:partial => 'reports/xml/heuristicissues', 
+			              :locals => {:report => report}) if report.testtype == "he" 
 			
 			
 			# optional: questionnaire and questionnaire-results:
@@ -73,10 +73,11 @@
 		    end
 		  end # if some interviews are available
 
-			# optional: transcripts:
+			# optional: transcripts for thinkin aloud tests:
+			
 			xml << render(  :partial => 'reports/xml/transcripts', 
 				              :locals => {:report => report}
-				              ).gsub(/^/, '  ') # correct identation
+				              ).gsub(/^/, '  ') if report.testtype == "ta" 
 
 			xml << render(  :partial  => 'reports/xml/analysis', 
 				              :locals   => {:report => report}
