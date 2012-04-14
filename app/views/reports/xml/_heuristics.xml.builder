@@ -1,4 +1,3 @@
-
 # TODO add several heuristics:
 xml.heuristics do
   xml.heuristic(:id => "h1", :order => 2) do

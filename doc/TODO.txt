@@ -7,22 +7,26 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 
 == Overall Functionality
 
-* add support for heuristic evaluations (HE)
 * add section to support preparation of usability evaluations
 	create section for TA-Planning. 
 	including: print consent form, orientation script, questionnaire... 
 	and event-codes, default interview questions,... 
+	and heuristics (e.g. 10 heuristics by nielsen),...
 	also the attributes to ask user in background formular
+* findings of HE: allow to specify finding per heexpert 
+	with severity and reference to heuristic 
 * add git integration to view source-code
 * add (input of) references to source-code
 * add buttons to upload forms on the "proper time in the workflow"
 	e.g. after adding an author: button to "add signed consent form"
-	
+
 
 == Naming
 
 * Positive Finding versus Negative Finding with Recommendation
 * edit hints and titles to match wording of keith
+* add German translations
+
 
 == I18N
 
@@ -46,7 +50,8 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 * prepare for iPad input (bigger buttons)
 * add URM favicon
 * for HE:
-	manage heuristic issues
+	manage heuristics (see Nielsen)
+	manage heuristic issues (found per expert/reviewer)
 	adjust naming for fields: alias name id 
 	add section to manage "user profiles" (~personas?)
 	section to manage text for "extend of Evaluation"? 
@@ -59,9 +64,19 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 
 
 == Feature - Reports
+
 * special, and separate sections for TA Plan and TA filled-out-forms
 * calculate some static values for many anwsers to a single question 
 	XML+XSL calculate "Std. Deviation"
+* findings export: xml export video-clips and documents for a finding
+* xml-export: xml-export the roles of staff members: interviewer, observer,...
+* xml-export: export person documents (if available)
+* xml report the "list of heuristics"
+* xml report of "heuristic issues"
+	description, notice, direction, reproduce, severity, 
+	found by (multiple persons), value,... codereference
+
+
 
 == Feature - Authentication and Authorisation
 
@@ -96,7 +111,21 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 	after "managing custom attributes" in extra view, reload main input form
 * Taskcompletion should be much easier to enter (maybe via a table/matrix)	
 * Answer-summary: pretty print answer with person and question details
-	
+* allow assignment of documents to a device for a reviewer
+	(e.g. photo of an computer or room)	
+* manage event-codes: auto-save on edit
+* manage event-codes: arrange elements (it is not very pretty now)
+* manage event-codes: reload report after changing/adding event codes
+* finding/recommendations: 
+	assign (multiple) video clipse
+	optional assign already existing document to finding (drop down)
+	allow the assignment of (multiple) code references for a finding
+* manage roles for staff: : interviewer, observer,...
+* assign (and upload) documents for a person (e.g. consent form)
+* AJAX-ify and created "on current page" management of 
+	custom attributes, event codes,...
+
+
 == Performance
 
 * increase speed for rendering first page
@@ -114,12 +143,19 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 * Upgrade to Rails 3.1.x on Ruby 1.9.x (use assets pipeline)
 * add default values for every new data in the database
 * add/check for Copyright / GPL notes within the code (each file)
-
+* check deployment scripts (deploy.rb) for version of rails
+	e.g. maybe we activate the asset-pipeline again
+* setup startup values (to download from git and just run the Rails app)
+ 	e.g. in database by using "seed.rb"	
+	
 == Questions (things to decide)
 
 * should a document be assigned (to fingings) AND the report itself??
 * for custom attributes or dynamic questions, devicetypes,...: 
-		where to define/set up multi-language questions (in the database?)
+	where to define/set up multi-language questions (in the database?)
+* for section HE
+	add section to manage / to report "user profiles/personas"
+	add section to manage / to report "extend of evaluation"
 		
 == Fix Known Bugs
 

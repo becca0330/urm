@@ -34,10 +34,9 @@
 						</td> 
 						<td>
 							<%= frm_pers.collection_select(
-								:persontype_id, 		# 
-								Persontype.all, 		# all the types: user, heexpert, staff...
-														# TODO if report=TA do NOT show heexpert!!
-								:id, 					# the selected id: 1
+								:persontype_id, 	# 
+								Persontype.all, 	# all the types: user, heexpert, staff...
+								:id, 				# the selected id: 1
 								:name_with_description, # display "user (...)"
 								options ={:prompt => t(:'.prompt_persontype')}, 
 								:class =>"submittable") # css style

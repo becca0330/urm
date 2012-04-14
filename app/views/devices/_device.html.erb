@@ -25,9 +25,10 @@
 						<th class="leftcolumn"></th>
 						<!-- left column fixed width with css -->
 					</tr>
-					<tr><%# Note for HE the "device" will be assigned to a person 
+						<%# Note for HE the "device" will be assigned to a person 
 					 		(not necessary with TA)	%>
-						<% if device.report.testtype=='he' # for ta %>
+					<% if device.report.testtype=='he' # for ta %>
+						<tr>
 							<td>
 							    <%= frm_dev.label(:person_id, t(:'.label_device_for_reviewer'),
 							 			:title => t(:'.prompt_device_for_reviewer') 
@@ -44,8 +45,9 @@
 											:class => 'submittable',
 											:title => t(:'.prompt_device_for_reviewer')} )  %>
 							</td>
-						<% end %>
-							
+						</tr>
+					<% end %>
+					<tr>		
 						<td>
 						    <%= frm_dev.label(:devicetype, t(:'.label_devicetype'),
 						 			:title => t(:'.prompt_devicetype') 

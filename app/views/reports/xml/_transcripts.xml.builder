@@ -1,4 +1,4 @@
-xml.transcripts do # "TODO transscripts" # transcripts
+xml.transcripts do # output transscripts with many single transcipt_events
   xml.description report.transcripts_description
   
   if @Eventcodes.length > 0 

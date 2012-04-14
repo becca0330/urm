@@ -27,7 +27,7 @@ xml.person(:persontype => pt, :id=>"person_"+person.id.to_s) do
 				end # of it-experience
 			  xml.hasusabtestexperience person.hasusabtestexperience # OPTIONAL: YES, NO, UNKNOWN
 			  
-			  if person.attributes_of_persons.length>0 # TODO OPTIONAL: custom attributes 
+			  if person.attributes_of_persons.length>0 # OPTIONAL: custom attributes 
 			    xml.customattributes do # one or several customattributes (see above for values)
 			      xml << render(:partial => person.attributes_of_persons,
 			                    :locals => {:person => person}).gsub(/^/, '       ')
