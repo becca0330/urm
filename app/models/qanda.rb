@@ -10,7 +10,8 @@ class Qanda < ActiveRecord::Base
      self.quest.to_s.truncate(18)
    end
    
-   # sort question-and-answer by question-id (id given by creation). TODO: order for qanda (necessary?)
+   # sort question-and-answer by question-id (id given by creation). 
+   # TODO: order for qanda (necessary?)
    def <=>(other)
       return 1 if other.nil? || other.id.nil?
       return 0 if  self.nil? ||  self.id.nil?

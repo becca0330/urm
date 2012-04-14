@@ -13,16 +13,14 @@ class AnswersController < ApplicationController
     logger.info("ajax-add a new answer for given report...")
     @answer = Answer.new
     
+    # suggest same person as with last answer
     logger.info("pre-fill person '#{session[:last_person_id]}'")
     if session[:last_person_id]
       @answer.person_id = session[:last_person_id]
     end
     
-    
     @report.answers.push(@answer)
-    
-    # TODO: suggest same person as with last answer
-    
+     
     
     respond_to do | format |  
       format.js {

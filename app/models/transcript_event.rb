@@ -20,7 +20,6 @@ class TranscriptEvent < ActiveRecord::Base
 		
 	def summary
 	  msg  = self.person ? self.person.name+": " : ""
-	  #msg += self.timestamp # TODO add the time of the timestamp!
 	  if self.timestamp
 	    msg +=  self.timestamp.strftime("%H:%M ")
 	  end

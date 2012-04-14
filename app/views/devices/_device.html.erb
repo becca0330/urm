@@ -21,14 +21,31 @@
 			<!-- SUB SECTION SINGLE device Details (modifiable details) -->
 			<div id="toggle_device_<%=device.id%>">
 				<table id="table_device">
-					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
-					<%# for HE add Person ID 
-					Person ID 
-					<%= f.collection_select(
-									:person_id, 
-									Person.all, :id, :name, :prompt =>"Select the person interviewed" ) %>
-					
 					<tr>
+						<th class="leftcolumn"></th>
+						<!-- left column fixed width with css -->
+					</tr>
+					<tr><%# Note for HE the "device" will be assigned to a person 
+					 		(not necessary with TA)	%>
+						<% if device.report.testtype=='he' # for ta %>
+							<td>
+							    <%= frm_dev.label(:person_id, t(:'.label_device_for_reviewer'),
+							 			:title => t(:'.prompt_device_for_reviewer') 
+										)%> 
+							</td>
+							<td>
+								<%= frm_dev.collection_select(
+										:person_id, 
+										device.report.reviewers, 
+										 :id, :alias, 
+										options = {
+											:prompt =>t(:'.prompt_device_for_reviewer')},
+										html_options = {
+											:class => 'submittable',
+											:title => t(:'.prompt_device_for_reviewer')} )  %>
+							</td>
+						<% end %>
+							
 						<td>
 						    <%= frm_dev.label(:devicetype, t(:'.label_devicetype'),
 						 			:title => t(:'.prompt_devicetype') 

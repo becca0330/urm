@@ -8,7 +8,8 @@ class DocumentsController < ApplicationController
   
    def new
      # is it a document for a finding or for the report??
-     # TODO think about: should we create one document for report and assign it to the finding also??
+     # TODO think about: should we create one document for report 
+     # and assign it to the finding also??
      
      # add document to finding
      if params[:finding_id]

@@ -90,14 +90,16 @@ class ProjectsController < ApplicationController
   end
   
   # todo: check what's that?
-  def toggle_div     
+  def toggle_div 
+     puts("is this code ever envoked??")    
      render(:update) { |page| page.toggle('toggle_div') }
   end
 
 
   # GET /projects/1.xml
   def show
-    @Eventcodes = Eventcode.all #TODO: cache!
+    #TODO: cache!
+    @Eventcodes = Eventcode.all 
     @project = Project.find(params[:id])
 
     # optionally we add the stylesheet instruction:

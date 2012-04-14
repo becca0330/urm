@@ -15,6 +15,9 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 	also the attributes to ask user in background formular
 * add git integration to view source-code
 * add (input of) references to source-code
+* add buttons to upload forms on the "proper time in the workflow"
+	e.g. after adding an author: button to "add signed consent form"
+	
 
 == Naming
 
@@ -39,9 +42,11 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 * add (parts-of) video-clips for findings (or several videos)
 * interactive ordering/sorting of items (drag and drop "tasks" into position)
 	allow the reports to be ordered with drag and drop (internal: change attribute order)
+	allow the questions and answers "qanda" of an interview to be sorted
 * prepare for iPad input (bigger buttons)
 * add URM favicon
 * for HE:
+	manage heuristic issues
 	adjust naming for fields: alias name id 
 	add section to manage "user profiles" (~personas?)
 	section to manage text for "extend of Evaluation"? 
@@ -80,16 +85,27 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 * pretty xsl and css for exported Reports (HTML)
 * add info about "overall project status" 
   	missing entries in %, data entered
-	calculate statistics (successful tasks)
+	calculate statistics (successful tasks, time for task completion)
 * use a triangle icon to toggle sections
 * color or show hints for manatory fields (but do NOT enforce input)
-
+* custom attributes for test users (persons)
+	allow to specify attributes as "default" to be created with new users
+	allow some more attributes added on demand (for each test user)
+	format (styles!) input according to type of an custom attribute
+		dropdown input, many of many check-boxes,...
+	after "managing custom attributes" in extra view, reload main input form
+* Taskcompletion should be much easier to enter (maybe via a table/matrix)	
+* Answer-summary: pretty print answer with person and question details
+	
 == Performance
 
 * increase speed for rendering first page
 * check database index
 * use local storage instead of cookies to store the toggle state 
 	HTML5 local storage
+* set up caching for "relativly static elements"
+	EventCodes, PersonTypes and CustomAttributes,...
+* check if equals <=> method in answer is performance "expensive"?
 
 == Softwaredevelopment
 
@@ -97,9 +113,16 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 * test generated XML against given XSD
 * Upgrade to Rails 3.1.x on Ruby 1.9.x (use assets pipeline)
 * add default values for every new data in the database
-* add/check for GPL notes within the code
+* add/check for Copyright / GPL notes within the code (each file)
 
+== Questions (things to decide)
+
+* should a document be assigned (to fingings) AND the report itself??
+* for custom attributes or dynamic questions, devicetypes,...: 
+		where to define/set up multi-language questions (in the database?)
+		
 == Fix Known Bugs
 
 * uploading: A part of the AJAX "update the local preview" 
 	does not work with safari (works on firefox)?!
+* check if method "toggle_div" in "projects_controller" is still in use?
