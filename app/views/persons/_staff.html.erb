@@ -35,7 +35,7 @@
 									:placeholder 	=> t(:'.hint_name'),
 									:title 			=> t(:'.hint_name'),
 									:class 			=> 'submittable'
-									) %> 
+								) %> 
 						</td>
 					</tr>
 					<tr>
@@ -50,6 +50,24 @@
 								:class 			=> 'submittable' %> 
 						</td>
 					</tr>
+					
+					<tr>		
+						<td>
+						    <%= frm_pers.label	:role, t(:'.label_role'),
+						  		:title => t(:'.prompt_role') %> 
+						</td> 
+						<td><%# TODO: read from database (english and german?! ) %>
+							<%= frm_pers.select(:role, 
+								{	t(:'.roles.moderator')		=> "moderator",
+									t(:'.roles.scribe')			=> "scribe"
+								},
+								option = {:prompt => t(:'.prompt_role')},
+								:class => 'submittable',
+								:title => t(:'.prompt_role')
+								)%>
+						</td>
+					</tr>
+					
 					<tr>
 						<td>
 						    <%= frm_pers.label :annotation, t(:'.label_annotation'),

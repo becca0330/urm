@@ -209,11 +209,18 @@ en:
                 person:                 "staff member"
                 label_name:             "Name"
                 label_alias:            "Alias"
+                label_role:             "Role"
                 label_annotation:       "Annotation"
                 hint_name:              "Name"
                 hint_alias:             "A short nick name. E.g. moderator, interviewer,..."
                 hint_annotation:        "Annotations..."
                 updated:                "Successfully updated staff member '%{summary}'."
+                hint_role:              "Moderator, scribe,..."
+                label_role:             "Define the role"
+                prompt_role:            "Select a role:"
+                roles:
+                    moderator:          "Moderator"
+                    scribe:             "Scribe"
         reviewers:
                 section_title:          "Evaluators" 
                 add_link:               "Add Evaluators"

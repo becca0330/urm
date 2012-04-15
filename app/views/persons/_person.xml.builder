@@ -8,7 +8,7 @@ xml.person(:persontype => pt, :id=>"person_"+person.id.to_s) do
 			
 			# TODO: output role(s?) (for staff only): interviewer, observer,...
 			if (person.persontype_id==2) # persontype 1=testuser 2=staff 3=heexpert
-			 xml.role "staff.role" # person.role
+			 xml.role person.role # moderator, (owners?), scribe 
 		  end
 		  
 		  # include following attributes edu/occup/itexp/hasusabtestex/customattribs
