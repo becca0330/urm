@@ -7,8 +7,9 @@ xml.person(:persontype => pt, :id=>"person_"+person.id.to_s) do
 			xml.timestamp person.timestamp  # required
 			
 			# TODO: output role(s?) (for staff only): interviewer, observer,...
-			#if (person.persontype_id==2) # persontype 1=testuser 2=staff 3=heexpert
-			#  xml.role "staff.role"
+			if (person.persontype_id==2) # persontype 1=testuser 2=staff 3=heexpert
+			 xml.role "staff.role" # person.role
+		  end
 		  
 		  # include following attributes edu/occup/itexp/hasusabtestex/customattribs
 		  # for test users only (NOT: for heexperst or staff)

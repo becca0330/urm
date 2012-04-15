@@ -17,15 +17,20 @@
 				<!-- SECTION ALL AUTHORS -->
 				<%= render( :partial 	=> "reports/sections/authors",
 							:locals 	=> { :report => report}			)%>
-				<!-- SECTION TEXT for intro -->
+				<!-- SECTION TEXT for intro and methodology-->
 				<%= render( :partial 	=> "reports/sections/report_part3_intro",
 							:locals 	=> { :report => report}			)%>
 			
+			
 				<!-- TODO for HE: section to manage heuristics (e.g. 10 heuristics by nielsen) -->
+				<!-- TODO SECTION ALL "heuristics" -->
+				<%= render( :partial 	=> "reports/sections/heuristics",
+							:locals 	=> { :report => report}			) if report.testtype == "he" %>
+				
 				
 				<!-- SECTION ALL "staff" Persons (=person with persontype_id ==2 .name="staff")-->
 				<%= render( :partial 	=> "reports/sections/staff",
-							:locals 	=> { :report => report}			)%>
+							:locals 	=> { :report => report}			) if report.testtype == "ta" %>
 				<!-- SECTION ALL "test users" Persons -->
 				<%= render( :partial 	=> "reports/sections/test_users",
 							:locals 	=> { :report => report}			) if report.testtype == "ta" %>
@@ -73,9 +78,12 @@
 							:locals 	=> { :report => report}			) if report.testtype == "ta" %>
 
 
-				<!-- SECTION TEXT for analysis (discussion) -->
+				<!-- SECTION TEXT for analysis (discussion for TA, for HE see below) -->
 				<%= render( :partial 	=> "reports/sections/report_part6_analysis",
-							:locals 	=> { :report => report}			)%>
+							:locals 	=> { :report => report}			)  if report.testtype == "ta" %>
+
+
+				<!-- TODO for HE: allow to specify finding per heexpert with severity and reference to heuristic -->
 				<!-- SECTION ALL FINDINGS (POSITIVE ones!) -->
 				<%= render( :partial 	=> "reports/sections/findings",
 							:locals 	=> { :report => report}			)%>
@@ -83,7 +91,11 @@
 				<%= render( :partial 	=> "reports/sections/recommendations",
 							:locals 	=> { :report => report}			)%>
 
-				<!-- TODO for HE: allow to specify finding per heexpert with severity and reference to heuristic -->
+				
+
+				<!-- SECTION TEXT for analysis (discussion for HE, for TA see above) -->
+				<%= render( :partial 	=> "reports/sections/report_part6_analysis",
+							:locals 	=> { :report => report}			)  if report.testtype == "he" %>
 
 
 				<!-- SECTION TEXT for transcript_description -->

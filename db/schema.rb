@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120324063508) do
+ActiveRecord::Schema.define(:version => 20120415153946) do
 
   create_table "answers", :force => true do |t|
     t.integer  "report_id"
@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(:version => 20120324063508) do
     t.string   "hasusabtestexperience"
     t.datetime "timestamp"
     t.text     "annotation"
+    t.string   "role"
   end
 
   create_table "persontypes", :force => true do |t|

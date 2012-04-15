@@ -43,7 +43,8 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 * add internal mapping of scales (given range in questionnaire cp. internal range)
 * add rich text editor for longer descriptive text
 * allow references within the text. E.g.: latex-lile [Andrews2012]
-* add (parts-of) video-clips for findings (or several videos)
+* findings:
+	add (parts-of) video-clips for findings (or several videos)
 * interactive ordering/sorting of items (drag and drop "tasks" into position)
 	allow the reports to be ordered with drag and drop (internal: change attribute order)
 	allow the questions and answers "qanda" of an interview to be sorted
@@ -75,8 +76,10 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 * xml report of "heuristic issues"
 	description, notice, direction, reproduce, severity, 
 	found by (multiple persons), value,... codereference
-
-
+* HTML - Report: adjust xslt for HE to show
+	separate sections for biblio and "normal" appendix files
+* thumb-nail like preview of whole rendered report 
+	always on the page, always up-to-date
 
 == Feature - Authentication and Authorisation
 
@@ -124,6 +127,21 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 * assign (and upload) documents for a person (e.g. consent form)
 * AJAX-ify and created "on current page" management of 
 	custom attributes, event codes,...
+* findings: add documents: show preview of new image
+* code references: 
+	allow to collapse section
+	pretty arrange fields for code references
+	allow to select lines from preview code (from git repo)
+* add document within recommendation is "badly structured". 
+	maybe we better indent "documents" a little
+* documents: for HE do not show for dropdown "appears in section"
+	the option "Materials for the test users"
+* holistic formative evalutaion support
+	guide the user to give them the the feeling of step-by-step support 
+	from setup, configuration, to conducting, 
+	collecting and revising data
+	to reporting and exporting
+
 
 
 == Performance
@@ -135,6 +153,9 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 * set up caching for "relativly static elements"
 	EventCodes, PersonTypes and CustomAttributes,...
 * check if equals <=> method in answer is performance "expensive"?
+* create thumb index on the server on demand
+* use thumb nails for small preview (documents of findings/recommendations)
+
 
 == Softwaredevelopment
 
@@ -151,11 +172,16 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 == Questions (things to decide)
 
 * should a document be assigned (to fingings) AND the report itself??
+	maybe we add documents to a finding
+	and do NOT ask for section in which to appear?
 * for custom attributes or dynamic questions, devicetypes,...: 
 	where to define/set up multi-language questions (in the database?)
 * for section HE
 	add section to manage / to report "user profiles/personas"
 	add section to manage / to report "extend of evaluation"
+* for HE
+	should we move section "discussion" AFTER the findings/recommendation section?
+	
 		
 == Fix Known Bugs
 
