@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120415153946) do
+ActiveRecord::Schema.define(:version => 20120415172359) do
 
   create_table "answers", :force => true do |t|
     t.integer  "report_id"
@@ -94,6 +94,14 @@ ActiveRecord::Schema.define(:version => 20120415153946) do
     t.integer  "priority"
     t.string   "title"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "heuristics", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "report_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

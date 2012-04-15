@@ -1,7 +1,9 @@
 # for HE only
-#     # heuristicissues optional TODO
-#     xml.heuristicissues do
-#       xml.description report.heuristicissues_description
+
+xml.heuristicissues do
+       xml.description report.heuristicissues_description
+#       TODO: heuristicissues used for theHE
+
 #       # optional some issues TODO loop
 #       xml.heuristicissue(:heuristicid => "h1", :id => 4) do
 #         xml.description "he1 descr" # TODO required
@@ -19,6 +21,6 @@
 #             # TODO: see above for details of how to create a codereference
 #             # xml.codereference "TODO... ??? WHERE" # do NOT replicate code !!
 #       end # of a single heuristic issue
-#     end # of heuristicissues
+end # of heuristicissues
 
 

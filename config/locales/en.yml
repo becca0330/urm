@@ -397,6 +397,7 @@ en:
             link_analysis:              "Discussion" # we call the analysis: "discussion" 
             link_methodology:           "Methodology"
             link_heuristics:            "Heuristics"
+            link_heuristicissues:       "Heuristic-Issues"
             link_environment:           "Environment"
             link_training:              "Training"
             link_tasks:                 "Tasks"
@@ -435,6 +436,9 @@ en:
         report_part5_training:
             hint_training:              "Description of the training of test users before TA tests"
             label_training:             "Training"
+        report_part5b_heuristicissues:
+            label_heuristicissues:       "Heuristic Issues"
+            hint_heuristicissues:        "Introductionary text (discussion) about the heuristic issues: findings and recommendations"
         report_part6_analysis:
             label_analysis:             "Discussion"
             hint_analysis:              "Introductionary text (discussion) about the findings."

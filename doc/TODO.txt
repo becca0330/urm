@@ -48,6 +48,7 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 * interactive ordering/sorting of items (drag and drop "tasks" into position)
 	allow the reports to be ordered with drag and drop (internal: change attribute order)
 	allow the questions and answers "qanda" of an interview to be sorted
+	allow sorting of (list of) heuristics
 * prepare for iPad input (bigger buttons)
 * add URM favicon
 * for HE:

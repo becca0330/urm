@@ -1,7 +1,6 @@
-# TODO add several heuristics:
-xml.heuristics do
-  xml.heuristic(:id => "h1", :order => 2) do
-    xml.title "Readability"
-    xml.description "Readability means the ...."
-  end # of a single heuristic
-end # of list of heuristics
+# heuristics for 
+if report.heuristics.length>0
+  xml.heuristics do # TODO sort by 'order'
+    xml << render(report.heuristics).gsub(/^/, '  ') # correct identation
+  end
+end

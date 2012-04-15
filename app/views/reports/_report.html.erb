@@ -78,11 +78,11 @@
 							:locals 	=> { :report => report}			) if report.testtype == "ta" %>
 
 
-				<!-- SECTION TEXT for analysis (discussion for TA, for HE see below) -->
-				<%= render( :partial 	=> "reports/sections/report_part6_analysis",
-							:locals 	=> { :report => report}			)  if report.testtype == "ta" %>
 
-
+				<!-- SECTION TEXT for heuristic issues-->
+				<%= render( :partial 	=> "reports/sections/report_part5b_heuristicissues",
+							:locals 	=> { :report => report}			) if report.testtype == "he" %>
+				
 				<!-- TODO for HE: allow to specify finding per heexpert with severity and reference to heuristic -->
 				<!-- SECTION ALL FINDINGS (POSITIVE ones!) -->
 				<%= render( :partial 	=> "reports/sections/findings",
@@ -93,9 +93,9 @@
 
 				
 
-				<!-- SECTION TEXT for analysis (discussion for HE, for TA see above) -->
+				<!-- SECTION TEXT for analysis (for text before heuristic issues for HE see above) -->
 				<%= render( :partial 	=> "reports/sections/report_part6_analysis",
-							:locals 	=> { :report => report}			)  if report.testtype == "he" %>
+							:locals 	=> { :report => report}			) %>
 
 
 				<!-- SECTION TEXT for transcript_description -->

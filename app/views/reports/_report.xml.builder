@@ -22,6 +22,9 @@
 			xml.introduction  report.introduction   # required
 			xml.methodology   report.methodology    # required
 			
+			# heuristics for HE ONLY:
+    	xml << render(:partial => 'reports/xml/heuristics', 
+			              :locals => {:report => report}) if report.testtype == "he"
 			
 			xml.persons do  # at least one test-user or staff or heuristic expert
         xml.description report.person_description # required
@@ -92,13 +95,7 @@
         end # of appendix
       end # export appendix, if report.documents only
 
-      # Some general infos 
-      #====================
       
-      # for HE ONLY!!:
-      # xml << render(:partial => 'reports/xml/heuristics', :locals => {:report => report})
-
-    	
 	  end # of one report
   	
 #end # of each report

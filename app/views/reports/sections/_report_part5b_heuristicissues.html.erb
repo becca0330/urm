@@ -1,0 +1,22 @@
+<%= form_for(report, 
+		:remote => true, 
+		:html => {:class => "edit_report_#{report.id}"}
+		) do |frm_rep| %>
+	<table id="table_report">		
+		<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>	
+		<tr>
+			<td><a name="heuristicissues" />
+			    <%= frm_rep.label(:heuristicissues, 
+						t(:'.label_heuristicissues'),
+						:title 			=> t(:'.hint_heuristicissues') )%> 
+			</td> 
+			<td>
+		 		<%= frm_rep.text_area(:heuristicissues_description, 
+						:rows => 12, 
+						:placeholder 	=> t(:'.hint_heuristicissues'),
+						:title 			=> t(:'.hint_heuristicissues'),
+						:class 			=> 'submittable') %>
+			</td>
+		</tr>
+	</table>
+<% end # of form report (part 5 heuristicissues_description; HE only!) %>
