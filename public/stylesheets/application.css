@@ -268,6 +268,7 @@ label{
 .border_qandas,
 .border_findings,
 .border_documents,
+.border_heuristics,
 .border_transcript_events {
 	width:95%;
 	border-top-right-radius: 40px; border-bottom-right-radius: 0px;
@@ -295,6 +296,8 @@ label{
 .border_findings{ 			padding-left: 4px; margin-left:0%; }
 .border_documents{ 			padding-left: 4px; margin-left:0%; }
 .border_transcript_events{ 	padding-left: 4px; margin-left:0%; }
+.border_heuristics{ 		padding-left: 4px; margin-left:0%; }
+
 
 /* better call it: indent for ... (instead of 'toggle')*/
 .toggle_project,
@@ -317,6 +320,8 @@ label{
 .toggle_all_findings,
 .toggle_all_documents,
 .toggle_document,
+.toggle_heuristic,
+.toggle_all_heuristics,
 .toggle_all_transcript_events,
 .toggle_transcript_event{
 	width:98%;
@@ -420,6 +425,7 @@ label{
 #table_qanda,
 #table_finding,
 #table_document,
+#table_heuristic,
 #table_transcript_event{ 
 	width:96%;
 	border-top-right-radius: 40px; 

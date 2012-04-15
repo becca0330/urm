@@ -1,0 +1,58 @@
+<!-- SECTION SINGLE HEURISTIC -->
+<div id="heuristic_<%=heuristic.id%>" class="border_heuristic">
+
+	<!-- SECTION SINGLE Heuristic Summary (modifiable details) -->
+	<div class="toggle_heuristic" >
+
+		<%= link_to_function( t(:'.section_title'), toggler("#toggle_",heuristic) ) %>
+		<span id="summary_heuristic_<%=heuristic.id%>"><%= heuristic.summary %></span>
+		<%= link_to( image_tag("delete.png"), 
+				heuristic_path(heuristic),
+				:method		=> :delete,
+				:remote		=> true,
+				:confirm 	=> t(:'.delete_confirm', 	:heuristic_title => heuristic.title),
+				:title 		=> t(:'.delete_hint', 		:heuristic_title => heuristic.title),
+				:tabindex => 0
+				) %>
+				
+		<%= form_for(heuristic, 
+			:remote => true, 
+			:html => {:class => "edit_heuristic_#{heuristic.id}"}
+			) do |frm_heuristic| %>
+	
+			<!-- SUB SECTION SINGLE Heuristic Details (modifiable details) -->
+			<div id="toggle_heuristic_<%=heuristic.id%>">
+				<table id="table_heuristic">
+					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+					<tr>
+						<td>
+						    <%= frm_heuristic.label :title, t(:'.label_title'),
+						 			:title => t(:'.hint_title') %> 
+						</td> 
+						<td>
+					 		<%= frm_heuristic.text_field( :title, :class => 'submittable', 
+									:placeholder => t(:'.hint_title'),
+						 			:title => t(:'.hint_title') 
+									)%> 
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_heuristic.label :description, t(:'.label_description'),
+						 			:title => t(:'.hint_description') %> 
+						</td> 
+						<td>
+					 		<%= frm_heuristic.text_field( :description, :class => 'submittable', 
+									:placeholder => t(:'.hint_description'),
+						 			:title => t(:'.hint_description') 
+									)%> 
+						</td>
+					</tr>
+				</table>
+			</div> <!-- end of id toggle_heuristic -->
+		<% end # of form heuristic %>
+	</div> <!-- end of class toggle_heuristic -->
+
+	<div id="heuristic_message_<%=heuristic.id%>" class="ajax_message"></div>
+	
+</div> <!-- end of div heuristic-->

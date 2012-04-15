@@ -4,20 +4,20 @@
 		
 		<!-- TODO: render heuristics -->
 
-<%#		
+		
 		<%= link_to_function( t(:'heuristics.section_title'),
 				toggler("#toggle_all_heuristics_of_",report),
 				:title => t(:'heuristics.toggle_section_title')	
-			) % >
+			) %>
 		<span id="summary_heuristics"><%= allheuristics_summary(report) %></span>
 		<div id="toggle_all_heuristics_of_report_<%=report.id%>">
-			<%#= render :partial =>'heuristics/heuristic', 
-				:collection => report.heuristics % >  
+			<%= render :partial =>'heuristics/heuristic', 
+				:collection => report.heuristics %>  
 			
 			
 			
 			<!-- html for new heuristic of this report will be inserted here -->
-			<div id="new_heuristic_for_report_<%=report.id% >"></div>
+			<div id="new_heuristic_for_report_<%=report.id %>"></div>
 
 			<%= link_to( image_tag('add.png',
 						:tabindex => 0,
@@ -25,8 +25,8 @@
 					)+t(:'heuristics.add_link'),
 					new_heuristic_path(:report_id => report.id),
 					:remote		=> true,
-					:title => t(:'heuristics.add_hint')) % >
+					:title => t(:'heuristics.add_hint')) %>
 		</div> <!-- end all heuristics-->
-%>
+		
 	</div><!-- end toggle for all heuristics-->
 </div><!-- end border all heuristics-->

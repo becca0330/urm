@@ -255,13 +255,14 @@
 			
 			<thead>
 				<tr>
-					<th>No.</th>
+					<!--th>No.</th-->
+					<th>Title</th>
 					<th>Heuristics</th>
 				</tr>
 			</thead>
 			
 			<tbody>
-				<xsl:apply-templates select="./heuristic"/>
+				<xsl:apply-templates select="./heuristics/heuristic"/>
 			</tbody>
 			
 		</table>
@@ -269,11 +270,15 @@
 	
 	<xsl:template match="heuristic">
 		<tr>
-			<th>
+			<!--td>
 				<xsl:apply-templates select="attribute::id"/>
-			</th>
-			<td><xsl:apply-templates select="./description"/> (<xsl:apply-templates select="./title"
-			/>)</td>
+			</td-->
+			<td>
+				<xsl:apply-templates select="./title"/>
+			</td>
+			<td>
+				<xsl:apply-templates select="./description"/>
+			</td>
 		</tr>
 	</xsl:template>
 	

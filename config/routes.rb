@@ -28,7 +28,8 @@ URM::Application.routes.draw do
         :findings,
         :documents,
         :videos,
-        :transcript_events
+        :transcript_events,
+        :heuristics
 
   # TODO: use AJAX to manage (add/modify/remove)
   resources :eventcodes, :custom_attributes

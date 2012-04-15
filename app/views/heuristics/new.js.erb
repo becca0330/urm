@@ -1,0 +1,9 @@
+$( "<%= escape_javascript( \
+	render( :partial => "heuristic", :locals => { :heuristic => @heuristic} )\
+	) %>" ).insertBefore("#new_heuristic_for_report_<%=heuristic.report_id%>")
+
+$("#summary_heuristics" ).html("<%=allheuristics_summary(heuristic.report) %>");
+
+/* Highlight the new heuristic */
+$("#toggle_heuristic_<%= @heuristic.id %>").effect("highlight", {}, 3000);
+$("#toggle_heuristic_<%= @heuristic.id %>").find("#heuristic_title").focus();

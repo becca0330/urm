@@ -1,0 +1,5 @@
+$("#summary_heuristic_<%=heuristic.id%>" ).html("<%= escape_javascript(heuristic.summary) %>");
+$("#summary_heuristics" ).html("<%= escape_javascript(allheuristics_summary(heuristic.report)) %>");
+
+showToast("<%= escape_javascript(   t(:'.updated', :summary => @heuristic.summary) ) %>");
+resetHighlightingForElems('.edit_heuristic_<%=heuristic.id%>');

@@ -173,6 +173,25 @@ en:
             hint_description:   "Extensive description for this recommendation"
 
              
+  # heuristics of the report
+  heuristics:
+      section_title:            "Heuristics"
+      toggle_section_title:     "Click to hide/show the heuristics..."
+      add_link:                 "Add Heuristic"
+      add_hint:                 "Add another heuristic to the report..."
+      heuristic:
+          heuristic:            "heuristic"
+          section_title:        "Heuristic"
+          delete_hint:          "Remove heuristic '%{heuristic_title}'..."
+          delete_confirm:       "Are you sure to delete this heuristic '%{heuristic_title}'?"
+          label_title:          "Title"
+          label_description:    "Description"
+          hint_title:           "Title of the heuristic"
+          hint_description:     "Description of the heuristic"
+      update:
+          updated:            "Successfully updated heuristic '%{summary}'."
+
+
   # a interview with a person (contains many qanda)         
   interviews:
         section_title:              "Interviews"
