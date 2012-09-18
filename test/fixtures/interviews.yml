@@ -2,11 +2,11 @@
 #
 # Table name: interviews
 #
-#  id         :integer         not null, primary key
-#  personid   :integer
+#  id         :integer(4)      not null, primary key
 #  created_at :datetime
 #  updated_at :datetime
-#  report_id  :integer
+#  report_id  :integer(4)
+#  person_id  :integer(4)
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
@@ -16,4 +16,5 @@ one:
 
 two:
   person_id: 1
+
 

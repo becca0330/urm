@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: qandas
+#
+#  id           :integer(4)      not null, primary key
+#  quest        :text
+#  answ         :text
+#  interview_id :integer(4)
+#  qid          :integer(4)
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
 # This file is part of URM Usability Reporting Manager
 # Copyright (C) 2012 internettechnik 
 # Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.

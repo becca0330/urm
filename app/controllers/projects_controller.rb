@@ -4,7 +4,7 @@
 
 
 class ProjectsController < ApplicationController
-  
+  load_and_authorize_resource
   # Note: this is set to "site home" (see routes.rb)
   # GET /projects
   # GET /projects.xml
@@ -56,7 +56,7 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.xml
   def create
-   
+    @project.user = current_user
     # TODO caching!!
     @Eventcodes = Eventcode.all
     @persontypes = Persontype.all

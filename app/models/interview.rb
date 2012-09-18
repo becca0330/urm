@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: interviews
+#
+#  id         :integer(4)      not null, primary key
+#  created_at :datetime
+#  updated_at :datetime
+#  report_id  :integer(4)
+#  person_id  :integer(4)
+#
+
 # This file is part of URM Usability Reporting Manager
 # Copyright (C) 2012 internettechnik 
 # Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
@@ -26,4 +37,5 @@ class Interview < ActiveRecord::Base
   end
   
 end
+
 

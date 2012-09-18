@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: findings
+#
+#  id          :integer(4)      not null, primary key
+#  report_id   :integer(4)
+#  findingtype :string(255)
+#  priority    :integer(4)
+#  title       :string(255)
+#  description :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 # This file is part of URM Usability Reporting Manager
 # Copyright (C) 2012 internettechnik 
 # Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
@@ -20,3 +34,4 @@ class Finding < ActiveRecord::Base
   end
 
 end
+

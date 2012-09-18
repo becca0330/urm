@@ -1,3 +1,33 @@
+# == Schema Information
+#
+# Table name: reports
+#
+#  id                               :integer(4)      not null, primary key
+#  project_id                       :integer(4)
+#  title                            :string(255)
+#  timestamp                        :datetime
+#  description                      :text
+#  executive_summary                :text
+#  created_at                       :datetime
+#  updated_at                       :datetime
+#  introduction                     :text
+#  methodology                      :text
+#  training                         :text
+#  person_description               :text
+#  environment_description          :text
+#  task_description                 :text
+#  heuristicissues_description      :text
+#  questionnaire_description        :text
+#  questionnaireresults_description :text
+#  interviews_description           :text
+#  transcripts_description          :text
+#  analysis_description             :text
+#  appendix_description             :text
+#  order                            :integer(4)
+#  testtype                         :string(255)
+#  questionnaireresults_summary     :text
+#
+
 # This file is part of URM Usability Reporting Manager
 # Copyright (C) 2012 internettechnik 
 # Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
@@ -113,3 +143,4 @@ class Report < ActiveRecord::Base
 
       
 end
+

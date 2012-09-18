@@ -54,9 +54,15 @@ gem "remotipart", "~> 1.0"
 #group :development do
 #	gem 'ruby-debug19'
 #end
+group :dev2 do
+  gem 'mysql2', '< 0.3'
+end
 
 group :development do
-	gem 'mysql2', '< 0.3' # for rails 3.0.x (version >= 0.3 works with rails 3 only)
+	# gem 'mysql2', '< 0.3' # for rails 3.0.x (version >= 0.3 works with rails 3 only)
+	# gem 'mysql', "2.8.1"
+	# gem 'sqlite3'
+	gem "annotate", "~> 2.4.0"
 end
 
 group :production do
@@ -67,12 +73,13 @@ group :production do
 	# 2012-01-29:
 	# we use locally 'mysql' with version 2.8.1 and fake the Gemfile.lock to 2.7
 	# in Gemfile.lock: "mysql (2.7)" (only for development on local machine: (2.8.1))
-	gem 'mysql', "2.7"
+	gem 'mysql', "2.8.1"
 end
 
 # 2012-03-22 for authentication add Authlogic
 gem 'authlogic'
-
+# 2012-05-01 for authorization unsing cancan 
+gem 'cancan'
 # 2012-03-22 for registration / confirmation via eMail
 gem 'aasm'
 

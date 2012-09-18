@@ -18,7 +18,10 @@ class ApplicationController < ActionController::Base
     logger.debug "* Locale set to '#{I18n.locale}'"
   end
   
-  
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = "Access denied."
+    redirect_to root_url
+  end
   private
   
   def extract_locale_from_accept_language_header

@@ -3,13 +3,33 @@
 # Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 
 development:
-    adapter: mysql2
-    encoding: utf8
-    reconnect: false
-    database: urm
-    username: user_urm
-    password: pwd_urm
-    socket: /var/mysql/mysql.sock
+  #  adapter: mysql2
+  #  encoding: utf8
+  #  reconnect: false
+  #  database: urm
+  #  username: user_urm
+  #  password: pwd_urm
+  #  socket: /var/mysql/mysql.sock
+  adapter: mysql2
+  database: urm
+  encoding: utf8
+  host: localhost
+  database: urm
+  username: root
+  password: chen6027
+  socket: /tmp/mysql.sock
+    
+dev2:
+  adapter: mysql2
+  database: urm
+  encoding: utf8
+  host: localhost
+  database: urm
+  username: root
+  password: chen6027
+  socket: /tmp/mysql.sock
+  
+  
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

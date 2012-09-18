@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: questions
+#
+#  id          :integer(4)      not null, primary key
+#  order       :integer(4)
+#  report_id   :integer(4)
+#  description :text
+#  notice      :text
+#  rangefrom   :string(255)
+#  rangeto     :string(255)
+#  rangescale  :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 # This file is part of URM Usability Reporting Manager
 # Copyright (C) 2012 internettechnik 
 # Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
@@ -27,3 +43,4 @@ class Question < ActiveRecord::Base
   end 
   	
 end
+

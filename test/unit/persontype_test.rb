@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: persontypes
+#
+#  id          :integer(4)      not null, primary key
+#  description :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#  name        :string(255)
+#
+
 require 'test_helper'
 
 class PersontypeTest < ActiveSupport::TestCase
@@ -6,3 +17,4 @@ class PersontypeTest < ActiveSupport::TestCase
     assert true
   end
 end
+

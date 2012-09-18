@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: devices
+#
+#  id          :integer(4)      not null, primary key
+#  report_id   :integer(4)
+#  person_id   :integer(4)
+#  devicetype  :string(255)
+#  title       :string(255)
+#  description :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
@@ -13,3 +27,4 @@ two:
   devicetype: MyString
   title: MyString
   description: MyText
+

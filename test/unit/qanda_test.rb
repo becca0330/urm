@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: qandas
+#
+#  id           :integer(4)      not null, primary key
+#  quest        :text
+#  answ         :text
+#  interview_id :integer(4)
+#  qid          :integer(4)
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
 require 'test_helper'
 
 class QandaTest < ActiveSupport::TestCase
@@ -7,16 +20,4 @@ class QandaTest < ActiveSupport::TestCase
   end
 end
 
-# == Schema Information
-#
-# Table name: qandas
-#
-#  id           :integer         not null, primary key
-#  quest        :text
-#  answ         :text
-#  interview_id :integer
-#  qid          :integer
-#  created_at   :datetime
-#  updated_at   :datetime
-#
 
